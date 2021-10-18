@@ -1,0 +1,22 @@
+.cover {
+    background: transparent url(coverimg.jpg) no-repeat center center;
+    background-size: cover;
+    position: relative;
+    padding: 2rem 1rem;
+    height: 10rem;
+}
+
+.coverview {
+    margin: 0 auto;
+    max-width: 87.5rem;
+}
+
+.text {
+    position: relative;
+    z-index: 2;
+}
+
+h1 {
+    color: #ffffff;
+    font-size: 40px;
+}
