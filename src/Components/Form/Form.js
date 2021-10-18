@@ -224,6 +224,28 @@ export default function Form() {
         />
         Temporary
       </label>
+       <label>
+        {" "}
+        Location of Employment:*
+        <input
+          {...register("Location of Employment", { required: true })}
+          type="radio"
+          value="In-Person"
+        />
+        In-Person
+        <input
+          {...register("Type of Employment", { required: true })}
+          type="radio"
+          value="Hybrid"
+        />
+        Hybrid
+        <input
+          {...register("Type of Employment", { required: true })}
+          type="radio"
+          value="Remote"
+        />
+        Remote
+      </label>
       <label>
         Did you negotiate the salary?:*
         <input
