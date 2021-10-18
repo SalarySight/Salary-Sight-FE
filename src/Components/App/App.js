@@ -1,4 +1,5 @@
 import Header from "../Header/Header";
+import Cover from "../Cover/Cover";
 import { Route, Switch } from "react-router-dom";
 import './App.css';
 
@@ -6,6 +7,7 @@ function App() {
   return (
     <div className="App">
       <Header />
+      <Cover />
       <header className="App-header">
         <p>
           Edit <code>src/App.js</code> and save to reload.
