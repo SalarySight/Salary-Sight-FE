@@ -270,7 +270,7 @@ export default function Form() {
           {...register("Company Name", {})}
         />
       </label>
-      <input type="submit" />
+      <input type="submit"/>
     </form>
   );
 }

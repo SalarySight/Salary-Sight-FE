@@ -6,29 +6,34 @@ import Backdrop from '../Form/Backdrop.js'
 import MainPage from '../Form/MainPage.js'
 import { Route, Switch } from "react-router-dom";
 import './App.css';
-
 class App extends React.Component {
-state = { drawerOpen: false }
-   drawerToggleClickHandler = () => {
-       this.setState({
-         drawerOpen: !this.state.drawerOpen
-       })
-   }
+   state = { drawerOpen: false }
+drawerToggleClickHandler = () => {
+    this.setState({
+      drawerOpen: !this.state.drawerOpen
+    })
+  }
+backdropClickHandler = () => {
+    this.setState({
+      drawerOpen: false
+    })
+  }
    render(){
       let backdrop;
       if(this.state.drawerOpen){
-        backdrop = <Backdrop/>;
+        backdrop = <Backdrop close={this.backdropClickHandler}/>;
        }
+      return(
 
-  return (
-    <div className="App">
-      <Header />
-      <Cover />
-      < SlideDrawer show={this.state.drawerOpen}/>
-             { backdrop }
-      < MainPage toggle={this.drawerToggleClickHandler}/>
-    </div>
-  );
-}
+         <div>
+          <Header />
+          <Cover />
+           < SlideDrawer show={this.state.drawerOpen} />
+           { backdrop }
+           < MainPage toggle={this.drawerToggleClickHandler} />
+         </div>
+      )
+    }
 }
 export default App
+

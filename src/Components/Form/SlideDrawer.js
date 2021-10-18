@@ -11,7 +11,7 @@ export default class SlideDrawer extends React.Component {
        return(
    
           <div className={drawerClasses}>
-             <Form>    
+             <Form closeForm={this.props.hide}>    
              </Form>
           </div>
 )

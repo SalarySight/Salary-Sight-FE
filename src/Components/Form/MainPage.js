@@ -3,7 +3,7 @@ export default class MainPage extends React.Component {
    render(){
      return (
         <div>
-          <button onClick={this.props.toggle}>Click me!</button>
+          <button onClick={this.props.toggle}>Submit Salary</button>
         </div>
      )
     }   
