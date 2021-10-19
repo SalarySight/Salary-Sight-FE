@@ -1,5 +1,6 @@
 import React from "react";
 import { useForm } from "react-hook-form";
+import { postForm } from "../../APICalls";
 import "./Form.css";
 
 export default function Form() {
@@ -8,7 +9,13 @@ export default function Form() {
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = (data) => postForm(data)
+      .then(data => {
+        console.log(data)
+      })
+      .catch(data => {
+       console.log("ERRORS")
+      })
   console.log(errors);
 
   return (
@@ -46,11 +53,11 @@ export default function Form() {
             Age
           </option>
           <option value="18-24">18-24</option>
-          <option value=" 25-34"> 25-34</option>
-          <option value=" 35-44"> 35-44</option>
-          <option value=" 45-54"> 45-54</option>
-          <option value=" 55-64"> 55-64</option>
-          <option value=" 65+"> 65+</option>
+          <option value="25-34"> 25-34</option>
+          <option value="35-44"> 35-44</option>
+          <option value="45-54"> 45-54</option>
+          <option value="55-64"> 55-64</option>
+          <option value="65+"> 65+</option>
         </select>
       </label>
       <label>
