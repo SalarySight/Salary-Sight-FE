@@ -1,6 +1,5 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import { postForm } from "../../APICalls";
 import "./Form.css";
 
 export default function Form() {
@@ -9,13 +8,7 @@ export default function Form() {
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const onSubmit = (data) => postForm(data)
-      .then(data => {
-        console.log(data)
-      })
-      .catch(data => {
-       console.log("ERRORS")
-      })
+  const onSubmit = (data) => console.log(data)
   console.log(errors);
 
   return (

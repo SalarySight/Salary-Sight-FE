@@ -1,15 +1,41 @@
-export const getSalaries = () => {
-  return fetch('https://salary-sight-be.herokuapp.com/graphql')
-      .then(response => console.log(response.json()))
-}
+import React from "react";
+import {
+  useQuery,
+  gql
+} from "@apollo/client";
 
-export const postForm = (formSubmission) => {
-  return fetch('https://salary-sight-be.herokuapp.com/graphql', {
-    method: "POST",
-      headers: {
-        'Content-Type': 'application/json'
-      },
-    body: JSON.stringify(formSubmission)
-  })
-  .then(response => console.log(response.json()))
+const GET_POSTS = gql`
+    query {
+      posts {
+        id
+        name
+        company
+        salary
+        previousEducation
+        bootCampType
+        devTitle
+        comments
+        state
+        jobHuntDuration
+        gender
+        age
+        yearsOfExperience
+      }
+    }
+`;
+
+function APICalls() {
+  const { loading, error, data } = useQuery(GET_POSTS);
+
+  if (loading) return 'Loading...';
+  if (error) return `Error! ${error.message}`;
+
+  return (
+    <div name="posts">
+      {data.posts.map(post => (
+        <p>hi</p>
+      ))}
+    </div>
+  );
 }
+export default APICalls
