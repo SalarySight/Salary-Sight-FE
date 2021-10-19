@@ -1,5 +1,6 @@
 import React from "react";
 import { useForm } from "react-hook-form";
+import { postForm } from "../../APICalls";
 import "./Form.css";
 
 export default function Form() {
@@ -8,7 +9,13 @@ export default function Form() {
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = (data) => postForm(data)
+      .then(data => {
+        console.log(data)
+      })
+      .catch(data => {
+       console.log("ERRORS")
+      })
   console.log(errors);
 
   return (
@@ -19,13 +26,13 @@ export default function Form() {
         <input
           type="text"
           placeholder="Name"
-          {...register("Name", { maxLength: 80 })}
+          {...register("name", { maxLength: 80 })}
         />
       </label>
       <label>
         {" "}
         Gender:*
-        <select {...register("Gender", { required: true })}>
+        <select {...register("gender", { required: true })}>
           <option value="" disabled selected>
             Gender
           </option>
@@ -41,47 +48,47 @@ export default function Form() {
       <label>
         {" "}
         Age:*
-        <select {...register("Age", { required: true })}>
+        <select {...register("age", { required: true })}>
           <option value="" disabled selected>
             Age
           </option>
           <option value="18-24">18-24</option>
-          <option value=" 25-34"> 25-34</option>
-          <option value=" 35-44"> 35-44</option>
-          <option value=" 45-54"> 45-54</option>
-          <option value=" 55-64"> 55-64</option>
-          <option value=" 65+"> 65+</option>
+          <option value="25-34"> 25-34</option>
+          <option value="35-44"> 35-44</option>
+          <option value="45-54"> 45-54</option>
+          <option value="55-64"> 55-64</option>
+          <option value="65+"> 65+</option>
         </select>
       </label>
       <label>
         {" "}
         Year Graduated:*
-        <select {...register("Year Graduated ", { required: true })}>
+        <select {...register("year-graduated", { required: true })}>
           <option value="" disabled selected>
             Year Graduated
           </option>
           <option value="2022">2022</option>
-          <option value=" 2021">2021</option>
-          <option value=" 2020">2020</option>
-          <option value=" 2019">2019</option>
-          <option value=" 2018">2018</option>
-          <option value=" 2017">2017</option>
-          <option value=" 2016">2016</option>
-          <option value=" 2015">2015</option>
-          <option value=" 2014">2014</option>
+          <option value="2021">2021</option>
+          <option value="2020">2020</option>
+          <option value="2019">2019</option>
+          <option value="2018">2018</option>
+          <option value="2017">2017</option>
+          <option value="2016">2016</option>
+          <option value="2015">2015</option>
+          <option value="2014">2014</option>
         </select>
       </label>
       <label>
         {" "}
         Program:*
         <input
-          {...register("Program", { required: true })}
+          {...register("program", { required: true })}
           type="radio"
           value="BE"
         />
         BE
         <input
-          {...register("Program", { required: true })}
+          {...register("program", { required: true })}
           type="radio"
           value="FE"
         />
@@ -93,7 +100,7 @@ export default function Form() {
         <input
           type="number"
           placeholder="Experience (in years)"
-          {...register("Experience (in years)", {
+          {...register("experience", {
             required: true,
             max: 30,
             min: 0,
@@ -103,7 +110,7 @@ export default function Form() {
       <label>
         {" "}
         Degree?:*
-        <select {...register("Degree", { required: true })}>
+        <select {...register("degree", { required: true })}>
           <option value="" disabled selected>
             Degree Type
           </option>
@@ -115,7 +122,7 @@ export default function Form() {
       <label>
         {" "}
         State you resided in during this position:*
-        <select {...register("State:", { required: true })}>
+        <select {...register("state", { required: true })}>
           <option value="" disabled selected>
             State
           </option>
@@ -184,7 +191,7 @@ export default function Form() {
         <input
           type="number"
           placeholder="Salary (yearly)"
-          {...register("Salary (yearly)", { required: true })}
+          {...register("salary", { required: true })}
         />
       </label>
       <label>
@@ -193,32 +200,32 @@ export default function Form() {
         <input
           type="text"
           placeholder="Position Title"
-          {...register("Position Title", { required: true })}
+          {...register("position-title", { required: true })}
         />
       </label>
       <label>
         {" "}
         Type of Employment:*
         <input
-          {...register("Type of Employment", { required: true })}
+          {...register("type-of-employment", { required: true })}
           type="radio"
           value="Part-Time"
         />
         Part-Time
         <input
-          {...register("Type of Employment", { required: true })}
+          {...register("type-of-employment", { required: true })}
           type="radio"
           value="Full-Time"
         />
         Full-Time
         <input
-          {...register("Type of Employment", { required: true })}
+          {...register("type-of-employment", { required: true })}
           type="radio"
           value="Contract"
         />
         Contract
         <input
-          {...register("Type of Employment", { required: true })}
+          {...register("type-of-employment", { required: true })}
           type="radio"
           value="Temporary"
         />
@@ -228,19 +235,19 @@ export default function Form() {
         {" "}
         Location of Employment:*
         <input
-          {...register("Location of Employment", { required: true })}
+          {...register("location-of-employment", { required: true })}
           type="radio"
           value="In-Person"
         />
         In-Person
         <input
-          {...register("Type of Employment", { required: true })}
+          {...register("location-of-employment", { required: true })}
           type="radio"
           value="Hybrid"
         />
         Hybrid
         <input
-          {...register("Type of Employment", { required: true })}
+          {...register("location-of-employment", { required: true })}
           type="radio"
           value="Remote"
         />
@@ -249,13 +256,13 @@ export default function Form() {
       <label>
         Did you negotiate the salary?:*
         <input
-          {...register("Did you negotiate? ", { required: true })}
+          {...register("negotiate", { required: true })}
           type="radio"
           value="Yes"
         />
         Yes
         <input
-          {...register("Did you negotiate? ", { required: true })}
+          {...register("negotiate", { required: true })}
           type="radio"
           value="No"
         />
@@ -267,7 +274,7 @@ export default function Form() {
         <input
           type="text"
           placeholder="Company Name"
-          {...register("Company Name", {})}
+          {...register("company-name", {})}
         />
       </label>
       <input type="submit"/>
