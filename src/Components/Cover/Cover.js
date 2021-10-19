@@ -1,6 +1,5 @@
 import React from "react";
 import "./Cover.css";
-import { Link } from "react-router-dom";
 
 
 const Cover = () => {
