@@ -8,13 +8,10 @@ const GET_POSTS = gql`
     query {
       posts {
         id
-        name
         company
         salary
         previousEducation
-        bootCampType
         devTitle
-        comments
         state
         jobHuntDuration
         gender
@@ -33,7 +30,7 @@ function APICalls() {
   return (
     <div name="posts">
       {data.posts.map(post => (
-        <p>hi</p>
+        <p>Salary: {post.salary} Gender: {post.gender} State: {post.state} Job Hunt Duration: {post.jobHuntDuration} </p>
       ))}
     </div>
   );

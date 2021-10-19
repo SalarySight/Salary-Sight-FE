@@ -8,7 +8,7 @@ const Header = () => {
   return (
     <header className="header">
       <img src={logo} className="logo" alt="logo" />
-      <h1>Salary Sight</h1>
+      <h1 className="title">Salary Sight</h1>
       <button><a href="https://github.com/login/oauth/authorize?client_id=03061f342b90340a4ce6">Login</a></button>
     </header>
   );
