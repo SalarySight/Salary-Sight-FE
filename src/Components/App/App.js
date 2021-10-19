@@ -6,13 +6,16 @@ import SlideDrawer from '../Form/SlideDrawer.js'
 import Backdrop from '../Form/Backdrop.js'
 import MainPage from '../Form/MainPage.js'
 import './App.css';
+
+// this is a test
+
 class App extends React.Component {
-   state = { 
-     drawerOpen: false, 
+   state = {
+     drawerOpen: false,
      posts: [],
      error: ""
    }
-   
+
 drawerToggleClickHandler = () => {
     this.setState({
       drawerOpen: !this.state.drawerOpen
@@ -41,4 +44,3 @@ backdropClickHandler = () => {
     }
 }
 export default App
-
