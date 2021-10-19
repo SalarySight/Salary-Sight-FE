@@ -5,9 +5,8 @@ import Cover from "../Cover/Cover";
 import SlideDrawer from '../Form/SlideDrawer.js'
 import Backdrop from '../Form/Backdrop.js'
 import MainPage from '../Form/MainPage.js'
+import { salaryData } from '../../HardSalaryData'
 import './App.css';
-
-// this is a test TEST
 
 class App extends React.Component {
    state = {
@@ -34,7 +33,7 @@ backdropClickHandler = () => {
       return(
          <div>
           <Header />
-          <Cover />
+          <Cover salaryData={salaryData}/>
            <SlideDrawer show={this.state.drawerOpen} />
            { backdrop }
            <MainPage toggle={this.drawerToggleClickHandler} />
