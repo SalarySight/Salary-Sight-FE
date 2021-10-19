@@ -1,5 +1,6 @@
 import { useState } from 'react'
-import { salaryData } from './HardSalaryData'
+// import { salaryData } from './HardSalaryData'
+import SalaryCards from "./Components/SalaryCards/SalaryCards";
 import {
   useQuery,
   gql
@@ -21,23 +22,19 @@ const GET_POSTS = gql`
       }
     }
 `;
-console.log(salaryData)
-
 
 function APICalls() {
 
   const { loading, error, data } = useQuery(GET_POSTS);
-  const [salaries, setSalaries] = useState([])
-
-  if (loading) return 'Loading...';
-  if (error) return `Error! ${error.message}`;
+  // const [salaries, setSalaries] = useState([])
 
   return (
-    <div name="posts">
-      {data.posts.map(post => (
-        <p>Salary: {post.salary} Gender: {post.gender} State: {post.state} Job Hunt Duration: {post.jobHuntDuration} </p>
-      ))}
+    <div name="postsContainer">
+      {loading && <p>'Loading...'</p>}
+      {error && <p>Error! {error.message}</p>}
+      <SalaryCards data={data} />
     </div>
   );
 }
+
 export default APICalls
