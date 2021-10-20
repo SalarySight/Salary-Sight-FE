@@ -4,10 +4,10 @@ import './index.css';
 import App from './Components/App/App';
 import reportWebVitals from './reportWebVitals';
 import {
+  ApolloClient,
   InMemoryCache,
   ApolloProvider,
 } from "@apollo/client";
-import ApolloClient from 'apollo-boost';
 
 const client = new ApolloClient({
     uri: "https://salary-sight-be.herokuapp.com/graphql",
