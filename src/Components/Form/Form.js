@@ -43,6 +43,7 @@ class Form extends React.Component {
 
   render() {
     return (
+      <div>
       <form noValidate>
         <h2>Enter your information and position information:</h2>
         <label>
@@ -418,6 +419,7 @@ class Form extends React.Component {
         </label>
         <button onClick={this.handleSubmit}>Submit</button>
       </form>
+      </div>
     );
   }
 }

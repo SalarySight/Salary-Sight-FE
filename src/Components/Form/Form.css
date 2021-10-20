@@ -1,13 +1,37 @@
 label {
-display:block;
-position:relative;
-padding:5px; /* adjust if necessary */
+  display: block;
+  position: relative;
+  padding: 5px;
+  font-size: 17px;
 }
 
 label > span {
-position:absolute;
-left:0;
+  position: absolute;
+  left: 0;
 }
+
 h2 {
-    color:black;
+  color: black;
+}
+
+input[type="text"] {
+  width: 8vw;
+  height: 3vh;
+  margin-left: 5px;
+}
+
+input[type="number"] {
+  width: 8vw;
+  height: 3vh;
+  margin-left: 5px;
+}
+
+select {
+  width: 8vw;
+  height: 3vh;
+  margin-left: 5px;
+}
+
+input[type="radio"] {
+  width: 1vw;
 }
