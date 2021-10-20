@@ -1,6 +1,6 @@
-import { useState } from 'react'
-import SalaryCards from "./Components/SalaryCards/SalaryCards";
+// import { useState } from 'react'
 // import { salaryData } from './HardSalaryData'
+import SalaryCards from "./Components/SalaryCards/SalaryCards";
 import {
   useQuery,
   gql

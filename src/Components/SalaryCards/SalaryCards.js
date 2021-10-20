@@ -7,8 +7,19 @@ const SalaryCards = ({ data }) => {
     const newSalary = post.salary.toLocaleString('en-US')
     return (
         <Card
-          salary={newSalary}
+          name={post.name}
+          age={post.age}
           gender={post.gender}
+          yearGraduated={post.yearGraduated}
+          program={post.program}
+          yearsExp={post.yearsExp}
+          degree={post.degree}
+          state={post.state}
+          salary={newSalary}
+          negotiate={post.negotiate}
+          title={post.positionTitle}
+          typeOfEmp={post.typeOfEmployment}
+          locationOfEmp={post.locationOfEmployment}
           jobHuntDuration={post.jobHuntDuration}
         />
       );
