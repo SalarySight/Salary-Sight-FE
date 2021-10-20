@@ -1,9 +1,10 @@
 label {
 display:block;
 position:relative;
-padding-left:120px; /* adjust if necessary */
+padding:5px; /* adjust if necessary */
 }
 label > span {
 position:absolute;
 left:0;
 }
+
