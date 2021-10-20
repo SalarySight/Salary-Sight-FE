@@ -2,7 +2,6 @@ import "./SalaryCards.css";
 import Card from '../Card/Card'
 
 const SalaryCards = ({ data }) => {
-  console.log('fetched data', data)
 
   const salaryCards = data.posts.map(post => {
     return (
@@ -14,7 +13,7 @@ const SalaryCards = ({ data }) => {
       );
   });
   return (
-    <section className="salaryCardsContainer">
+    <section className="salary-cards-container">
      {salaryCards}
     </section>
   );

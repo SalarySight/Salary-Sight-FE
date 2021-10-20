@@ -1,0 +1,19 @@
+.card {
+  text-align: center;
+  margin: 0;
+  border-radius: 2%;
+  border: 1px solid black;
+  background-color: #005470;
+  color: white;
+  padding: 5%;
+  height: 43vh;
+  width: 25vw;
+}
+
+.card:hover {
+  cursor: pointer;
+  transform: scale(1.02);
+  -webkit-box-shadow: 0px 0px 10px 0px #FFF;
+  -moz-box-shadow: 0px 0px 10px 0px #FFF;
+  box-shadow: 0px 0px 10px 0px #FFF;
+}
