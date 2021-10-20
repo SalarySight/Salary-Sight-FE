@@ -5,7 +5,7 @@ const Card = ({ name, age, gender, yearGraduated, program, yearsExp, degree, sta
   console.log(gender)
   return (
     <article className="card">
-      <p className="name">Name:</p>
+      {name ? <p className="name">Name:</p> : <p className="anon-name">Name: Anonymous</p>}
       <p className="age">Age: </p>
       <p className="gender">Gender: {gender}</p>
       <p className="year-graduated">Year Graduated: </p>
@@ -14,7 +14,7 @@ const Card = ({ name, age, gender, yearGraduated, program, yearsExp, degree, sta
       <p className="degree">Type of Degree: </p>
       <p className="salary">${salary}</p>
       <p className="negotiate">Did you negotiate? </p>
-      <p className="title">Job Title: </p>
+      <p className="job-title">Job Title: </p>
       <p className="type-of-emp">Type of Employment: </p>
       <p className="location-of-emp">Location of Employment: </p>
       <p className="job-hunt-duration">Job Hunt Duration: {jobHuntDuration} days</p>

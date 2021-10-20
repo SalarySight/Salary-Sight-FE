@@ -1,4 +1,5 @@
 .card {
+  font-size: .85em;
   text-align: center;
   margin: 0;
   border-radius: 2%;
@@ -6,8 +7,8 @@
   background-color: #005470;
   color: white;
   padding: 5%;
-  height: 43vh;
-  width: 25vw;
+  height: 55vh;
+  width: 20vw;
 }
 
 /* hover styling if we want/need it for salary cards */

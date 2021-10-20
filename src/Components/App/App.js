@@ -1,14 +1,13 @@
-import React from 'react'
+import React, { Component } from 'react'
 import Header from "../Header/Header";
 import APICalls from "../../APICalls";
 import Cover from "../Cover/Cover";
 import SlideDrawer from '../Form/SlideDrawer.js'
 import Backdrop from '../Form/Backdrop.js'
 import MainPage from '../Form/MainPage.js'
-// import SalaryCards from '../SalaryCards/SalaryCards'
 import './App.css';
 
-class App extends React.Component {
+class App extends Component {
    state = {
      drawerOpen: false,
      posts: [],
