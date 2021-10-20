@@ -3,8 +3,11 @@ display:block;
 position:relative;
 padding:5px; /* adjust if necessary */
 }
+
 label > span {
 position:absolute;
 left:0;
 }
-
+h2 {
+    color:black;
+}

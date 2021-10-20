@@ -8,19 +8,19 @@ class Form extends React.Component {
       usersname: "",
       gender: "",
       age: "",
-      gradYear: null,
+      gradYear: "",
       program: "",
       degree: "",
       firstPosition: "",
       daysSearching: "",
-      yearsExperince: undefined,
+      yearsExperience: "",
       positionTitle: "",
       positionCompany: "",
       whereWork: "",
       employmentType: "",
       stateResided: "",
       negotiate: "",
-      salary: null,
+      salary: "",
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -44,6 +44,7 @@ class Form extends React.Component {
   render() {
     return (
       <form noValidate>
+        <h2>Enter your information and position information:</h2>
         <label>
           Name:
           <input
@@ -105,7 +106,7 @@ class Form extends React.Component {
             className="gradYear"
             name="gradYear"
             ref="gradYear"
-            value={this.state.age}
+            value={this.state.gradYear}
             onChange={this.handleChange}
             required
           >
@@ -252,7 +253,7 @@ class Form extends React.Component {
           First Position out of Turing?:*
           <input
             className="yes"
-            name="negotiate"
+            name="firstPosition"
             type="radio"
             ref="yes"
             value={this.state.firstPosition}
@@ -262,7 +263,7 @@ class Form extends React.Component {
           Yes
           <input
             className="no"
-            name="negotiate"
+            name="firstPosition"
             type="radio"
             ref="no"
             value={this.state.firstPosition}
