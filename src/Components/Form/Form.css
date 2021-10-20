@@ -1,11 +1,39 @@
 label {
-display:block;
-position:relative;
-padding-left:120px; /* adjust if necessary */
+  display: block;
+  position: relative;
+  padding: 5px;
+  font-size: 17px;
 }
+
 label > span {
-position:absolute;
-left:0;
+  position: absolute;
+  left: 0;
+}
+
+h2 {
+  color: black;
+}
+
+input[type="text"] {
+  width: 8vw;
+  height: 3vh;
+  margin-left: 5px;
+}
+
+input[type="number"] {
+  width: 8vw;
+  height: 3vh;
+  margin-left: 5px;
+}
+
+select {
+  width: 8vw;
+  height: 3vh;
+  margin-left: 5px;
+}
+
+input[type="radio"] {
+  width: 1vw;
 }
 
 .login-submit-btns {
@@ -30,6 +58,6 @@ left:0;
   background-color: #17F1FB;
 }
 
-.href {
+/* .href {
  color: white;
-}
+} */
