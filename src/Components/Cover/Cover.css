@@ -16,6 +16,36 @@
     z-index: 2;
 }
 
+.tri-color-band {
+  height: 0.625rem;
+  display: flex;
+  width: 100%;
+}
+
+.tri-color-band .yellow {
+  background: #f9ae06;
+  flex: 1;
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 0%;
+}
+
+.tri-color-band .red {
+  background: #ef3852;
+  flex: 1;
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 0%;
+}
+
+.tri-color-band .blue {
+  background: #12f1fc;
+  flex: 1;
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 0%;
+}
+
 h1 {
     color: #ffffff;
     font-size: 40px;

@@ -4,6 +4,7 @@ import "./Cover.css";
 
 const Cover = () => {
   return (
+    <>
     <section className="cover">
      <div className="coverview">
         <div className='text'>
@@ -11,6 +12,12 @@ const Cover = () => {
         </div>
      </div>
     </section>
+    <div className="tri-color-band">
+      <div className="yellow"></div>
+      <div className="red"></div>
+      <div className="blue"></div>
+    </div>
+    </>
   );
 };
 
