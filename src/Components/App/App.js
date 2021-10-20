@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import Header from "../Header/Header";
 import APICalls from "../../APICalls";
 import Cover from "../Cover/Cover";
@@ -7,9 +7,7 @@ import Backdrop from '../Form/Backdrop.js'
 import MainPage from '../Form/MainPage.js'
 import './App.css';
 
-// this is a test TEST
-
-class App extends React.Component {
+class App extends Component {
    state = {
      drawerOpen: false,
      posts: [],
