@@ -1,0 +1,26 @@
+.salary-cards-container {
+  padding: 1em;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 1em;
+}
+
+@media screen and (max-width: 850px) {
+  .salary-cards-container {
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: .75em;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .salary-cards-container {
+    grid-template-columns: repeat(1, 1fr);
+    grid-gap: .5em;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .salary-cards-container {
+    grid-gap: .25em;
+  }
+}
