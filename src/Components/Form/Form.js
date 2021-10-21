@@ -1,5 +1,6 @@
 import React from "react";
 import "./Form.css";
+import { postForm } from "../utils/postForm";
 class Form extends React.Component {
   constructor(props) {
     super(props);
@@ -33,17 +34,21 @@ class Form extends React.Component {
     this.setState({
       [e.target.name]: e.target.value,
     });
-
-    this.handleSubmit(e.target.name);
   }
 
   handleSubmit(e) {
+    e.preventDefault();
     console.log(this.state)
+
+    postForm(this.state).then((data) => {
+      console.log(data)
+    });
+    this.clearForm();
   }
 
   clearForm() {
     this.setState({
-      usersname: "",
+      username: "",
       gender: "",
       age: "",
       gradYear: "",
@@ -58,13 +63,17 @@ class Form extends React.Component {
       typeOfEmployment: "",
       state: "",
       negotiation: "",
-      salary: ""
+      salary: 0
     });
   }
   render() {
     return (
       <div>
-      <form noValidate>
+        <form
+        onSubmit={e => {
+          this.handleSubmit(e);
+        }}
+      >
         <h2>Enter your information and position information:</h2>
         <label>
           Name:
@@ -72,9 +81,9 @@ class Form extends React.Component {
             className="name-control"
             placeholder="Name"
             type="text"
-            name="usersname"
-            ref="usersname"
-            value={this.state.usersname}
+            name="username"
+            ref="username"
+            value={this.state.username}
             onChange={this.handleChange}
           />
         </label>
@@ -313,7 +322,7 @@ class Form extends React.Component {
             type="number"
             ref="salary"
             placeholder="60,0000"
-            value={this.state.salary}
+            value={parseInt(this.state.salary)}
             onChange={this.handleChange}
             required
           />
@@ -437,7 +446,7 @@ class Form extends React.Component {
           />
           No
         </label>
-        <button onClick={this.handleSubmit}>Submit</button>
+        <button type="submit">Submit</button>
       </form>
       </div>
     );

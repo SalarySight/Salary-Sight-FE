@@ -15,7 +15,7 @@ export const getPosts = () => ({
     }`,
 });
 
-export const postData = ({
+export const postQuery = ({
   username,
   company,
   salary,
