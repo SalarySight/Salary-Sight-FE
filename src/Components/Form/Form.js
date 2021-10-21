@@ -21,7 +21,7 @@ class Form extends React.Component {
       typeOfEmployment: "",
       state: "",
       negotiation: "",
-      salary: ""
+      salary: 0
     };
 
     this.handleChange = this.handleChange.bind(this);

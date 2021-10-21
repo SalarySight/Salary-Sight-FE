@@ -4,6 +4,7 @@ import Cover from "../Cover/Cover";
 import SlideDrawer from "../Form/SlideDrawer";
 import Backdrop from "../Form/Backdrop";
 import MainPage from "../Form/MainPage";
+import SalaryCards from "../SalaryCards/SalaryCards";
 import { getCards } from "../utils/getCards";
 import "./App.css";
 
@@ -29,7 +30,7 @@ class App extends Component {
       drawerOpen: !this.state.drawerOpen,
     });
   };
-  
+
   backdropClickHandler = () => {
     this.setState({
       drawerOpen: false,
@@ -48,6 +49,7 @@ class App extends Component {
         <SlideDrawer show={this.state.drawerOpen} />
         {backdrop}
         <MainPage toggle={this.drawerToggleClickHandler} />
+        <SalaryCards data={this.state.posts}/>
       </div>
     );
   }
