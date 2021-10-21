@@ -5,6 +5,8 @@ import SlideDrawer from "../Form/SlideDrawer";
 import Backdrop from "../Form/Backdrop";
 import MainPage from "../Form/MainPage";
 import SalaryCards from "../SalaryCards/SalaryCards";
+import Loader from "../Loader/Loader";
+import Error from "../Error/Error";
 import { getCards } from "../utils/getCards";
 import "./App.css";
 
@@ -12,7 +14,7 @@ class App extends Component {
   state = {
     drawerOpen: false,
     posts: [],
-    error: "",
+    error: ""
   };
 
   componentDidMount = () => {
@@ -20,9 +22,9 @@ class App extends Component {
   };
 
   addCards = () => {
-    getCards().then((data) => {
-      this.setState({ posts: data.posts });
-    });
+    getCards()
+    .then((data) => this.setState({ posts: data.posts }))
+    .catch(err => this.setState({ error: err }))
   };
 
   drawerToggleClickHandler = () => {
@@ -49,6 +51,8 @@ class App extends Component {
         <SlideDrawer show={this.state.drawerOpen} />
         {backdrop}
         <MainPage toggle={this.drawerToggleClickHandler} />
+        {this.state.error && !this.state.posts.length && <Error error={this.state.error} />}
+        {!this.state.posts.length && !this.state.error && <Loader />}
         <SalaryCards data={this.state.posts}/>
       </div>
     );
