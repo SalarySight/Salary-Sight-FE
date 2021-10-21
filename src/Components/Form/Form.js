@@ -6,15 +6,15 @@ class Form extends React.Component {
     super(props);
 
     this.state = {
-      usersname: "",
+      username: "",
       gender: "",
-      age: "",
-      gradYear: "",
+      age: 0,
+      gradYear: 0,
       program: "",
       degree: "",
       firstPosition: "",
-      jobHuntDuration: "",
-      yearsOfExperience: "",
+      jobHuntDuration: 0,
+      yearsOfExperience: 0,
       positionTitle: "",
       company: "",
       locationOfEmployment: "",
