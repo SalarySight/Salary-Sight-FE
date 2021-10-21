@@ -12,15 +12,15 @@ class Form extends React.Component {
       program: "",
       degree: "",
       firstPosition: "",
-      daysSearching: "",
-      yearsExperience: "",
+      jobHuntDuration: "",
+      yearsOfExperience: "",
       positionTitle: "",
-      positionCompany: "",
-      whereWork: "",
-      employmentType: "",
-      stateResided: "",
-      negotiate: "",
-      salary: "",
+      company: "",
+      locationOfEmployment: "",
+      typeOfEmployment: "",
+      state: "",
+      negotiation: "",
+      salary: ""
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -41,6 +41,26 @@ class Form extends React.Component {
     console.log(this.state)
   }
 
+  clearForm() {
+    this.setState({
+      usersname: "",
+      gender: "",
+      age: "",
+      gradYear: "",
+      program: "",
+      degree: "",
+      firstPosition: "",
+      jobHuntDuration: "",
+      yearsOfExperience: "",
+      positionTitle: "",
+      company: "",
+      locationOfEmployment: "",
+      typeOfEmployment: "",
+      state: "",
+      negotiation: "",
+      salary: ""
+    });
+  }
   render() {
     return (
       <div>
@@ -150,12 +170,12 @@ class Form extends React.Component {
         <label>
           Years of Experience:*
           <input
-            className="yearsExperience"
+            className="yearsOfExperience"
             type="number"
             placeholder="Years of Experience"
-            name="yearsExperience"
-            ref="yearsExperience"
-            value={this.state.yearsExperience}
+            name="yearsOfExperience"
+            ref="yearsOfExperience"
+            value={this.state.yearsOfExperience}
             onChange={this.handleChange}
             required
           />
@@ -181,10 +201,10 @@ class Form extends React.Component {
         <label>
           State you resided in during this position:*
           <select
-            className="stateResided"
-            name="stateResided"
-            ref="stateResided"
-            value={this.state.stateResided}
+            className="state"
+            name="state"
+            ref="state"
+            value={this.state.state}
             onChange={this.handleChange}
             required
           >
@@ -275,12 +295,12 @@ class Form extends React.Component {
         <label>
           Days Searching for Position:*
           <input
-            className="daysSearching"
-            name="daysSearching"
+            className="jobHuntDuration"
+            name="jobHuntDuration"
             type="number"
-            ref="daysSearching"
+            ref="jobHuntDuration"
             placeholder="30"
-            value={this.state.daysSearching}
+            value={this.state.jobHuntDuration}
             onChange={this.handleChange}
             required
           />
@@ -318,7 +338,7 @@ class Form extends React.Component {
             name="type"
             type="radio"
             ref="part-time"
-            value={this.state.employmentType}
+            value={this.state.typeOfEmployment}
             onChange={this.handleChange}
             required
           />
@@ -328,7 +348,7 @@ class Form extends React.Component {
             name="type"
             type="radio"
             ref="full-time"
-            value={this.state.employmentType}
+            value={this.state.typeOfEmployment}
             onChange={this.handleChange}
           />
           Full-Time
@@ -337,7 +357,7 @@ class Form extends React.Component {
             name="type"
             type="radio"
             ref="contract"
-            value={this.state.employmentType}
+            value={this.state.typeOfEmployment}
             onChange={this.handleChange}
           />
           Contract
@@ -346,7 +366,7 @@ class Form extends React.Component {
             name="intern"
             type="radio"
             ref="intern"
-            value={this.state.employmentType}
+            value={this.state.typeOfEmployment}
             onChange={this.handleChange}
           />
           Intern/Apprentice
@@ -358,7 +378,7 @@ class Form extends React.Component {
             name="location"
             type="radio"
             ref="in-person"
-            value={this.state.whereWork}
+            value={this.state.locationOfEmployment}
             onChange={this.handleChange}
             required
           />
@@ -368,7 +388,7 @@ class Form extends React.Component {
             name="location"
             type="radio"
             ref="hybrid"
-            value={this.state.whereWork}
+            value={this.state.locationOfEmployment}
             onChange={this.handleChange}
           />
           Hybrid
@@ -377,7 +397,7 @@ class Form extends React.Component {
             name="location"
             type="radio"
             ref="remote"
-            value={this.state.whereWork}
+            value={this.state.locationOfEmployment}
             onChange={this.handleChange}
           />
           Remote
@@ -385,34 +405,34 @@ class Form extends React.Component {
         <label>
           Company Name:
           <input
-            className="positionCompany"
-            name="positionCompany"
+            className="company"
+            name="company"
             type="text"
             placeholder="Company Name"
-            ref="positionCompany"
-            value={this.state.positionCompany}
+            ref="company"
+            value={this.state.company}
             onChange={this.handleChange}
             required
           />
         </label>
         <label>
-          Did you negotiate the salary?:*
+          Did you negotiation the salary?:*
           <input
             className="yes"
-            name="negotiate"
+            name="negotiation"
             type="radio"
             ref="yes"
-            value={this.state.negotiate}
+            value={this.state.negotiation}
             onChange={this.handleChange}
             required
           />
           Yes
           <input
             className="no"
-            name="negotiate"
+            name="negotiation"
             type="radio"
             ref="no"
-            value={this.state.negotiate}
+            value={this.state.negotiation}
             onChange={this.handleChange}
           />
           No

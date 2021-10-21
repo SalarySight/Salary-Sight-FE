@@ -1,10 +1,5 @@
-// import { useState } from 'react'
-// import { salaryData } from './HardSalaryData'
 import SalaryCards from "./Components/SalaryCards/SalaryCards";
-import {
-  useQuery,
-  gql
-} from "@apollo/client";
+import { useQuery, gql } from "@apollo/client";
 
 const GET_POSTS = gql`
     query {
@@ -12,8 +7,8 @@ const GET_POSTS = gql`
         id
         company
         salary
-        previousEducation
-        devTitle
+        degree
+        positionTitle
         state
         jobHuntDuration
         gender
@@ -25,7 +20,6 @@ const GET_POSTS = gql`
 
 function APICalls() {
   const { loading, error, data } = useQuery(GET_POSTS);
-  // const [salaries, setSalaries] = useState([])
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error ${error.message}</p>;
