@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
-import Header from "../Header/Header";
-import APICalls from "../../APICalls";
-import Cover from "../Cover/Cover";
-import SlideDrawer from '../Form/SlideDrawer.js'
-import Backdrop from '../Form/Backdrop.js'
-import MainPage from '../Form/MainPage.js'
+import Header from '../Header/Header';
+import Cover from '../Cover/Cover';
+import SlideDrawer from '../Form/SlideDrawer'
+import Backdrop from '../Form/Backdrop'
+import MainPage from '../Form/MainPage'
+import { getCards } from '../utils/getCards'
 import './App.css';
 
 class App extends Component {
@@ -13,6 +13,17 @@ class App extends Component {
      posts: [],
      error: ""
    }
+
+  componentDidMount = () => {
+    this.addCards()
+  }
+
+  addCards = () => {
+    getCards().then(data => {
+      this.setState({ posts: data.posts })
+    })
+  }
+  
 
 drawerToggleClickHandler = () => {
     this.setState({
@@ -36,7 +47,6 @@ backdropClickHandler = () => {
            <SlideDrawer show={this.state.drawerOpen} />
            { backdrop }
            <MainPage toggle={this.drawerToggleClickHandler} />
-           <APICalls />
          </div>
       )
     }
