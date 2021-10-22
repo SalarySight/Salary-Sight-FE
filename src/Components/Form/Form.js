@@ -114,7 +114,7 @@ class Form extends React.Component {
             className="age"
             name="age"
             ref="age"
-            value={this.state.age}
+            value={parseInt(this.state.age)}
             onChange={this.handleChange}
             required
           >
@@ -135,7 +135,7 @@ class Form extends React.Component {
             className="gradYear"
             name="gradYear"
             ref="gradYear"
-            value={this.state.gradYear}
+            value={parseInt(this.state.gradYear)}
             onChange={this.handleChange}
             required
           >
@@ -183,7 +183,7 @@ class Form extends React.Component {
             placeholder="Years of Experience"
             name="yearsOfExperience"
             ref="yearsOfExperience"
-            value={this.state.yearsOfExperience}
+            value={parseInt(this.state.yearsOfExperience)}
             onChange={this.handleChange}
             required
           />
@@ -278,7 +278,7 @@ class Form extends React.Component {
             <option value="WY">WY</option>
           </select>
         </label>
-                <label>
+        <label>
           First Position out of Turing?:*
           <input
             className="yes"
@@ -308,7 +308,7 @@ class Form extends React.Component {
             type="number"
             ref="jobHuntDuration"
             placeholder="30"
-            value={this.state.jobHuntDuration}
+            value={parseInt(this.state.jobHuntDuration)}
             onChange={this.handleChange}
             required
           />
