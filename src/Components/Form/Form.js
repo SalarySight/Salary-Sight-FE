@@ -9,7 +9,7 @@ class Form extends React.Component {
       username: "",
       gender: "",
       age: 0,
-      gradYear: 0,
+      gradYear: "",
       program: "",
       degree: "",
       firstPosition: "",
@@ -72,7 +72,7 @@ class Form extends React.Component {
       username: "",
       gender: "",
       age: 0,
-      gradYear: 0,
+      gradYear: "",
       program: "",
       degree: "",
       firstPosition: "",
@@ -154,7 +154,7 @@ class Form extends React.Component {
             className="gradYear"
             name="gradYear"
             ref="gradYear"
-            value={parseInt(this.state.gradYear)}
+            value={this.state.gradYear}
             onChange={this.handleChange}
             required
           >
