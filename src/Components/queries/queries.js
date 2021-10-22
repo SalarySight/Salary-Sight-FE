@@ -26,7 +26,7 @@ export const postQuery = ({
   gender,
   age,
   yearsOfExperience,
-  yearGraduated,
+  gradYear,
   typeOfEmployment,
   locationOfEmployment,
   negotiation,
@@ -41,11 +41,11 @@ export const postQuery = ({
         degree: "${degree}"
         positionTitle: "${positionTitle}"
         state: "${state}"
-        jobHuntDuration: "${jobHuntDuration}"
+        jobHuntDuration: ${jobHuntDuration}
         gender: "${gender}"
-        age: "${age}"
-        yearsOfExperience: "${yearsOfExperience}"
-        yearGraduated: "${yearGraduated}"
+        age: ${age}
+        yearsOfExperience: ${yearsOfExperience}
+        gradYear: "${gradYear}"
         program: "${program}"
         typeOfEmployment: "${typeOfEmployment}"
         locationOfEmployment: "${locationOfEmployment}"
@@ -64,7 +64,7 @@ export const postQuery = ({
             gender
             age
             yearsOfExperience
-            yearGraduated
+            gradYear
             typeOfEmployment
             locationOfEmployment
             negotiation
