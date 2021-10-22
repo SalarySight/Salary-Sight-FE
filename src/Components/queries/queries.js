@@ -1,5 +1,5 @@
 export const getPosts = () => ({
-  query: `{
+  query:`{
       posts {
         id
         company
@@ -35,12 +35,12 @@ export const postQuery = ({
 }) => ({
   query: `mutation {
       createPost(input: {
-        username: "${username}
+        username: "${username}"
         company: "${company}"
-        salary: "${salary}"
+        salary: ${salary}
         degree: "${degree}"
         positionTitle: "${positionTitle}"
-        state: "${state}" 
+        state: "${state}"
         jobHuntDuration: "${jobHuntDuration}"
         gender: "${gender}"
         age: "${age}"
@@ -53,7 +53,7 @@ export const postQuery = ({
         firstPosition: "${firstPosition}"
         userId: <user-id>
         }) {
-          post{
+          post {
             username
             company
             salary

@@ -3,7 +3,7 @@ import Card from '../Card/Card'
 
 const SalaryCards = ({ data }) => {
 
-  const salaryCards = data.posts.map(post => {
+  const salaryCards = data.map(post => {
     const newSalary = post.salary.toLocaleString('en-US')
     return (
         <Card

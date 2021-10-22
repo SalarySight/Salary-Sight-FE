@@ -6,22 +6,22 @@ class Form extends React.Component {
     super(props);
 
     this.state = {
-      usersname: "",
+      username: "",
       gender: "",
-      age: "",
-      gradYear: "",
+      age: 0,
+      gradYear: 0,
       program: "",
       degree: "",
       firstPosition: "",
-      jobHuntDuration: "",
-      yearsOfExperience: "",
+      jobHuntDuration: 0,
+      yearsOfExperience: 0,
       positionTitle: "",
       company: "",
       locationOfEmployment: "",
       typeOfEmployment: "",
       state: "",
       negotiation: "",
-      salary: ""
+      salary: 0
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -38,11 +38,32 @@ class Form extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    console.log(this.state)
-
-    postForm(this.state).then((data) => {
-      console.log(data)
+    console.log('form state', this.state)
+    const formObj = {
+      username: this.state.username,
+      gender: this.state.gender,
+      age: this.state.age,
+      gradYear: this.state.gradYear,
+      program: this.state.program,
+      degree: this.state.degree,
+      firstPosition: this.state.firstPosition,
+      jobHuntDuration: this.state.jobHuntDuration,
+      yearsOfExperience: this.state.yearsOfExperience,
+      positionTitle: this.state.positionTitle,
+      company: this.state.company,
+      locationOfEmployment: this.state.locationOfEmployment,
+      typeOfEmployment: this.state.typeOfEmployment,
+      state: this.state.state,
+      negotiation: this.state.negotiation,
+      salary: this.state.salary
+    }
+    postForm(formObj)
+    .then((data) => {
+      console.log('postform data', data)
+      return data.text()
     });
+
+    // e.target.reset();
     this.clearForm();
   }
 
@@ -50,13 +71,13 @@ class Form extends React.Component {
     this.setState({
       username: "",
       gender: "",
-      age: "",
-      gradYear: "",
+      age: 0,
+      gradYear: 0,
       program: "",
       degree: "",
       firstPosition: "",
-      jobHuntDuration: "",
-      yearsOfExperience: "",
+      jobHuntDuration: 0,
+      yearsOfExperience: 0,
       positionTitle: "",
       company: "",
       locationOfEmployment: "",
@@ -66,14 +87,11 @@ class Form extends React.Component {
       salary: 0
     });
   }
+
   render() {
     return (
       <div>
-        <form
-        onSubmit={e => {
-          this.handleSubmit(e);
-        }}
-      >
+        <form>
         <h2>Enter your information and position information:</h2>
         <label>
           Name:
@@ -115,7 +133,7 @@ class Form extends React.Component {
             className="age"
             name="age"
             ref="age"
-            value={this.state.age}
+            value={parseInt(this.state.age)}
             onChange={this.handleChange}
             required
           >
@@ -136,7 +154,7 @@ class Form extends React.Component {
             className="gradYear"
             name="gradYear"
             ref="gradYear"
-            value={this.state.gradYear}
+            value={parseInt(this.state.gradYear)}
             onChange={this.handleChange}
             required
           >
@@ -184,7 +202,7 @@ class Form extends React.Component {
             placeholder="Years of Experience"
             name="yearsOfExperience"
             ref="yearsOfExperience"
-            value={this.state.yearsOfExperience}
+            value={parseInt(this.state.yearsOfExperience)}
             onChange={this.handleChange}
             required
           />
@@ -279,7 +297,7 @@ class Form extends React.Component {
             <option value="WY">WY</option>
           </select>
         </label>
-                <label>
+        <label>
           First Position out of Turing?:*
           <input
             className="yes"
@@ -309,7 +327,7 @@ class Form extends React.Component {
             type="number"
             ref="jobHuntDuration"
             placeholder="30"
-            value={this.state.jobHuntDuration}
+            value={parseInt(this.state.jobHuntDuration)}
             onChange={this.handleChange}
             required
           />
@@ -446,7 +464,7 @@ class Form extends React.Component {
           />
           No
         </label>
-        <button type="submit">Submit</button>
+        <button onClick={(e) => this.handleSubmit(e)}>Submit</button>
       </form>
       </div>
     );
