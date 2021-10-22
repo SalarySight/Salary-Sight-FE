@@ -38,25 +38,27 @@ class Form extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    console.log(this.state)
+    console.log('form state', this.state)
 
     postForm(this.state).then((data) => {
-      console.log(data)
+      console.log('postform data', data)
     });
+
     this.clearForm();
+    e.target.reset();
   }
 
   clearForm() {
     this.setState({
       username: "",
       gender: "",
-      age: "",
-      gradYear: "",
+      age: 0,
+      gradYear: 0,
       program: "",
       degree: "",
       firstPosition: "",
-      jobHuntDuration: "",
-      yearsOfExperience: "",
+      jobHuntDuration: 0,
+      yearsOfExperience: 0,
       positionTitle: "",
       company: "",
       locationOfEmployment: "",
@@ -66,14 +68,11 @@ class Form extends React.Component {
       salary: 0
     });
   }
+
   render() {
     return (
       <div>
-        <form
-        onSubmit={e => {
-          this.handleSubmit(e);
-        }}
-      >
+        <form onSubmit={e => this.handleSubmit(e)}>
         <h2>Enter your information and position information:</h2>
         <label>
           Name:
