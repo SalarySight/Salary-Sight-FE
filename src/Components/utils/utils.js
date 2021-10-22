@@ -16,7 +16,7 @@ export const fetchData = async body => {
   return result.data;
 };
 
-export const postData = async body => {
+export const postData = async (body) => {
   const url = 'https://salary-sight-be.herokuapp.com/graphql';
   const response = await fetch(url, {
     method: 'POST',
@@ -26,8 +26,9 @@ export const postData = async body => {
     body: JSON.stringify(body)
   });
 
-  const result = await response;
+  const result = await response.json()
   if (result.errors) {
+    console.log('result errors', result.errors)
     throw new Error(result.errors[0].message);
   }
 

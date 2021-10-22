@@ -39,13 +39,32 @@ class Form extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     console.log('form state', this.state)
-
-    postForm(this.state).then((data) => {
+    const formObj = {
+      username: this.state.username,
+      gender: this.state.gender,
+      age: this.state.age,
+      gradYear: this.state.gradYear,
+      program: this.state.program,
+      degree: this.state.degree,
+      firstPosition: this.state.firstPosition,
+      jobHuntDuration: this.state.jobHuntDuration,
+      yearsOfExperience: this.state.yearsOfExperience,
+      positionTitle: this.state.positionTitle,
+      company: this.state.company,
+      locationOfEmployment: this.state.locationOfEmployment,
+      typeOfEmployment: this.state.typeOfEmployment,
+      state: this.state.state,
+      negotiation: this.state.negotiation,
+      salary: this.state.salary
+    }
+    postForm(formObj)
+    .then((data) => {
       console.log('postform data', data)
+      return data.text()
     });
 
+    // e.target.reset();
     this.clearForm();
-    e.target.reset();
   }
 
   clearForm() {
@@ -72,7 +91,7 @@ class Form extends React.Component {
   render() {
     return (
       <div>
-        <form onSubmit={e => this.handleSubmit(e)}>
+        <form>
         <h2>Enter your information and position information:</h2>
         <label>
           Name:
@@ -445,7 +464,7 @@ class Form extends React.Component {
           />
           No
         </label>
-        <button type="submit">Submit</button>
+        <button onClick={(e) => this.handleSubmit(e)}>Submit</button>
       </form>
       </div>
     );
