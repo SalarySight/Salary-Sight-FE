@@ -1,6 +1,6 @@
 import './FilterForm.css'
 
-const FilterForm = ({ filterInput, handleFilterInput, ageInput, handleAgeInput, filterData }) => {
+const FilterForm = ({ filterInput, handleFilterInput, input, handleInput, filterData, clearFilterForm }) => {
   return (
     <>
     <select
@@ -18,13 +18,13 @@ const FilterForm = ({ filterInput, handleFilterInput, ageInput, handleAgeInput, 
       <option value="Salary">Salary</option>
     </select>
 
-    {filterInput === 'Age' ?
+    {filterInput === 'Age' &&
     <select
       className='filter-age'
       name='age'
       type='search'
-      value={ageInput}
-      onChange={(e) => handleAgeInput(e)}>
+      value={input}
+      onChange={(e) => handleInput(e)}>
 
       <option value="" disabled selected>
         Age Options
@@ -35,13 +35,37 @@ const FilterForm = ({ filterInput, handleFilterInput, ageInput, handleAgeInput, 
       <option value="45-54">45-54</option>
       <option value="55-64">55-64</option>
       <option value="65+">65+</option>
-    </select> : <select
-      className='empty'
-      name='empty'
-      type='search'>
-      <option value="" disabled selected>
-      </option></select>}
-      <button onClick={(e)=> filterData(filterInput, ageInput)}>Search</button>
+    </select>}
+
+      {filterInput === 'Gender' &&
+      <select
+        className='filter-gender'
+        name='gender'
+        type='search'
+        value={input}
+        onChange={(e) => handleInput(e)}>
+
+        <option value="" disabled selected>
+          Gender Options
+        </option>
+        <option value="Woman">Woman</option>
+        <option value="Man">Man</option>
+        <option value="Transgender">Transgender</option>
+        <option value="Non-binary/non-conforming">
+          Non-binary/non-conforming
+        </option>
+        <option value="Prefer not to respond">Prefer not to respond</option>
+      </select>}
+      {!filterInput &&
+      <select
+        className='empty'
+        name='empty'
+        type='search'>
+        <option value="" disabled selected>
+        </option></select>}
+      <button onClick={(e)=> filterData(filterInput, input)}>Search</button>
+      <button onClick={(e) => clearFilterForm(e)}>Remove Filters</button>
+
     </>
   );
 }
