@@ -2,6 +2,7 @@ import "./Card.css";
 
 const Card = ({ name, age, gender, gradYear, company, yearsExp, degree, state,
   salary, negotiate, positionTitle, typeOfEmp, locationOfEmp, jobHuntDuration }) => {
+    console.log('name in card', name)
   return (
     <article className="card">
       {name ? <p className="name">Name: {name}</p> : <p className="anon-name">Name: Anonymous</p>}
