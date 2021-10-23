@@ -50,6 +50,7 @@ const Form = () => {
   }
 
   const submitForm = (e) => {
+    console.log('formname', form.username)
     console.log('form data', form)
     e.preventDefault();
     createPost({

@@ -19,6 +19,7 @@ export const GET_POST = gql `
   query {
       posts {
         id
+        username
         company
         salary
         degree
@@ -28,6 +29,12 @@ export const GET_POST = gql `
         gender
         age
         yearsOfExperience
+        gradYear
+        typeOfEmployment
+        locationOfEmployment
+        negotiation
+        firstPosition
+        program
       }
     }
   `
