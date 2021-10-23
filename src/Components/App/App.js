@@ -32,7 +32,6 @@ const backdropClickHandler = () => {
 };
 
 const handleFilterInput = (e) => {
-  console.log(e.target.value)
   setFilterInput(e.target.value)
 }
 
