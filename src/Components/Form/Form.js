@@ -323,7 +323,7 @@ const clearForm = () => {
             className="salary"
             name="salary"
             type="number"
-            placeholder="60,0000"
+            placeholder="60,000"
             value={form.salary}
             onChange={(e) => handleChange(e)}
             required
