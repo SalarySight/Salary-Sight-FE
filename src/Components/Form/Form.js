@@ -47,10 +47,11 @@ const Form = () => {
   const handleChange = (e) => {
     // console.log('form values', form)
     // console.log('')
+    console.log(e.target)
     e.target.classList.add("active");
     const { name, value } = e.target;
     // setForm((prevState) => ({ ...prevState, [name]: value }));
-    setSelectedRadio()
+    // setSelectedRadio()
     setForm((prevState) => ({ ...prevState, [name]: value }));
   }
 
@@ -61,27 +62,27 @@ const Form = () => {
       variables: {
         username: form.username,
         gender: form.gender,
-        age: form.age,
+        age: parseInt(form.age),
         gradYear: form.gradYear,
         program: form.program,
         degree: form.degree,
         firstPosition: form.firstPosition,
-        jobHuntDuration: form.jobHuntDuration,
-        yearsOfExperience: form.yearsOfExperience,
+        jobHuntDuration: parseInt(form.jobHuntDuration),
+        yearsOfExperience: parseInt(form.yearsOfExperience),
         positionTitle: form.positionTitle,
         company: form.company,
         locationOfEmployment: form.locationOfEmployment,
         typeOfEmployment: form.typeOfEmployment,
         state: form.state,
         negotiation: form.negotiation,
-        salary: form.salary
+        salary: parseInt(form.salary)
       }
     })
     clearForm();
   }
 
 const clearForm = () => {
-   setForm({initialState})
+   setForm({...initialState})
  }
 
 // class Form extends React.Component {
@@ -208,7 +209,7 @@ const clearForm = () => {
           <select
             className="age"
             name="age"
-            value={parseInt(form.age)}
+            value={form.age}
             onChange={handleChange}
             required
           >
@@ -216,11 +217,11 @@ const clearForm = () => {
               Age
             </option>
             <option value="18-24">18-24</option>
-            <option value="25-34"> 25-34</option>
-            <option value="35-44"> 35-44</option>
-            <option value="45-54"> 45-54</option>
-            <option value="55-64"> 55-64</option>
-            <option value="65+"> 65+</option>
+            <option value="25-34">25-34</option>
+            <option value="35-44">35-44</option>
+            <option value="45-54">45-54</option>
+            <option value="55-64">55-64</option>
+            <option value="65+">65+</option>
           </select>
         </label>
         <label>
@@ -252,8 +253,7 @@ const clearForm = () => {
             className="backend"
             type="radio"
             name="program"
-            checked={selectedRadio = form.program}
-            value={form.program}
+            value="BE"
             onChange={handleChange}
             required
           />
@@ -262,7 +262,7 @@ const clearForm = () => {
             className="frontend"
             type="radio"
             name="program"
-            value={form.program}
+            value="FE"
             onChange={handleChange}
           />
           FE
@@ -274,7 +274,7 @@ const clearForm = () => {
             type="number"
             placeholder="Years of Experience"
             name="yearsOfExperience"
-            value={parseInt(form.yearsOfExperience)}
+            value={form.yearsOfExperience}
             onChange={handleChange}
             required
           />
@@ -292,8 +292,8 @@ const clearForm = () => {
               Degree Type
             </option>
             <option value="NO DEGREE">NO DEGREE</option>
-            <option value=" NOT CS RELATED"> NOT CS RELATED</option>
-            <option value=" CS RELATED"> CS RELATED</option>
+            <option value="NOT CS RELATED"> NOT CS RELATED</option>
+            <option value="CS RELATED"> CS RELATED</option>
           </select>
         </label>
         <label>
@@ -373,7 +373,7 @@ const clearForm = () => {
             className="yes"
             name="firstPosition"
             type="radio"
-            value={form.firstPosition}
+            value="Yes"
             onChange={handleChange}
             required
           />
@@ -382,7 +382,7 @@ const clearForm = () => {
             className="no"
             name="firstPosition"
             type="radio"
-            value={form.firstPosition}
+            value="No"
             onChange={handleChange}
           />
           No
@@ -394,7 +394,7 @@ const clearForm = () => {
             name="jobHuntDuration"
             type="number"
             placeholder="30"
-            value={parseInt(form.jobHuntDuration)}
+            value={form.jobHuntDuration}
             onChange={handleChange}
             required
           />
@@ -406,7 +406,7 @@ const clearForm = () => {
             name="salary"
             type="number"
             placeholder="60,0000"
-            value={parseInt(form.salary)}
+            value={form.salary}
             onChange={handleChange}
             required
           />
@@ -429,7 +429,7 @@ const clearForm = () => {
             className="part-time"
             name="type"
             type="radio"
-            value={form.typeOfEmployment}
+            value="Part-Time"
             onChange={handleChange}
             required
           />
@@ -438,7 +438,7 @@ const clearForm = () => {
             className="full-time"
             name="type"
             type="radio"
-            value={form.typeOfEmployment}
+            value="Full-Time"
             onChange={handleChange}
           />
           Full-Time
@@ -446,7 +446,7 @@ const clearForm = () => {
             className="contract"
             name="type"
             type="radio"
-            value={form.typeOfEmployment}
+            value="Contract"
             onChange={handleChange}
           />
           Contract
@@ -454,7 +454,7 @@ const clearForm = () => {
             className="intern"
             name="intern"
             type="radio"
-            value={form.typeOfEmployment}
+            value="Intern/Apprentice"
             onChange={handleChange}
           />
           Intern/Apprentice
@@ -465,7 +465,7 @@ const clearForm = () => {
             className="in-person"
             name="location"
             type="radio"
-            value={form.locationOfEmployment}
+            value="In-Person"
             onChange={handleChange}
             required
           />
@@ -474,7 +474,7 @@ const clearForm = () => {
             className="hybrid"
             name="location"
             type="radio"
-            value={form.locationOfEmployment}
+            value="Hybrid"
             onChange={handleChange}
           />
           Hybrid
@@ -482,7 +482,7 @@ const clearForm = () => {
             className="remote"
             name="location"
             type="radio"
-            value={form.locationOfEmployment}
+            value="Remote"
             onChange={handleChange}
           />
           Remote
@@ -505,7 +505,7 @@ const clearForm = () => {
             className="yes"
             name="negotiation"
             type="radio"
-            value={form.negotiation}
+            value="Yes"
             onChange={handleChange}
             required
           />
@@ -514,7 +514,7 @@ const clearForm = () => {
             className="no"
             name="negotiation"
             type="radio"
-            value={form.negotiation}
+            value="No"
             onChange={handleChange}
           />
           No
