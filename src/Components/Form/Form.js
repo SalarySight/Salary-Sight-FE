@@ -3,9 +3,6 @@ import "./Form.css";
 import { useMutation } from '@apollo/client';
 import { GET_POST, CREATE_POST } from '../..'
 
-
-// import { postForm } from "../utils/postForm";
-
 const initialState = {
   username: "",
   gender: "",
