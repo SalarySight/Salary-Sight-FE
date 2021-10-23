@@ -5,9 +5,9 @@ const SalaryCards = ({ data }) => {
 
   const salaryCards = data.map(post => {
     const newSalary = post.salary.toLocaleString('en-US')
-    console.log('salarycard name', post.username)
     return (
         <Card
+          key={post.id}
           name={post.username}
           age={post.age}
           gender={post.gender}

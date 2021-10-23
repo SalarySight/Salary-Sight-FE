@@ -50,8 +50,6 @@ const Form = () => {
   }
 
   const submitForm = (e) => {
-    console.log('formname', form.username)
-    console.log('form data', form)
     e.preventDefault();
     createPost({
       variables: {
@@ -80,92 +78,9 @@ const clearForm = () => {
    setForm({...initialState})
  }
 
-// class Form extends React.Component {
-//   constructor(props) {
-//     super(props);
-//
-//     this.state = {
-//       username: "",
-//       gender: "",
-//       age: 0,
-//       gradYear: "",
-//       program: "",
-//       degree: "",
-//       firstPosition: "",
-//       jobHuntDuration: 0,
-//       yearsOfExperience: 0,
-//       positionTitle: "",
-//       company: "",
-//       locationOfEmployment: "",
-//       typeOfEmployment: "",
-//       state: "",
-//       negotiation: "",
-//       salary: 0
-//     };
-//
-//     this.(e) => handleChange(e) = this.handleChange.bind(this);
-//     this.handleSubmit = this.handleSubmit.bind(this);
-//   }
-//
-//   handleChange(e) {
-    // e.target.classList.add("active");
-//
-//     this.setState({
-//       [e.target.name]: e.target.value,
-//     });
-//   }
-//
-//   handleSubmit(e) {
-//     console.log('form state', this.state)
-//     const formObj = {
-      // username: this.state.username,
-      // gender: this.state.gender,
-      // age: this.state.age,
-      // gradYear: this.state.gradYear,
-      // program: this.state.program,
-      // degree: this.state.degree,
-      // firstPosition: this.state.firstPosition,
-      // jobHuntDuration: this.state.jobHuntDuration,
-      // yearsOfExperience: this.state.yearsOfExperience,
-      // positionTitle: this.state.positionTitle,
-      // company: this.state.company,
-      // locationOfEmployment: this.state.locationOfEmployment,
-      // typeOfEmployment: this.state.typeOfEmployment,
-      // state: this.state.state,
-      // negotiation: this.state.negotiation,
-      // salary: this.state.salary
-//     }
-//     postForm(formObj)
-//     // e.target.reset();
-//     this.clearForm();
-//   }
-//
-  // clearForm() {
-  //   this.setState({
-  //     username: "",
-  //     gender: "",
-  //     age: 0,
-  //     gradYear: "",
-  //     program: "",
-  //     degree: "",
-  //     firstPosition: "",
-  //     jobHuntDuration: 0,
-  //     yearsOfExperience: 0,
-  //     positionTitle: "",
-  //     company: "",
-  //     locationOfEmployment: "",
-  //     typeOfEmployment: "",
-  //     state: "",
-  //     negotiation: "",
-  //     salary: 0
-  //   });
-  // }
-
-  // <form onSubmit={(e) => e.preventDefault()}>
-
     return (
       <div>
-        <form>
+        <form onSubmit={(e) => submitForm(e)}>
         <h2>Enter your information and position information:</h2>
         <label>
           Name:
@@ -515,7 +430,7 @@ const clearForm = () => {
           />
           No
         </label>
-        <button className="submit-btn" onClick={(e) => submitForm(e)}>Submit</button>
+        <button className="submit-btn">Submit</button>
       </form>
       </div>
     );
