@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './Components/App/App';
-import reportWebVitals from './reportWebVitals';
+import { BrowserRouter } from 'react-router-dom'
 import {
   ApolloClient,
   InMemoryCache,
@@ -85,9 +85,9 @@ export const GET_POST = gql `
 
 ReactDOM.render(
   <ApolloProvider client={client}>
+  <BrowserRouter>
     <App />
+  </BrowserRouter>
   </ApolloProvider>,
   document.getElementById('root')
 );
-
-reportWebVitals();

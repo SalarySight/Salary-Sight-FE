@@ -1,10 +1,10 @@
 import React from 'react'
 import './Backdrop.css'
-export default class Backdrop extends React.Component {
-  render(){
+
+const Backdrop = ({ close }) => {
     return(
-      <div className="backdrop" onClick={this.props.close}
-      />
-    )
+      <div className="backdrop" onClick={close}/>
+    );
   }
-}
+
+export default Backdrop;

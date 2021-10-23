@@ -22,7 +22,7 @@ const initialState = {
   salary: ""
 }
 
-const Form = () => {
+const Form = ({ showForm, toggle }) => {
   const [form, setForm] = useState(initialState)
   const [createPost, { loading , error, data }] = useMutation(CREATE_POST, {
     refetchQueries: [GET_POST]
@@ -40,6 +40,16 @@ const Form = () => {
     console.log('data from form', data)
   }
 
+  const closeForm = () => {
+    if (form.age && form.gender && form.gradYear && form.program && form.degree
+    && form.firstPosition && form.jobHuntDuration && form.yearsOfExperience && form.positionTitle
+    && form.company && form.locationOfEmployment && form.typeOfEmployment && form.state &&
+    form.salary && form.negotiation) {
+      showForm = false;
+      toggle();
+    }
+  }
+
   const handleChange = (e) => {
     e.target.classList.add("active");
     const { name, value } = e.target;
@@ -47,6 +57,7 @@ const Form = () => {
   }
 
   const submitForm = (e) => {
+    showForm = false;
     e.preventDefault();
     createPost({
       variables: {
@@ -228,7 +239,6 @@ const clearForm = () => {
             <option value="DE">DE</option>
             <option value="FL">FL</option>
             <option value="GA">GA</option>
-            <option value="GU">GU</option>
             <option value="HI">HI</option>
             <option value="IA">IA</option>
             <option value="ID">ID</option>
@@ -427,12 +437,11 @@ const clearForm = () => {
           />
           No
         </label>
-        <button className="submit-btn">Submit</button>
+        <button className="submit-btn" onClick={closeForm}>Submit</button>
       </form>
       </div>
     );
   }
-
 
 
 export default Form;
