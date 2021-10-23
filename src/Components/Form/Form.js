@@ -9,25 +9,24 @@ import { GET_POST, CREATE_POST } from '../..'
 const initialState = {
   username: "",
   gender: "",
-  age: 0,
+  age: "",
   gradYear: "",
   program: "",
   degree: "",
   firstPosition: "",
-  jobHuntDuration: 0,
-  yearsOfExperience: 0,
+  jobHuntDuration: "",
+  yearsOfExperience: "",
   positionTitle: "",
   company: "",
   locationOfEmployment: "",
   typeOfEmployment: "",
   state: "",
   negotiation: "",
-  salary: 0
+  salary: ""
 }
 
 const Form = () => {
   const [form, setForm] = useState(initialState)
-  let [selectedRadio, setSelectedRadio] = useState(null)
   const [createPost, { loading , error, data }] = useMutation(CREATE_POST, {
     refetchQueries: [GET_POST]
   })
@@ -45,37 +44,32 @@ const Form = () => {
   }
 
   const handleChange = (e) => {
-    // console.log('form values', form)
-    // console.log('')
-    console.log(e.target)
     e.target.classList.add("active");
     const { name, value } = e.target;
-    // setForm((prevState) => ({ ...prevState, [name]: value }));
-    // setSelectedRadio()
     setForm((prevState) => ({ ...prevState, [name]: value }));
   }
 
   const submitForm = (e) => {
-    e.preventDefault();
     console.log('form data', form)
+    e.preventDefault();
     createPost({
       variables: {
         username: form.username,
         gender: form.gender,
-        age: parseInt(form.age),
+        age: form.age,
         gradYear: form.gradYear,
         program: form.program,
         degree: form.degree,
         firstPosition: form.firstPosition,
-        jobHuntDuration: parseInt(form.jobHuntDuration),
-        yearsOfExperience: parseInt(form.yearsOfExperience),
+        jobHuntDuration: form.jobHuntDuration,
+        yearsOfExperience: form.yearsOfExperience,
         positionTitle: form.positionTitle,
         company: form.company,
-        location: form.locationOfEmployment,
-        type: form.typeOfEmployment,
+        locationOfEmployment: form.locationOfEmployment,
+        typeOfEmployment: form.typeOfEmployment,
         state: form.state,
         negotiation: form.negotiation,
-        salary: parseInt(form.salary)
+        salary: form.salary
       }
     })
     clearForm();
@@ -108,7 +102,7 @@ const clearForm = () => {
 //       salary: 0
 //     };
 //
-//     this.handleChange = this.handleChange.bind(this);
+//     this.(e) => handleChange(e) = this.handleChange.bind(this);
 //     this.handleSubmit = this.handleSubmit.bind(this);
 //   }
 //
@@ -180,7 +174,7 @@ const clearForm = () => {
             type="text"
             name="username"
             value={form.username}
-            onChange={handleChange}
+            onChange={(e) => handleChange(e)}
           />
         </label>
         <label>
@@ -189,7 +183,7 @@ const clearForm = () => {
             className="gender-control"
             name="gender"
             value={form.gender}
-            onChange={handleChange}
+            onChange={(e) => handleChange(e)}
             required
           >
             <option value="" disabled selected>
@@ -210,7 +204,7 @@ const clearForm = () => {
             className="age"
             name="age"
             value={form.age}
-            onChange={handleChange}
+            onChange={(e) => handleChange(e)}
             required
           >
             <option value="" disabled selected>
@@ -230,7 +224,7 @@ const clearForm = () => {
             className="gradYear"
             name="gradYear"
             value={form.gradYear}
-            onChange={handleChange}
+            onChange={(e) => handleChange(e)}
             required
           >
             <option value="" disabled selected>
@@ -254,7 +248,7 @@ const clearForm = () => {
             type="radio"
             name="program"
             value="BE"
-            onChange={handleChange}
+            onChange={(e) => handleChange(e)}
             required
           />
           BE
@@ -263,7 +257,7 @@ const clearForm = () => {
             type="radio"
             name="program"
             value="FE"
-            onChange={handleChange}
+            onChange={(e) => handleChange(e)}
             required
           />
           FE
@@ -276,7 +270,7 @@ const clearForm = () => {
             placeholder="Years of Experience"
             name="yearsOfExperience"
             value={form.yearsOfExperience}
-            onChange={handleChange}
+            onChange={(e) => handleChange(e)}
             required
           />
         </label>
@@ -286,7 +280,7 @@ const clearForm = () => {
             className="degree"
             name="degree"
             value={form.degree}
-            onChange={handleChange}
+            onChange={(e) => handleChange(e)}
             required
           >
             <option value="" disabled selected>
@@ -303,7 +297,7 @@ const clearForm = () => {
             className="state"
             name="state"
             value={form.state}
-            onChange={handleChange}
+            onChange={(e) => handleChange(e)}
             required
           >
             <option value="" disabled selected>
@@ -375,7 +369,7 @@ const clearForm = () => {
             name="firstPosition"
             type="radio"
             value="Yes"
-            onChange={handleChange}
+            onChange={(e) => handleChange(e)}
             required
           />
           Yes
@@ -384,7 +378,7 @@ const clearForm = () => {
             name="firstPosition"
             type="radio"
             value="No"
-            onChange={handleChange}
+            onChange={(e) => handleChange(e)}
           />
           No
         </label>
@@ -396,7 +390,7 @@ const clearForm = () => {
             type="number"
             placeholder="30"
             value={form.jobHuntDuration}
-            onChange={handleChange}
+            onChange={(e) => handleChange(e)}
             required
           />
         </label>
@@ -408,7 +402,7 @@ const clearForm = () => {
             type="number"
             placeholder="60,0000"
             value={form.salary}
-            onChange={handleChange}
+            onChange={(e) => handleChange(e)}
             required
           />
         </label>
@@ -420,7 +414,7 @@ const clearForm = () => {
             type="text"
             placeholder="Position Title"
             value={form.positionTitle}
-            onChange={handleChange}
+            onChange={(e) => handleChange(e)}
             required
           />
         </label>
@@ -431,7 +425,7 @@ const clearForm = () => {
             name="typeOfEmployment"
             type="radio"
             value="Part-Time"
-            onChange={handleChange}
+            onChange={(e) => handleChange(e)}
             required
           />
           Part-Time
@@ -440,7 +434,7 @@ const clearForm = () => {
             name="typeOfEmployment"
             type="radio"
             value="Full-Time"
-            onChange={handleChange}
+            onChange={(e) => handleChange(e)}
           />
           Full-Time
           <input
@@ -448,7 +442,7 @@ const clearForm = () => {
             name="typeOfEmployment"
             type="radio"
             value="Contract"
-            onChange={handleChange}
+            onChange={(e) => handleChange(e)}
           />
           Contract
           <input
@@ -456,7 +450,7 @@ const clearForm = () => {
             name="typeOfEmployment"
             type="radio"
             value="Intern/Apprentice"
-            onChange={handleChange}
+            onChange={(e) => handleChange(e)}
           />
           Intern/Apprentice
         </label>
@@ -467,7 +461,7 @@ const clearForm = () => {
             name="locationOfEmployment"
             type="radio"
             value="In-Person"
-            onChange={handleChange}
+            onChange={(e) => handleChange(e)}
             required
           />
           In-Person
@@ -476,7 +470,7 @@ const clearForm = () => {
             name="locationOfEmployment"
             type="radio"
             value="Hybrid"
-            onChange={handleChange}
+            onChange={(e) => handleChange(e)}
           />
           Hybrid
           <input
@@ -484,7 +478,7 @@ const clearForm = () => {
             name="locationOfEmployment"
             type="radio"
             value="Remote"
-            onChange={handleChange}
+            onChange={(e) => handleChange(e)}
           />
           Remote
         </label>
@@ -496,7 +490,7 @@ const clearForm = () => {
             type="text"
             placeholder="Company Name"
             value={form.company}
-            onChange={handleChange}
+            onChange={(e) => handleChange(e)}
             required
           />
         </label>
@@ -507,7 +501,7 @@ const clearForm = () => {
             name="negotiation"
             type="radio"
             value="Yes"
-            onChange={handleChange}
+            onChange={(e) => handleChange(e)}
             required
           />
           Yes
@@ -516,11 +510,11 @@ const clearForm = () => {
             name="negotiation"
             type="radio"
             value="No"
-            onChange={handleChange}
+            onChange={(e) => handleChange(e)}
           />
           No
         </label>
-        <button type="submit" onClick={submitForm}>Submit</button>
+        <button className="submit-btn" onClick={(e) => submitForm(e)}>Submit</button>
       </form>
       </div>
     );
