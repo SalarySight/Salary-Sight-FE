@@ -428,7 +428,7 @@ const clearForm = () => {
           Type of Employment:*
           <input
             className="part-time"
-            name="type"
+            name="typeOfEmployment"
             type="radio"
             value="Part-Time"
             onChange={handleChange}
@@ -437,7 +437,7 @@ const clearForm = () => {
           Part-Time
           <input
             className="full-time"
-            name="type"
+            name="typeOfEmployment"
             type="radio"
             value="Full-Time"
             onChange={handleChange}
@@ -445,7 +445,7 @@ const clearForm = () => {
           Full-Time
           <input
             className="contract"
-            name="type"
+            name="typeOfEmployment"
             type="radio"
             value="Contract"
             onChange={handleChange}
@@ -453,7 +453,7 @@ const clearForm = () => {
           Contract
           <input
             className="intern"
-            name="intern"
+            name="typeOfEmployment"
             type="radio"
             value="Intern/Apprentice"
             onChange={handleChange}
@@ -464,7 +464,7 @@ const clearForm = () => {
           Location of Employment:*
           <input
             className="in-person"
-            name="location"
+            name="locationOfEmployment"
             type="radio"
             value="In-Person"
             onChange={handleChange}
@@ -473,7 +473,7 @@ const clearForm = () => {
           In-Person
           <input
             className="hybrid"
-            name="location"
+            name="locationOfEmployment"
             type="radio"
             value="Hybrid"
             onChange={handleChange}
@@ -481,7 +481,7 @@ const clearForm = () => {
           Hybrid
           <input
             className="remote"
-            name="location"
+            name="locationOfEmployment"
             type="radio"
             value="Remote"
             onChange={handleChange}
