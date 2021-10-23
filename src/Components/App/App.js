@@ -20,7 +20,7 @@ const App = () => {
   const [filterPosts, setFilterPosts] = useState([])
   const [filterInput, setFilterInput] = useState('')
   const [filterError, setFilterError] = useState('')
-  const [ageInput, setAgeInput] = useState('')
+  const [input, setInput] = useState('')
   const { data, loading, error } = useQuery(GET_POST)
 
 const drawerToggleClickHandler = () => {
@@ -36,8 +36,14 @@ const handleFilterInput = (e) => {
   setFilterInput(e.target.value)
 }
 
-const handleAgeInput = (e) => {
-  setAgeInput(e.target.value)
+const handleInput = (e) => {
+  setInput(e.target.value)
+}
+
+const clearFilterForm = (e) => {
+  console.log('hello')
+  setFilterInput('')
+  setFilterPosts([])
 }
 
 useEffect(() => {
@@ -47,10 +53,7 @@ useEffect(() => {
     console.log('error', error)
   } else {
     setSalaryPosts(data)
-    console.log('salaryPOSTS', salaryPosts)
-    console.log('data', data)
   }
-  if (data) console.log(data.posts)
 }, [data])
 
 const filterData = (filterInput, input) => {
@@ -58,8 +61,6 @@ const filterData = (filterInput, input) => {
   setFilterError('')
   const prop = filterInput.toLowerCase()
   const matchCards = salaryPosts.posts.filter(post => post[prop] === input)
-  console.log('matched', matchCards)
-  console.log('before', salaryPosts)
   if (matchCards.length !== 0) {
     setFilterPosts(matchCards)
   } else if (matchCards.length === 0) {
@@ -68,20 +69,6 @@ const filterData = (filterInput, input) => {
     return null;
   }
 }
-
-// const cleanData = () => {
-//   if (data) {
-//     return data
-//   } else if (data && salaryPosts.length) {
-//     return salaryPosts
-//   } else {
-//     console.log('EFFED UP')
-//   }
-// }
-
-useEffect(() => {
-  console.log('salaryPosts', salaryPosts)
-}, [salaryPosts])
 
   return (
     <div>
@@ -93,9 +80,10 @@ useEffect(() => {
       <FilterForm
         filterInput={filterInput}
         handleFilterInput={handleFilterInput}
-        ageInput={ageInput}
-        handleAgeInput={handleAgeInput}
-        filterData={filterData}/>
+        input={input}
+        handleInput={handleInput}
+        filterData={filterData}
+        clearFilterForm={clearFilterForm}/>
       {loading && <Loader />}
       {!loading && !error && filterPosts.length === 0 && !filterError && <SalaryCards data={data.posts}/>}
       {!loading && !error && filterPosts.length !== 0 && <SalaryCards data={filterPosts}/>}
