@@ -1,94 +1,172 @@
-import React from "react";
+import { useState } from "react";
 import "./Form.css";
-import { postForm } from "../utils/postForm";
-class Form extends React.Component {
-  constructor(props) {
-    super(props);
+import { useMutation } from '@apollo/client';
+import { GET_POST, CREATE_POST } from '../..'
 
-    this.state = {
-      username: "",
-      gender: "",
-      age: 0,
-      gradYear: "",
-      program: "",
-      degree: "",
-      firstPosition: "",
-      jobHuntDuration: 0,
-      yearsOfExperience: 0,
-      positionTitle: "",
-      company: "",
-      locationOfEmployment: "",
-      typeOfEmployment: "",
-      state: "",
-      negotiation: "",
-      salary: 0
-    };
 
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+// import { postForm } from "../utils/postForm";
+
+const initialState = {
+  username: "",
+  gender: "",
+  age: 0,
+  gradYear: "",
+  program: "",
+  degree: "",
+  firstPosition: "",
+  jobHuntDuration: 0,
+  yearsOfExperience: 0,
+  positionTitle: "",
+  company: "",
+  locationOfEmployment: "",
+  typeOfEmployment: "",
+  state: "",
+  negotiation: "",
+  salary: 0
+}
+
+const Form = () => {
+  const [form, setForm] = useState(initialState)
+  let [selectedRadio, setSelectedRadio] = useState(null)
+  const [createPost, { loading , error, data }] = useMutation(CREATE_POST, {
+    refetchQueries: [GET_POST]
+  })
+
+  if (error) {
+    console.log('error from form', error)
   }
 
-  handleChange(e) {
+  if (loading) {
+    console.log('loading from form', loading)
+  }
+
+  if (data) {
+    console.log('data from form', data)
+  }
+
+  const handleChange = (e) => {
+    // console.log('form values', form)
+    // console.log('')
     e.target.classList.add("active");
-
-    this.setState({
-      [e.target.name]: e.target.value,
-    });
+    const { name, value } = e.target;
+    // setForm((prevState) => ({ ...prevState, [name]: value }));
+    setSelectedRadio()
+    setForm((prevState) => ({ ...prevState, [name]: value }));
   }
 
-  handleSubmit(e) {
+  const submitForm = (e) => {
     e.preventDefault();
-    console.log('form state', this.state)
-    const formObj = {
-      username: this.state.username,
-      gender: this.state.gender,
-      age: this.state.age,
-      gradYear: this.state.gradYear,
-      program: this.state.program,
-      degree: this.state.degree,
-      firstPosition: this.state.firstPosition,
-      jobHuntDuration: this.state.jobHuntDuration,
-      yearsOfExperience: this.state.yearsOfExperience,
-      positionTitle: this.state.positionTitle,
-      company: this.state.company,
-      locationOfEmployment: this.state.locationOfEmployment,
-      typeOfEmployment: this.state.typeOfEmployment,
-      state: this.state.state,
-      negotiation: this.state.negotiation,
-      salary: this.state.salary
-    }
-    postForm(formObj)
-    .then((data) => {
-      console.log('postform data', data)
-      return data.text()
-    });
-
-    // e.target.reset();
-    this.clearForm();
+    console.log('form data', form)
+    createPost({
+      variables: {
+        username: form.username,
+        gender: form.gender,
+        age: form.age,
+        gradYear: form.gradYear,
+        program: form.program,
+        degree: form.degree,
+        firstPosition: form.firstPosition,
+        jobHuntDuration: form.jobHuntDuration,
+        yearsOfExperience: form.yearsOfExperience,
+        positionTitle: form.positionTitle,
+        company: form.company,
+        locationOfEmployment: form.locationOfEmployment,
+        typeOfEmployment: form.typeOfEmployment,
+        state: form.state,
+        negotiation: form.negotiation,
+        salary: form.salary
+      }
+    })
+    clearForm();
   }
 
-  clearForm() {
-    this.setState({
-      username: "",
-      gender: "",
-      age: 0,
-      gradYear: "",
-      program: "",
-      degree: "",
-      firstPosition: "",
-      jobHuntDuration: 0,
-      yearsOfExperience: 0,
-      positionTitle: "",
-      company: "",
-      locationOfEmployment: "",
-      typeOfEmployment: "",
-      state: "",
-      negotiation: "",
-      salary: 0
-    });
-  }
+const clearForm = () => {
+   setForm({initialState})
+ }
 
-  render() {
+// class Form extends React.Component {
+//   constructor(props) {
+//     super(props);
+//
+//     this.state = {
+//       username: "",
+//       gender: "",
+//       age: 0,
+//       gradYear: "",
+//       program: "",
+//       degree: "",
+//       firstPosition: "",
+//       jobHuntDuration: 0,
+//       yearsOfExperience: 0,
+//       positionTitle: "",
+//       company: "",
+//       locationOfEmployment: "",
+//       typeOfEmployment: "",
+//       state: "",
+//       negotiation: "",
+//       salary: 0
+//     };
+//
+//     this.handleChange = this.handleChange.bind(this);
+//     this.handleSubmit = this.handleSubmit.bind(this);
+//   }
+//
+//   handleChange(e) {
+    // e.target.classList.add("active");
+//
+//     this.setState({
+//       [e.target.name]: e.target.value,
+//     });
+//   }
+//
+//   handleSubmit(e) {
+//     console.log('form state', this.state)
+//     const formObj = {
+      // username: this.state.username,
+      // gender: this.state.gender,
+      // age: this.state.age,
+      // gradYear: this.state.gradYear,
+      // program: this.state.program,
+      // degree: this.state.degree,
+      // firstPosition: this.state.firstPosition,
+      // jobHuntDuration: this.state.jobHuntDuration,
+      // yearsOfExperience: this.state.yearsOfExperience,
+      // positionTitle: this.state.positionTitle,
+      // company: this.state.company,
+      // locationOfEmployment: this.state.locationOfEmployment,
+      // typeOfEmployment: this.state.typeOfEmployment,
+      // state: this.state.state,
+      // negotiation: this.state.negotiation,
+      // salary: this.state.salary
+//     }
+//     postForm(formObj)
+//     // e.target.reset();
+//     this.clearForm();
+//   }
+//
+  // clearForm() {
+  //   this.setState({
+  //     username: "",
+  //     gender: "",
+  //     age: 0,
+  //     gradYear: "",
+  //     program: "",
+  //     degree: "",
+  //     firstPosition: "",
+  //     jobHuntDuration: 0,
+  //     yearsOfExperience: 0,
+  //     positionTitle: "",
+  //     company: "",
+  //     locationOfEmployment: "",
+  //     typeOfEmployment: "",
+  //     state: "",
+  //     negotiation: "",
+  //     salary: 0
+  //   });
+  // }
+
+  // <form onSubmit={(e) => e.preventDefault()}>
+
     return (
       <div>
         <form>
@@ -100,9 +178,8 @@ class Form extends React.Component {
             placeholder="Name"
             type="text"
             name="username"
-            ref="username"
-            value={this.state.username}
-            onChange={this.handleChange}
+            value={form.username}
+            onChange={handleChange}
           />
         </label>
         <label>
@@ -110,9 +187,8 @@ class Form extends React.Component {
           <select
             className="gender-control"
             name="gender"
-            ref="gender"
-            value={this.state.gender}
-            onChange={this.handleChange}
+            value={form.gender}
+            onChange={handleChange}
             required
           >
             <option value="" disabled selected>
@@ -132,9 +208,8 @@ class Form extends React.Component {
           <select
             className="age"
             name="age"
-            ref="age"
-            value={parseInt(this.state.age)}
-            onChange={this.handleChange}
+            value={parseInt(form.age)}
+            onChange={handleChange}
             required
           >
             <option value="" disabled selected>
@@ -153,9 +228,8 @@ class Form extends React.Component {
           <select
             className="gradYear"
             name="gradYear"
-            ref="gradYear"
-            value={this.state.gradYear}
-            onChange={this.handleChange}
+            value={form.gradYear}
+            onChange={handleChange}
             required
           >
             <option value="" disabled selected>
@@ -178,9 +252,9 @@ class Form extends React.Component {
             className="backend"
             type="radio"
             name="program"
-            ref="backend"
-            value={this.state.program}
-            onChange={this.handleChange}
+            checked={selectedRadio = form.program}
+            value={form.program}
+            onChange={handleChange}
             required
           />
           BE
@@ -188,9 +262,8 @@ class Form extends React.Component {
             className="frontend"
             type="radio"
             name="program"
-            ref="frontend"
-            value={this.state.program}
-            onChange={this.handleChange}
+            value={form.program}
+            onChange={handleChange}
           />
           FE
         </label>
@@ -201,9 +274,8 @@ class Form extends React.Component {
             type="number"
             placeholder="Years of Experience"
             name="yearsOfExperience"
-            ref="yearsOfExperience"
-            value={parseInt(this.state.yearsOfExperience)}
-            onChange={this.handleChange}
+            value={parseInt(form.yearsOfExperience)}
+            onChange={handleChange}
             required
           />
         </label>
@@ -212,9 +284,8 @@ class Form extends React.Component {
           <select
             className="degree"
             name="degree"
-            ref="degree"
-            value={this.state.degree}
-            onChange={this.handleChange}
+            value={form.degree}
+            onChange={handleChange}
             required
           >
             <option value="" disabled selected>
@@ -230,9 +301,8 @@ class Form extends React.Component {
           <select
             className="state"
             name="state"
-            ref="state"
-            value={this.state.state}
-            onChange={this.handleChange}
+            value={form.state}
+            onChange={handleChange}
             required
           >
             <option value="" disabled selected>
@@ -303,9 +373,8 @@ class Form extends React.Component {
             className="yes"
             name="firstPosition"
             type="radio"
-            ref="yes"
-            value={this.state.firstPosition}
-            onChange={this.handleChange}
+            value={form.firstPosition}
+            onChange={handleChange}
             required
           />
           Yes
@@ -313,9 +382,8 @@ class Form extends React.Component {
             className="no"
             name="firstPosition"
             type="radio"
-            ref="no"
-            value={this.state.firstPosition}
-            onChange={this.handleChange}
+            value={form.firstPosition}
+            onChange={handleChange}
           />
           No
         </label>
@@ -325,10 +393,9 @@ class Form extends React.Component {
             className="jobHuntDuration"
             name="jobHuntDuration"
             type="number"
-            ref="jobHuntDuration"
             placeholder="30"
-            value={parseInt(this.state.jobHuntDuration)}
-            onChange={this.handleChange}
+            value={parseInt(form.jobHuntDuration)}
+            onChange={handleChange}
             required
           />
         </label>
@@ -338,10 +405,9 @@ class Form extends React.Component {
             className="salary"
             name="salary"
             type="number"
-            ref="salary"
             placeholder="60,0000"
-            value={parseInt(this.state.salary)}
-            onChange={this.handleChange}
+            value={parseInt(form.salary)}
+            onChange={handleChange}
             required
           />
         </label>
@@ -352,9 +418,8 @@ class Form extends React.Component {
             name="positionTitle"
             type="text"
             placeholder="Position Title"
-            ref="positionTitle"
-            value={this.state.positionTitle}
-            onChange={this.handleChange}
+            value={form.positionTitle}
+            onChange={handleChange}
             required
           />
         </label>
@@ -364,9 +429,8 @@ class Form extends React.Component {
             className="part-time"
             name="type"
             type="radio"
-            ref="part-time"
-            value={this.state.typeOfEmployment}
-            onChange={this.handleChange}
+            value={form.typeOfEmployment}
+            onChange={handleChange}
             required
           />
           Part-Time
@@ -374,27 +438,24 @@ class Form extends React.Component {
             className="full-time"
             name="type"
             type="radio"
-            ref="full-time"
-            value={this.state.typeOfEmployment}
-            onChange={this.handleChange}
+            value={form.typeOfEmployment}
+            onChange={handleChange}
           />
           Full-Time
           <input
             className="contract"
             name="type"
             type="radio"
-            ref="contract"
-            value={this.state.typeOfEmployment}
-            onChange={this.handleChange}
+            value={form.typeOfEmployment}
+            onChange={handleChange}
           />
           Contract
           <input
             className="intern"
             name="intern"
             type="radio"
-            ref="intern"
-            value={this.state.typeOfEmployment}
-            onChange={this.handleChange}
+            value={form.typeOfEmployment}
+            onChange={handleChange}
           />
           Intern/Apprentice
         </label>
@@ -404,9 +465,8 @@ class Form extends React.Component {
             className="in-person"
             name="location"
             type="radio"
-            ref="in-person"
-            value={this.state.locationOfEmployment}
-            onChange={this.handleChange}
+            value={form.locationOfEmployment}
+            onChange={handleChange}
             required
           />
           In-Person
@@ -414,18 +474,16 @@ class Form extends React.Component {
             className="hybrid"
             name="location"
             type="radio"
-            ref="hybrid"
-            value={this.state.locationOfEmployment}
-            onChange={this.handleChange}
+            value={form.locationOfEmployment}
+            onChange={handleChange}
           />
           Hybrid
           <input
             className="remote"
             name="location"
             type="radio"
-            ref="remote"
-            value={this.state.locationOfEmployment}
-            onChange={this.handleChange}
+            value={form.locationOfEmployment}
+            onChange={handleChange}
           />
           Remote
         </label>
@@ -436,9 +494,8 @@ class Form extends React.Component {
             name="company"
             type="text"
             placeholder="Company Name"
-            ref="company"
-            value={this.state.company}
-            onChange={this.handleChange}
+            value={form.company}
+            onChange={handleChange}
             required
           />
         </label>
@@ -448,9 +505,8 @@ class Form extends React.Component {
             className="yes"
             name="negotiation"
             type="radio"
-            ref="yes"
-            value={this.state.negotiation}
-            onChange={this.handleChange}
+            value={form.negotiation}
+            onChange={handleChange}
             required
           />
           Yes
@@ -458,16 +514,17 @@ class Form extends React.Component {
             className="no"
             name="negotiation"
             type="radio"
-            ref="no"
-            value={this.state.negotiation}
-            onChange={this.handleChange}
+            value={form.negotiation}
+            onChange={handleChange}
           />
           No
         </label>
-        <button onClick={(e) => this.handleSubmit(e)}>Submit</button>
+        <button type="submit" onClick={submitForm}>Submit</button>
       </form>
       </div>
     );
   }
-}
+
+
+
 export default Form;
