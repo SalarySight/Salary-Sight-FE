@@ -1,21 +1,18 @@
 import "./Card.css";
 
-const Card = ({ name, age, gender, yearGraduated, program, yearsExp, degree, state,
-  salary, negotiate, title, typeOfEmp, locationOfEmp, jobHuntDuration }) => {
+const Card = ({ name, age, gender, gradYear, company, yearsExp, degree, state,
+  salary, negotiate, positionTitle, typeOfEmp, locationOfEmp, jobHuntDuration }) => {
   return (
     <article className="card">
-      {name ? <p className="name">Name:</p> : <p className="anon-name">Name: Anonymous</p>}
-      <p className="age">Age: </p>
-      <p className="gender">Gender: {gender}</p>
-      <p className="year-graduated">Year Graduated: </p>
-      <p className="program">Program: </p>
-      <p className="years-exp">Years of Experience: </p>
-      <p className="degree">Type of Degree: </p>
+      {name ? <p className="name">Name: {name}</p> : <p className="anon-name">Name: Anonymous</p>}
+      <p className="age">Age: {age}</p>
+      {gender ? <p className="gender">Gender: {gender}</p> : <p>Gender: Not Specified</p>}
+      <p className="company">Company: {company}</p>
+      <p className="years-exp">Years of Experience: {yearsExp}</p>
       <p className="salary">${salary}</p>
-      <p className="negotiate">Did you negotiate? </p>
-      <p className="job-title">Job Title: </p>
+      <p className="position-title">Job Title: {positionTitle}</p>
       <p className="type-of-emp">Type of Employment: </p>
-      <p className="location-of-emp">Location of Employment: </p>
+      <p className="state">State: {state}</p>
       <p className="job-hunt-duration">Job Hunt Duration: {jobHuntDuration} days</p>
     </article>
   );
