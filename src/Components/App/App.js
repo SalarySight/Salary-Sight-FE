@@ -17,13 +17,8 @@ const App = () => {
   const { data, loading, error } = useQuery(GET_POST)
 
 useEffect(() => {
-  // if (data) {
-  //   console.log(data)
-  // } else {
-  //   console.log('data', data)
-  // }
-  // console.log('loading', loading)
-  // console.log('error', error)
+  console.log('error', error)
+  console.log('loading', loading)
   setSalaryPosts(data)
 }, [data])
 
@@ -35,20 +30,15 @@ const backdropClickHandler = () => {
   setDrawerOpen(false)
 };
 
-let backdrop;
-if (drawerOpen) {
-  backdrop = <Backdrop close={backdropClickHandler} />;
-}
-
   return (
     <div>
       <Header />
       <Cover />
       <SlideDrawer show={drawerOpen} />
-      {backdrop}
+      {drawerOpen && <Backdrop close={backdropClickHandler} />}
       <MainPage toggle={drawerToggleClickHandler} />
       {loading && <Loader />}
-      {!loading && <SalaryCards data={data.posts}/>}
+      {!loading && !error && <SalaryCards data={data.posts}/>}
     </div>
   );
 }

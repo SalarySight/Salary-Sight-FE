@@ -71,8 +71,8 @@ const Form = () => {
         yearsOfExperience: parseInt(form.yearsOfExperience),
         positionTitle: form.positionTitle,
         company: form.company,
-        locationOfEmployment: form.locationOfEmployment,
-        typeOfEmployment: form.typeOfEmployment,
+        location: form.locationOfEmployment,
+        type: form.typeOfEmployment,
         state: form.state,
         negotiation: form.negotiation,
         salary: parseInt(form.salary)
@@ -264,6 +264,7 @@ const clearForm = () => {
             name="program"
             value="FE"
             onChange={handleChange}
+            required
           />
           FE
         </label>
