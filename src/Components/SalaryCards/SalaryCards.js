@@ -2,6 +2,9 @@ import "./SalaryCards.css";
 import Card from '../Card/Card'
 
 const SalaryCards = ({ data }) => {
+// console.log('data', data)
+// if (!filteredData) console.log('PICKLE', filteredData)
+// else console.log('IT WORKED', filteredData)
 
   const salaryCards = data.map(post => {
     const newSalary = post.salary.toLocaleString('en-US')
