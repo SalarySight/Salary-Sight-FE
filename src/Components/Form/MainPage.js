@@ -1,4 +1,3 @@
-
 const MainPage = ({ toggle }) => {
    return (
       <div className="login-submit-btns">
