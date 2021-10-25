@@ -14,15 +14,14 @@ import FilterForm from '../FilterForm/FilterForm';
 import Results from '../Results/Results';
 import { useQuery } from '@apollo/client';
 import { GET_POST } from '../..';
+import { filterByCatagories, cleanFilters } from '../FilterForm/helperFunctions';
 import "./App.css";
 
 const App = () => {
   const [drawerOpen, setDrawerOpen] = useState(false)
   const [salaryPosts, setSalaryPosts] = useState([])
   const [filterPosts, setFilterPosts] = useState([])
-  const [filterInput, setFilterInput] = useState('')
   const [filterError, setFilterError] = useState('')
-  const [input, setInput] = useState('');
   const { data, loading, error } = useQuery(GET_POST);
 
 const drawerToggleClickHandler = () => {
@@ -33,18 +32,11 @@ const backdropClickHandler = () => {
   setDrawerOpen(false)
 };
 
-const handleFilterInput = (e) => {
-  setFilterInput(e.target.value)
-}
 
-const handleInput = (e) => {
-  setInput(e.target.value)
-}
-
-const clearFilterForm = (e) => {
-  setFilterInput('')
-  setFilterPosts([])
-}
+  const handleTrailFilters = (filterObj) => {
+    const cleanedFilters = cleanFilters(filterObj)
+    setFilterPosts(filterByCatagories(cleanedFilters, salaryPosts))
+  }
 
 useEffect(() => {
   if (loading) {
@@ -52,23 +44,11 @@ useEffect(() => {
   } else if (error) {
     console.log('error', error)
   } else {
-    setSalaryPosts(data)
+    setSalaryPosts(data.posts)
   }
 }, [data])
 
-const filterData = (filterInput, input) => {
-  setFilterPosts([])
-  setFilterError('')
-  const prop = filterInput.toLowerCase()
-  const matchCards = salaryPosts.posts.filter(post => post[prop] === input)
-  if (matchCards.length !== 0) {
-    setFilterPosts(matchCards)
-  } else if (matchCards.length === 0) {
-    setFilterError('No matches!')
-  } else {
-    return null;
-  }
-}
+
 
   return (
     <div>
@@ -81,13 +61,7 @@ const filterData = (filterInput, input) => {
           <MainPage toggle={drawerToggleClickHandler} />
           <SlideDrawer toggle={drawerToggleClickHandler} show={drawerOpen} />
           {drawerOpen && <Backdrop close={backdropClickHandler} />}
-          <FilterForm
-          filterInput={filterInput}
-          handleFilterInput={handleFilterInput}
-          input={input}
-          handleInput={handleInput}
-          filterData={filterData}
-          clearFilterForm={clearFilterForm}/>
+          <FilterForm handleFilters={handleTrailFilters}/>
           {loading && <Loader />}
           {!loading && error && <Error err={error} />}
           {!loading && !error && filterPosts.length === 0 && !filterError && <SalaryCards data={data.posts}/>}
@@ -105,13 +79,7 @@ const filterData = (filterInput, input) => {
         <MainPage toggle={drawerToggleClickHandler} />
         <SlideDrawer toggle={drawerToggleClickHandler} show={drawerOpen} />
         {drawerOpen && <Backdrop close={backdropClickHandler} />}
-        <FilterForm
-        filterInput={filterInput}
-        handleFilterInput={handleFilterInput}
-        input={input}
-        handleInput={handleInput}
-        filterData={filterData}
-        clearFilterForm={clearFilterForm}/>
+        <FilterForm handleFilters={handleTrailFilters}/>
         {loading && <Loader />}
         {!loading && error && <Error err={error} />}
         {!loading && !error && filterPosts.length === 0 && !filterError && <SalaryCards data={data.posts}/>}
