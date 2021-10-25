@@ -9,7 +9,9 @@ import SalaryCards from "../SalaryCards/SalaryCards";
 import Loader from "../Loader/Loader";
 import NoMatchError from "../NoMatchError/NoMatchError";
 import NotFound from '../NotFound/NotFound';
+import Error from '../Error/Error';
 import FilterForm from '../FilterForm/FilterForm';
+import Results from '../Results/Results';
 import { useQuery } from '@apollo/client';
 import { GET_POST } from '../..';
 import "./App.css";
@@ -40,7 +42,6 @@ const handleInput = (e) => {
 }
 
 const clearFilterForm = (e) => {
-  console.log('hello')
   setFilterInput('')
   setFilterPosts([])
 }
@@ -84,6 +85,8 @@ const filterData = (filterInput, input) => {
         filterData={filterData}
         clearFilterForm={clearFilterForm}/>
       {loading && <Loader />}
+      {!loading && error && <Error err={error} />}
+      {!loading && !error && filterPosts.length !== 0 && <Results filterPosts={filterPosts}/>}
       {!loading && !error && filterPosts.length === 0 && !filterError && <SalaryCards data={data.posts}/>}
       {!loading && !error && filterPosts.length !== 0 && <SalaryCards data={filterPosts}/>}
       {!loading && filterError && filterPosts.length === 0 && <NoMatchError />}
