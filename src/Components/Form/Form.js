@@ -1,6 +1,6 @@
 import { useState } from "react";
-import "./Form.css";
 import { useMutation } from '@apollo/client';
+import "./Form.css";
 import { GET_POST, CREATE_POST } from '../..'
 
 const initialState = {
