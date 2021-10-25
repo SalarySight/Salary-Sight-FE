@@ -4,9 +4,9 @@ import { useState }  from 'react'
 const FilterForm = ({ filterInput, handleFilterInput, input, handleInput, filterData, clearFilterForm }) => {
   const [addFilterOpt, setAddFilterOpt] = useState(false)
 
-  const addFilter =() => {
-    setAddFilterOpt(true)
-  }
+  // const addFilter =() => {
+  //   setAddFilterOpt(true)
+  // }
 
   return (
     <>

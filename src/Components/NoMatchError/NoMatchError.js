@@ -8,4 +8,4 @@ const NoMatchError = () => {
   );
 }
 
-export default Error;
+export default NoMatchError;
