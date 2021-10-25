@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, Fragment } from "react";
 import { Route, Switch } from 'react-router-dom'
 import Header from "../Header/Header";
 import Cover from "../Cover/Cover";
@@ -72,24 +72,31 @@ const filterData = (filterInput, input) => {
 
   return (
     <div>
-      <Header />
-      <Cover />
-      <SlideDrawer toggle={drawerToggleClickHandler} show={drawerOpen} />
-      {drawerOpen && <Backdrop close={backdropClickHandler} />}
-      <MainPage toggle={drawerToggleClickHandler} />
-      <FilterForm
-        filterInput={filterInput}
-        handleFilterInput={handleFilterInput}
-        input={input}
-        handleInput={handleInput}
-        filterData={filterData}
-        clearFilterForm={clearFilterForm}/>
-      {loading && <Loader />}
-      {!loading && error && <Error err={error} />}
-      {!loading && !error && filterPosts.length !== 0 && <Results filterPosts={filterPosts}/>}
-      {!loading && !error && filterPosts.length === 0 && !filterError && <SalaryCards data={data.posts}/>}
-      {!loading && !error && filterPosts.length !== 0 && <SalaryCards data={filterPosts}/>}
-      {!loading && filterError && filterPosts.length === 0 && <NoMatchError />}
+      <Route exact path="/" render={() => {
+          return (
+          <>
+          <Header />
+          <Cover />
+          <MainPage toggle={drawerToggleClickHandler} />
+          <SlideDrawer toggle={drawerToggleClickHandler} show={drawerOpen} />
+          {drawerOpen && <Backdrop close={backdropClickHandler} />}
+          <FilterForm
+          filterInput={filterInput}
+          handleFilterInput={handleFilterInput}
+          input={input}
+          handleInput={handleInput}
+          filterData={filterData}
+          clearFilterForm={clearFilterForm}/>
+          {loading && <Loader />}
+          {!loading && error && <Error err={error} />}
+          {!loading && !error && filterPosts.length === 0 && !filterError && <SalaryCards data={data.posts}/>}
+          {!loading && !error && filterPosts.length !== 0 && <Results filterPosts={filterPosts}/>}
+          {!loading && !error && filterPosts.length !== 0 && <SalaryCards data={filterPosts}/>}
+          {!loading && filterError && filterPosts.length === 0 && <NoMatchError />}
+          </>
+        );
+      }}/>
+      <Route path="*" render={() => <NotFound />}/>
     </div>
   );
 }
