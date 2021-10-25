@@ -32,11 +32,11 @@ const backdropClickHandler = () => {
   setDrawerOpen(false)
 };
 
-
   const handleTrailFilters = (filterObj) => {
     const cleanedFilters = cleanFilters(filterObj)
     setFilterPosts(filterByCatagories(cleanedFilters, salaryPosts))
   }
+
 
 useEffect(() => {
   if (loading) {
@@ -48,17 +48,15 @@ useEffect(() => {
   }
 }, [data])
 
-
-
   return (
     <div>
     <Switch>
-      <Route exact path="/" render={() => {
+      <Route exact path="/" render={({ match }) => {
           return (
           <>
           <Header />
           <Cover />
-          <MainPage toggle={drawerToggleClickHandler} />
+          <MainPage toggle={drawerToggleClickHandler} match={match}/>
           <SlideDrawer toggle={drawerToggleClickHandler} show={drawerOpen} />
           {drawerOpen && <Backdrop close={backdropClickHandler} />}
           <FilterForm handleFilters={handleTrailFilters}/>
