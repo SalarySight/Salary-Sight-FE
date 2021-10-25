@@ -21,7 +21,7 @@ const App = () => {
   const [salaryPosts, setSalaryPosts] = useState([])
   const [filterPosts, setFilterPosts] = useState([])
   const [filterInput, setFilterInput] = useState('')
-  const [filterError, setFilterError] = useState('')
+  const [filterError, setFilterError] = useState(false)
   const [input, setInput] = useState('');
   const { data, loading, error } = useQuery(GET_POST);
 
@@ -44,6 +44,7 @@ const handleInput = (e) => {
 const clearFilterForm = (e) => {
   setFilterInput('')
   setFilterPosts([])
+  setFilterError(false)
 }
 
 useEffect(() => {
@@ -58,27 +59,27 @@ useEffect(() => {
 
 const filterData = (filterInput, input) => {
   setFilterPosts([])
-  setFilterError('')
+  setFilterError(false)
   const prop = filterInput.toLowerCase()
   const matchCards = salaryPosts.posts.filter(post => post[prop] === input)
   if (matchCards.length !== 0) {
     setFilterPosts(matchCards)
   } else if (matchCards.length === 0) {
-    setFilterError('No matches!')
+    setFilterError(true)
   } else {
-    return null;
+    return salaryPosts;
   }
 }
 
   return (
     <div>
     <Switch>
-      <Route exact path="/" render={() => {
+      <Route exact path="/" render={({ match }) => {
           return (
           <>
           <Header />
           <Cover />
-          <MainPage toggle={drawerToggleClickHandler} />
+          <MainPage toggle={drawerToggleClickHandler} match={match}/>
           <SlideDrawer toggle={drawerToggleClickHandler} show={drawerOpen} />
           {drawerOpen && <Backdrop close={backdropClickHandler} />}
           <FilterForm
@@ -99,27 +100,27 @@ const filterData = (filterInput, input) => {
       }}/>
       <Route exact path='/:githubName' render={({ match }) => {
         return (
-        <>
-        <Header username={match}/>
-        <Cover />
-        <MainPage toggle={drawerToggleClickHandler} />
-        <SlideDrawer toggle={drawerToggleClickHandler} show={drawerOpen} />
-        {drawerOpen && <Backdrop close={backdropClickHandler} />}
-        <FilterForm
-        filterInput={filterInput}
-        handleFilterInput={handleFilterInput}
-        input={input}
-        handleInput={handleInput}
-        filterData={filterData}
-        clearFilterForm={clearFilterForm}/>
-        {loading && <Loader />}
-        {!loading && error && <Error err={error} />}
-        {!loading && !error && filterPosts.length === 0 && !filterError && <SalaryCards data={data.posts}/>}
-        {!loading && !error && filterPosts.length !== 0 && <Results filterPosts={filterPosts}/>}
-        {!loading && !error && filterPosts.length !== 0 && <SalaryCards data={filterPosts}/>}
-        {!loading && filterError && filterPosts.length === 0 && <NoMatchError />}
-        </>
-      );
+          <>
+          <Header username={match}/>
+          <Cover />
+          <MainPage toggle={drawerToggleClickHandler} match={match} />
+          <SlideDrawer toggle={drawerToggleClickHandler} show={drawerOpen} />
+          {drawerOpen && <Backdrop close={backdropClickHandler} />}
+          <FilterForm
+          filterInput={filterInput}
+          handleFilterInput={handleFilterInput}
+          input={input}
+          handleInput={handleInput}
+          filterData={filterData}
+          clearFilterForm={clearFilterForm}/>
+          {loading && <Loader />}
+          {!loading && error && <Error err={error} />}
+          {!loading && !error && filterPosts.length === 0 && !filterError && <SalaryCards data={data.posts}/>}
+          {!loading && !error && filterPosts.length !== 0 && <Results filterPosts={filterPosts}/>}
+          {!loading && !error && filterPosts.length !== 0 && <SalaryCards data={filterPosts}/>}
+          {!loading && filterError && filterPosts.length === 0 && <NoMatchError />}
+          </>
+        );
       }}/>
       <Route path="*" render={() => <NotFound />}/>
       </Switch>
