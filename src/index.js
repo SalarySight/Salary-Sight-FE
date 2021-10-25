@@ -36,6 +36,9 @@ export const GET_POST = gql `
         firstPosition
         program
       }
+      salary {
+        medianSalary
+      }
     }
   `
   export const CREATE_POST = gql `
