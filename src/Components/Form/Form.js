@@ -24,6 +24,7 @@ const initialState = {
 
 const Form = ({ showForm, toggle }) => {
   const [form, setForm] = useState(initialState)
+  const [formError, setFormError] = useState(false)
   const [createPost, { loading , error, data }] = useMutation(CREATE_POST, {
     refetchQueries: [GET_POST]
   })
@@ -43,7 +44,7 @@ const Form = ({ showForm, toggle }) => {
   const closeForm = () => {
     if (form.age && form.gender && form.gradYear && form.program && form.degree
     && form.firstPosition && form.jobHuntDuration && form.yearsOfExperience && form.positionTitle
-    && form.company && form.locationOfEmployment && form.typeOfEmployment && form.state &&
+     && form.locationOfEmployment && form.typeOfEmployment && form.state &&
     form.salary && form.negotiation) {
       showForm = false;
       toggle();
@@ -57,28 +58,35 @@ const Form = ({ showForm, toggle }) => {
   }
 
   const submitForm = (e) => {
-    showForm = false;
+    console.log('form', form)
     e.preventDefault();
-    createPost({
-      variables: {
-        username: form.username,
-        gender: form.gender,
-        age: form.age,
-        gradYear: form.gradYear,
-        program: form.program,
-        degree: form.degree,
-        firstPosition: form.firstPosition,
-        jobHuntDuration: form.jobHuntDuration,
-        yearsOfExperience: form.yearsOfExperience,
-        positionTitle: form.positionTitle,
-        company: form.company,
-        locationOfEmployment: form.locationOfEmployment,
-        typeOfEmployment: form.typeOfEmployment,
-        state: form.state,
-        negotiation: form.negotiation,
-        salary: form.salary
-      }
-    })
+    if (form.age && form.gender && form.gradYear && form.program && form.degree
+    && form.firstPosition && form.jobHuntDuration && form.yearsOfExperience && form.positionTitle
+     && form.locationOfEmployment && form.typeOfEmployment && form.state &&
+    form.salary && form.negotiation) {
+      createPost({
+        variables: {
+          username: form.username,
+          gender: form.gender,
+          age: form.age,
+          gradYear: form.gradYear,
+          program: form.program,
+          degree: form.degree,
+          firstPosition: form.firstPosition,
+          jobHuntDuration: form.jobHuntDuration,
+          yearsOfExperience: form.yearsOfExperience,
+          positionTitle: form.positionTitle,
+          company: form.company,
+          locationOfEmployment: form.locationOfEmployment,
+          typeOfEmployment: form.typeOfEmployment,
+          state: form.state,
+          negotiation: form.negotiation,
+          salary: form.salary
+        }
+      })
+    } else {
+      setFormError(true)
+    }
     clearForm();
   }
 
@@ -111,15 +119,16 @@ const clearForm = () => {
             required
           >
             <option value="" disabled selected>
-              Gender
+              Gender Identity
             </option>
-            <option value="Woman">Woman</option>
-            <option value="Man">Man</option>
-            <option value="Transgender">Transgender</option>
+            <option value="Female/Woman">Female/Woman</option>
+            <option value="Male/Man">Male/Man</option>
+            <option value="Transmale/Transman">Transmale/Transman</option>
+            <option value="Transfemale/Transwoman">Transfemale/Transwoman</option>
             <option value="Non-Binary/Non-Conforming">
               Non-Binary/Non-Conforming
             </option>
-            <option value="Prefer not to respond">Prefer not to respond</option>
+            <option value="Other">Other</option>
           </select>
         </label>
         <label>
@@ -302,6 +311,7 @@ const clearForm = () => {
             type="radio"
             value="No"
             onChange={(e) => handleChange(e)}
+            required
           />
           No
         </label>
@@ -358,6 +368,7 @@ const clearForm = () => {
             type="radio"
             value="Full-Time"
             onChange={(e) => handleChange(e)}
+            required
           />
           Full-Time
           <input
@@ -366,6 +377,7 @@ const clearForm = () => {
             type="radio"
             value="Contract"
             onChange={(e) => handleChange(e)}
+            required
           />
           Contract
           <input
@@ -374,6 +386,7 @@ const clearForm = () => {
             type="radio"
             value="Intern/Apprentice"
             onChange={(e) => handleChange(e)}
+            required
           />
           Intern/Apprentice
         </label>
@@ -394,6 +407,7 @@ const clearForm = () => {
             type="radio"
             value="Hybrid"
             onChange={(e) => handleChange(e)}
+            required
           />
           Hybrid
           <input
@@ -402,6 +416,7 @@ const clearForm = () => {
             type="radio"
             value="Remote"
             onChange={(e) => handleChange(e)}
+            required
           />
           Remote
         </label>
@@ -414,7 +429,6 @@ const clearForm = () => {
             placeholder="Company Name"
             value={form.company}
             onChange={(e) => handleChange(e)}
-            required
           />
         </label>
         <label>
@@ -434,9 +448,11 @@ const clearForm = () => {
             type="radio"
             value="No"
             onChange={(e) => handleChange(e)}
+            required
           />
           No
         </label>
+        {formError && <p>Please fill out all fields</p>}
         <button className="submit-btn" onClick={closeForm}>Submit</button>
       </form>
       </div>

@@ -49,25 +49,29 @@ const App = () => {
   };
 
   const handleSort = (filterObj) => {
-    console.log(filterObj.salary.HiLo);
     if (filterPosts.length === 0) {
       const arrayToSort = [...salaryPosts];
-      if (filterObj.salary.HiLo === true) {
+      if (filterObj.salary.HiLo === true && filterObj.salary.LoHi === false) {
         const newArr = arrayToSort.sort((a, b) => b.salary - a.salary);
+        console.log(newArr)
         return setSalaryPosts(newArr);
       }
-      if (filterObj.salary.LoHi === true) {
+      if (filterObj.salary.LoHi === true && filterObj.salary.HiLo === false) {
         const newArr = arrayToSort.sort((a, b) => a.salary - b.salary);
+        console.log(newArr)
+
         return setSalaryPosts(newArr);
       }
     } else if (salaryPosts.length === 0) {
       const arrayToSort = [...filterPosts];
-      if (filterObj.salary.HiLo === true) {
+      if (filterObj.salary.HiLo === true && filterObj.salary.LoHi === false) {
         const newArr = arrayToSort.sort((a, b) => b.salary - a.salary);
+        console.log(newArr)
         return setFilterPosts(newArr);
       }
-      if (filterObj.salary.LoHi === true) {
+      if (filterObj.salary.LoHi === true && filterObj.salary.HiLo === false) {
         const newArr = arrayToSort.sort((a, b) => a.salary - b.salary);
+        console.log(newArr)
         return setFilterPosts(newArr);
       }
     }

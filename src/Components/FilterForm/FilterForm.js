@@ -6,8 +6,10 @@ const FilterForm = ({ handleFilters, clearFilterButton, handleSort }) => {
   const [filterActive, setFilterActive] = useState(false);
   const [genderWoman, setGenderWoman] = useState(false);
   const [genderMan, setGenderMan] = useState(false);
-  const [genderTransgender, setGenderTransgender] = useState(false);
+  const [genderTransMan, setGenderTransMan] = useState(false);
+  const [genderTransWoman, setGenderTransWoman] = useState(false);
   const [genderNonBinary, setGenderNonBinary] = useState(false);
+  const [other, setOther] = useState(false);
   const [age18, setAge18] = useState(false);
   const [age25, setAge25] = useState(false);
   const [age35, setAge35] = useState(false);
@@ -18,6 +20,7 @@ const FilterForm = ({ handleFilters, clearFilterButton, handleSort }) => {
   const [programFE, setProgramFE] = useState(false);
   const [salaryHiLo, setSalaryHiLo] = useState(false);
   const [salaryLoHi, setSalaryLoHi] = useState(false);
+
 
   const options = (
     <section className="filter-options-container">
@@ -30,7 +33,7 @@ const FilterForm = ({ handleFilters, clearFilterButton, handleSort }) => {
             }
             onClick={() => setGenderWoman(!genderWoman)}
           >
-            Woman
+            Female/Woman
           </button>
           <button
             className={
@@ -38,17 +41,28 @@ const FilterForm = ({ handleFilters, clearFilterButton, handleSort }) => {
             }
             onClick={() => setGenderMan(!genderMan)}
           >
-            Man
+
+            Male/Man
           </button>
           <button
             className={
-              genderTransgender
+              genderTransMan
                 ? "active-filter filter-btn"
                 : "default filter-btn"
             }
-            onClick={() => setGenderTransgender(!genderTransgender)}
+            onClick={() => setGenderTransMan(!genderTransMan)}
           >
-            Transgender
+            Transmale/Transman
+          </button>
+          <button
+            className={
+              genderTransWoman
+                ? "active-filter filter-btn"
+                : "default filter-btn"
+            }
+            onClick={() => setGenderTransWoman(!genderTransWoman)}
+          >
+            Transfemale/Transwoman
           </button>
           <button
             className={
@@ -59,6 +73,16 @@ const FilterForm = ({ handleFilters, clearFilterButton, handleSort }) => {
             onClick={() => setGenderNonBinary(!genderNonBinary)}
           >
             Non-Binary/Non-Conforming
+          </button>
+          <button
+            className={
+              other
+                ? "active-filter filter-btn"
+                : "default filter-btn"
+            }
+            onClick={() => setOther(!other)}
+          >
+            Other
           </button>
         </div>
       </div>
@@ -143,6 +167,9 @@ const FilterForm = ({ handleFilters, clearFilterButton, handleSort }) => {
             className={
               salaryHiLo ? "active-filter filter-btn" : "default filter-btn"
             }
+            onClick={() => {
+              setSalaryHiLo(true)
+              setSalaryLoHi(false)}}
             onClick={() => setSalaryHiLo(!salaryHiLo)}
           >
             High to Low
@@ -151,6 +178,9 @@ const FilterForm = ({ handleFilters, clearFilterButton, handleSort }) => {
             className={
               salaryLoHi ? "active-filter filter-btn" : "default filter-btn"
             }
+            onClick={() => {
+              setSalaryLoHi(true)
+              setSalaryHiLo(false)}}
             onClick={() => setSalaryLoHi(!salaryLoHi)}
           >
             Low to High
@@ -162,10 +192,12 @@ const FilterForm = ({ handleFilters, clearFilterButton, handleSort }) => {
 
   const filterObj = {
     gender: {
-      Woman: genderWoman,
-      Man: genderMan,
-      Transgender: genderTransgender,
+      "Female/Woman": genderWoman,
+      "Male/Man": genderMan,
+      "Transmale/Transman": genderTransMan,
+      "Transfemale/Transwoman": genderTransWoman,
       "Non-Binary/Non-Conforming": genderNonBinary,
+      "Other": other
     },
     age: {
       "18-24": age18,
@@ -180,12 +212,14 @@ const FilterForm = ({ handleFilters, clearFilterButton, handleSort }) => {
       FE: programFE,
     },
     salary: {
-      LoHi: salaryLoHi,
-      HiLo: salaryHiLo,
+      "LoHi": salaryLoHi,
+      "HiLo": salaryHiLo,
     },
   };
 
-  const handleApply = () => {
+  const handleApply = (e) => {
+    e.preventDefault()
+    console.log('here')
     handleFilters(filterObj);
     handleSort(filterObj);
     setFilterActive(false);
@@ -194,8 +228,10 @@ const FilterForm = ({ handleFilters, clearFilterButton, handleSort }) => {
   const resetFilters = () => {
     setGenderWoman(false);
     setGenderMan(false);
-    setGenderTransgender(false);
+    setGenderTransMan(false);
+    setGenderTransWoman(false);
     setGenderNonBinary(false);
+    setOther(false);
     setAge18(false);
     setAge25(false);
     setAge35(false);
