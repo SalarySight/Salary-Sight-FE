@@ -6,3 +6,35 @@
 .default {
   padding: 1%;
 }
+
+.filter-btn {
+  border: .5px solid black;
+  margin: 1%;
+}
+
+.filter-options-container {
+  border: 1px solid black;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 2%;
+}
+
+.gender-heading,
+.age-heading,
+.program-heading {
+  margin: 0%;
+  padding: 0%;
+  display: flex;
+  justify-content: center;
+  font-weight: bolder;
+
+}
+
+.gender-filters,
+.age-filters,
+.program-filters {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 0;
+}

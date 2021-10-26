@@ -65,7 +65,6 @@ useEffect(() => {
     <div>
     <Switch>
       <Route exact path="/" render={({ match }) => {
-        console.log(match)
           return (
           <>
           <Header />
@@ -80,14 +79,12 @@ useEffect(() => {
           {loading && <Loader />}
           {!loading && error && <Error err={error} />}
           {!loading && !error && filterPosts.length === 0 && !filterError && <SalaryCards data={data.posts}/>}
-
           {!loading && !error && filterPosts.length !== 0 && <SalaryCards data={filterPosts}/>}
           {!loading && filterError && filterPosts.length === 0 && <NoMatchError />}
           </>
         );
       }}/>
       <Route exact path='/:githubName' render={({ match }) => {
-        console.log(match)
         return (
         <>
         <Header match={match}/>
@@ -102,7 +99,6 @@ useEffect(() => {
         {loading && <Loader />}
         {!loading && error && <Error err={error} />}
         {!loading && !error && filterPosts.length === 0 && !filterError && <SalaryCards data={data.posts}/>}
-
         {!loading && !error && filterPosts.length !== 0 && <SalaryCards data={filterPosts}/>}
         {!loading && filterError && filterPosts.length === 0 && <NoMatchError />}
         </>
@@ -115,6 +111,3 @@ useEffect(() => {
 }
 
 export default App;
-
-// {!loading && !error && filterPosts.length !== 0 && <Results filterPosts={filterPosts}/>}
-// {!loading && !error && filterPosts.length !== 0 && <Results filterPosts={filterPosts}/>}

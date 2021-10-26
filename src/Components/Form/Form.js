@@ -116,8 +116,8 @@ const clearForm = () => {
             <option value="Woman">Woman</option>
             <option value="Man">Man</option>
             <option value="Transgender">Transgender</option>
-            <option value="Non-binary/non-conforming">
-              Non-binary/non-conforming
+            <option value="Non-Binary/Non-Conforming">
+              Non-Binary/Non-Conforming
             </option>
             <option value="Prefer not to respond">Prefer not to respond</option>
           </select>
