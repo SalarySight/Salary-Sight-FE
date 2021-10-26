@@ -5,7 +5,7 @@ const Card = ({ name, age, gender, gradYear, company, yearsExp, degree, state,
   return (
     <article className="card">
       {name ? <p className="name card-info"><b>Name:</b> {name}</p> : <p className="name card-info"><b>Name:</b> Anonymous</p>}
-      <p className="gender card-info"><b>Gender Identity:</b> {gender}</p>
+      <p className="gender card-info"><b>Gender Identity:</b><br/>{gender}</p>
       <p className="program card-info"><b>Program:</b> {program}</p>
       <p className="age card-info"><b>Age:</b> {age}</p>
       <p className="salary card-info"><b>Salary:</b> ${salary}</p>

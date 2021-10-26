@@ -21,3 +21,34 @@
   color: #F9AE06;
   font-size: 1.1em;
 }
+
+.gender {
+  text-align: center;
+}
+
+@media screen and (max-width: 850px) {
+  .card {
+    height: 40vh;
+    width: 100%;
+    font-size: .8em;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .card {
+    height: 40vh;
+    width: 100%;
+    font-size: 1em;
+  }
+
+  .card-info {
+    margin: 0.6%;
+    padding: 0;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .card {
+    grid-gap: .25em;
+  }
+}
