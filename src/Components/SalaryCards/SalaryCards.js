@@ -4,24 +4,25 @@ import Card from '../Card/Card'
 const SalaryCards = ({ data }) => {
 
   const salaryCards = data.map(post => {
-    const newSalary = post.salary.toLocaleString('en-US')
     return (
         <Card
           key={post.id}
           name={post.username}
-          age={post.age}
           gender={post.gender}
+          program={post.program}
+          age={post.age}
+          salary={post.salary}
           gradYear={post.gradYear}
           company={post.company}
           yearsExp={post.yearsOfExperience}
           degree={post.degree}
           state={post.state}
-          salary={newSalary}
           negotiate={post.negotiation}
           positionTitle={post.positionTitle}
           typeOfEmp={post.typeOfEmployment}
           locationOfEmp={post.locationOfEmployment}
           jobHuntDuration={post.jobHuntDuration}
+          firstPosition={post.firstPosition}
         />
       );
   });

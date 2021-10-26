@@ -2,12 +2,14 @@ import { useState } from "react";
 import FilterBtnContainer from "../FilterBtnContainer/FilterBtnContainer";
 import "./Filter.css";
 
-const FilterForm = ({ handleFilters, clearFilterButton }) => {
+const FilterForm = ({ handleFilters, clearFilterButton, handleSort }) => {
   const [filterActive, setFilterActive] = useState(false);
   const [genderWoman, setGenderWoman] = useState(false);
   const [genderMan, setGenderMan] = useState(false);
-  const [genderTransgender, setGenderTransgender] = useState(false);
+  const [genderTransMan, setGenderTransMan] = useState(false);
+  const [genderTransWoman, setGenderTransWoman] = useState(false);
   const [genderNonBinary, setGenderNonBinary] = useState(false);
+  const [other, setOther] = useState(false);
   const [age18, setAge18] = useState(false);
   const [age25, setAge25] = useState(false);
   const [age35, setAge35] = useState(false);
@@ -30,7 +32,7 @@ const FilterForm = ({ handleFilters, clearFilterButton }) => {
             }
             onClick={() => setGenderWoman(!genderWoman)}
           >
-            Woman
+            Female/Woman
           </button>
           <button
             className={
@@ -38,17 +40,28 @@ const FilterForm = ({ handleFilters, clearFilterButton }) => {
             }
             onClick={() => setGenderMan(!genderMan)}
           >
-            Man
+
+            Male/Man
           </button>
           <button
             className={
-              genderTransgender
+              genderTransMan
                 ? "active-filter filter-btn"
                 : "default filter-btn"
             }
-            onClick={() => setGenderTransgender(!genderTransgender)}
+            onClick={() => setGenderTransMan(!genderTransMan)}
           >
-            Transgender
+            Transmale/Transman
+          </button>
+          <button
+            className={
+              genderTransWoman
+                ? "active-filter filter-btn"
+                : "default filter-btn"
+            }
+            onClick={() => setGenderTransWoman(!genderTransWoman)}
+          >
+            Transfemale/Transwoman
           </button>
           <button
             className={
@@ -59,6 +72,16 @@ const FilterForm = ({ handleFilters, clearFilterButton }) => {
             onClick={() => setGenderNonBinary(!genderNonBinary)}
           >
             Non-Binary/Non-Conforming
+          </button>
+          <button
+            className={
+              other
+                ? "active-filter filter-btn"
+                : "default filter-btn"
+            }
+            onClick={() => setOther(!other)}
+          >
+            Other
           </button>
         </div>
       </div>
@@ -170,10 +193,12 @@ const FilterForm = ({ handleFilters, clearFilterButton }) => {
 
   const filterObj = {
     gender: {
-      Woman: genderWoman,
-      Man: genderMan,
-      Transgender: genderTransgender,
+      "Female/Woman": genderWoman,
+      "Male/Man": genderMan,
+      "Transmale/Transman": genderTransMan,
+      "Transfemale/Transwoman": genderTransWoman,
       "Non-Binary/Non-Conforming": genderNonBinary,
+      "Other": other
     },
     age: {
       "18-24": age18,
@@ -201,8 +226,10 @@ const FilterForm = ({ handleFilters, clearFilterButton }) => {
   const resetFilters = () => {
     setGenderWoman(false);
     setGenderMan(false);
-    setGenderTransgender(false);
+    setGenderTransMan(false);
+    setGenderTransWoman(false);
     setGenderNonBinary(false);
+    setOther(false);
     setAge18(false);
     setAge25(false);
     setAge35(false);
