@@ -1,0 +1,23 @@
+{
+     "mutation": {
+      "createPost": {
+    "input": {
+        "salary": 60000,
+        "degree": "NO DEGREE",
+        "positionTitle": "Front-End Web Developer",
+        "state": "CO",
+        "jobHuntDuration": 14,
+        "gender": "Woman/Female",
+        "age": "18-24",
+        "yearsOfExperience": 0,
+        "gradYear": 2021,
+        "program": "FE",
+        "typeOfEmployment": "Full-Time",
+        "locationOfEmployment": "Remote",
+        "negotiation": "yes",
+        "firstPosition": "yes",
+        "userId": "darlaevans2000"
+        }
+      }
+    }
+}
