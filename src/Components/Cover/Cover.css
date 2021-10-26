@@ -4,6 +4,7 @@
     position: relative;
     padding: 2rem 1rem;
     height: 15rem;
+    width: 100%;
 }
 
 .coverview {
@@ -13,13 +14,11 @@
 
 .text {
     position: relative;
-    z-index: 2;
 }
 
 .tri-color-band {
   height: 0.625rem;
   display: flex;
-  width: 100%;
 }
 
 .tri-color-band .yellow {
