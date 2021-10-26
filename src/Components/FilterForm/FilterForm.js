@@ -1,9 +1,21 @@
 import "./FilterForm.css";
 import { useState, useEffect, useRef } from "react";
-import { Dropdown, Menu, Grid } from "semantic-ui-react";
+import {
+  Dropdown,
+  Menu,
+  Grid,
+  Checkbox,
+  Header,
+  Icon,
+  Image,
+  Segment,
+  Sidebar,
+  Button,
+} from "semantic-ui-react";
 const FilterForm = ({ handleFilterChange, salaryPosts }) => {
   const [addFilterOpt, setAddFilterOpt] = useState(false);
   const [companyOptions, setCompanyOptions] = useState([]);
+  const [visible, setVisible] = useState(false);
   const companyRef = useRef(0);
 
   const ageOptions = [
@@ -52,10 +64,24 @@ const FilterForm = ({ handleFilterChange, salaryPosts }) => {
 
   return (
     <>
-      <Grid>
-        <Grid.Row centered>
-          <Grid.Column width={6}>
-            <Menu secondary>
+      <Grid columns={1}>
+        <Grid.Column>
+          <Button
+            checked={visible}
+            label={{ children: <code>visible</code> }}
+            onClick={(e, data) => setVisible(true)}
+          />
+        </Grid.Column>
+
+        <Grid.Column>
+          <Sidebar.Pushable as={Segment}>
+            <Sidebar
+              animation="overlay"
+              icon="labeled"
+              onHide={() => setVisible(false)}
+              visible={visible}
+              width="thin"
+            >
               <Dropdown
                 placeholder="Age"
                 fluid
@@ -94,9 +120,16 @@ const FilterForm = ({ handleFilterChange, salaryPosts }) => {
                 options={sortOptions}
                 onChange={(el, e) => handleFilterChange(e.placeholder, e.value)}
               />
-            </Menu>
-          </Grid.Column>
-        </Grid.Row>
+            </Sidebar>
+
+            <Sidebar.Pusher>
+              <Segment basic>
+                <Header as="h3">Application Content</Header>
+                <Image src="https://react.semantic-ui.com/images/wireframe/paragraph.png" />
+              </Segment>
+            </Sidebar.Pusher>
+          </Sidebar.Pushable>
+        </Grid.Column>
       </Grid>
     </>
   );
