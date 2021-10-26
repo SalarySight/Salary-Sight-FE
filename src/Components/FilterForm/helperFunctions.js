@@ -7,7 +7,7 @@ export const cleanFilters = (filterObj) => {
   return cleanedFilters
 }
 
-export const filterByCatagories = (filterObj, salaryPosts) => {
+export const filterByCategories = (filterObj, salaryPosts) => {
    return salaryPosts.filter(post => {
     return filterObj.gender.length ? filterObj.gender.includes(post.gender) : post;
   })

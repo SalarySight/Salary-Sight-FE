@@ -1,0 +1,19 @@
+.apply-clear-btn {
+  font-size: 1.2em;
+  padding: .3em 2em;
+  border-radius: 50rem;
+  border-style: none;
+  margin: 2%;
+  background-color: #bfbdbd;
+  font-family: "system-ui";
+}
+
+.apply-clear-btn:hover {
+  cursor: pointer;
+  background-color: #17F1FB;
+}
+
+.filter-actions {
+  display: flex;
+  justify-content: center;
+}

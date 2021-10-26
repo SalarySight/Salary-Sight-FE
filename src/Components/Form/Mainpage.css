@@ -1,14 +1,11 @@
 .please-login {
-  text-align: center;
   font-size: 1.2em;
-  margin: 1%;
-  padding: 0;
+  margin: 2%;
 }
 
-.login-submit-sec {
+.mainpage {
+  width: 50%;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  width: 60%;
-  padding: 1%;
+  flex-direction: column;
 }
