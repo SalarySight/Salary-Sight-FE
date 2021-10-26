@@ -10,6 +10,7 @@ const FilterBtnContainer = ( { options, resetFilters, onApply, onDismiss, clearF
               <button className="apply-clear-btn" onClick={onApply}>Apply Filters</button>
               <button className="apply-clear-btn" onClick={() => {
                 resetFilters()
+                onDismiss()
                 clearFilter()}}>Reset Filters</button>
             </div>
           </section>

@@ -44,7 +44,7 @@ export const GET_POST = gql `
   export const CREATE_POST = gql `
     mutation createPost($username: String, $gender: String!, $age: String!, $gradYear: String!,
       $program: String!, $degree: String!, $firstPosition: String!, $jobHuntDuration: String!,
-      $yearsOfExperience: String!, $positionTitle: String!, $company: String!, $locationOfEmployment: String!,
+      $yearsOfExperience: String!, $positionTitle: String!, $company: String, $locationOfEmployment: String!,
       $typeOfEmployment: String!, $state: String!, $negotiation: String!, $salary: String!) {
       createPost (input: {
         username: $username,
