@@ -16,4 +16,3 @@ const MainPage = ({ toggle, match }) => {
 }
 
 export default MainPage;
-  

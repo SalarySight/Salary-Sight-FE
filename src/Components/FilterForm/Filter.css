@@ -1,0 +1,8 @@
+.active-filter {
+  background: turquoise;
+}
+
+.active-filter,
+.default {
+  padding: 1%;
+}

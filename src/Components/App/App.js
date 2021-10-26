@@ -44,6 +44,14 @@ const handleFilters = (filterObj) => {
   }
 }
 
+const clearFilterButton = (e) => {
+  console.log('ohhithere')
+  if (filterPosts && !loading) {
+    setFilterPosts([])
+    setFilterError(false)
+  }
+}
+
 useEffect(() => {
   if (loading) {
     console.log('loading', loading)
@@ -58,6 +66,7 @@ useEffect(() => {
     <div>
     <Switch>
       <Route exact path="/" render={({ match }) => {
+        console.log(match)
           return (
           <>
           <Header />
@@ -67,8 +76,7 @@ useEffect(() => {
           {drawerOpen && <Backdrop close={backdropClickHandler} />}
           <FilterForm
           handleFilters={handleFilters}
-          filterError={filterError}
-          filterPosts={filterPosts}
+          clearFilterButton={clearFilterButton}
           />
           {loading && <Loader />}
           {!loading && error && <Error err={error} />}
@@ -80,17 +88,18 @@ useEffect(() => {
         );
       }}/>
       <Route exact path='/:githubName' render={({ match }) => {
+        console.log(match)
         return (
         <>
-        <Header username={match}/>
+        <Header match={match}/>
         <Cover />
-        <MainPage toggle={drawerToggleClickHandler} />
+        <MainPage toggle={drawerToggleClickHandler} match={match}/>
         <SlideDrawer toggle={drawerToggleClickHandler} show={drawerOpen} />
         {drawerOpen && <Backdrop close={backdropClickHandler} />}
         <FilterForm
         handleFilters={handleFilters}
-        filterError={filterError}
-        filterPosts={filterPosts}/>
+        clearFilterButton={clearFilterButton}
+        />
         {loading && <Loader />}
         {!loading && error && <Error err={error} />}
         {!loading && !error && filterPosts.length === 0 && !filterError && <SalaryCards data={data.posts}/>}

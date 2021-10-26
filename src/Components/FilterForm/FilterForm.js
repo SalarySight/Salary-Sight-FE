@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import FilterModal from '../FilterModal/FilterModal';
 import './Filter.css';
 
-const FilterForm = ({ handleFilters, filterError, filterPosts }) => {
+const FilterForm = ({ handleFilters, clearFilterButton }) => {
   const [filterActive, setFilterActive] = useState(false);
   const filterFormRef = useRef(undefined);
   const buttonRef = useRef(undefined);
@@ -34,6 +34,11 @@ const FilterForm = ({ handleFilters, filterError, filterPosts }) => {
     };
 
   }, [filterFormRef, buttonRef, modalRef]);
+
+  // const clearFilterButton = (e) => {
+  //   console.log('hello here')
+  //   resetFilters()
+  // }
 
   const options =
     <section className="filter-options-container">
@@ -105,8 +110,9 @@ const FilterForm = ({ handleFilters, filterError, filterPosts }) => {
     <>
       <div className="filter">
         <button className="filter-button" onClick={() => setFilterActive(!filterActive)} ref={buttonRef}>Filter</button>
+        <button className="clear-filter" onClick={(e) => clearFilterButton(e)}>Clear Filters</button>
       </div>
-      { filterActive && (
+      {filterActive && (
         <FilterModal
           options={options}
           resetFilters={resetFilters}
