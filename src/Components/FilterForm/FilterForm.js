@@ -35,11 +35,6 @@ const FilterForm = ({ handleFilters, clearFilterButton }) => {
 
   }, [filterFormRef, buttonRef, modalRef]);
 
-  // const clearFilterButton = (e) => {
-  //   console.log('hello here')
-  //   resetFilters()
-  // }
-
   const options =
     <section className="filter-options-container">
       <div className="gender-filters">
@@ -110,7 +105,10 @@ const FilterForm = ({ handleFilters, clearFilterButton }) => {
     <>
       <div className="filter">
         <button className="filter-button" onClick={() => setFilterActive(!filterActive)} ref={buttonRef}>Filter</button>
-        <button className="clear-filter" onClick={(e) => clearFilterButton(e)}>Clear Filters</button>
+        <button className="clear-filter" onClick={(e) => {
+          resetFilters()
+          clearFilterButton(e)
+        }}>Clear Filters</button>
       </div>
       {filterActive && (
         <FilterModal
@@ -119,6 +117,7 @@ const FilterForm = ({ handleFilters, clearFilterButton }) => {
           onApply={handleApply}
           onDismiss={() => setFilterActive(false)}
           ref={modalRef}
+          clearFilter={clearFilterButton}
         />
       )}
     </>

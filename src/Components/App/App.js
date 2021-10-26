@@ -45,7 +45,6 @@ const handleFilters = (filterObj) => {
 }
 
 const clearFilterButton = (e) => {
-  console.log('ohhithere')
   if (filterPosts && !loading) {
     setFilterPosts([])
     setFilterError(false)
