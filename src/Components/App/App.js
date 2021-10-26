@@ -59,6 +59,7 @@ const App = () => {
       if (filterObj.salary.LoHi === true && filterObj.salary.HiLo === false) {
         const newArr = arrayToSort.sort((a, b) => a.salary - b.salary);
         console.log(newArr)
+
         return setSalaryPosts(newArr);
       }
     } else if (salaryPosts.length === 0) {

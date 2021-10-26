@@ -41,6 +41,7 @@ const FilterForm = ({ handleFilters, clearFilterButton, handleSort }) => {
             }
             onClick={() => setGenderMan(!genderMan)}
           >
+
             Male/Man
           </button>
           <button
@@ -169,6 +170,7 @@ const FilterForm = ({ handleFilters, clearFilterButton, handleSort }) => {
             onClick={() => {
               setSalaryHiLo(true)
               setSalaryLoHi(false)}}
+            onClick={() => setSalaryHiLo(!salaryHiLo)}
           >
             High to Low
           </button>
@@ -179,6 +181,7 @@ const FilterForm = ({ handleFilters, clearFilterButton, handleSort }) => {
             onClick={() => {
               setSalaryLoHi(true)
               setSalaryHiLo(false)}}
+            onClick={() => setSalaryLoHi(!salaryLoHi)}
           >
             Low to High
           </button>
@@ -205,8 +208,8 @@ const FilterForm = ({ handleFilters, clearFilterButton, handleSort }) => {
       "65+": age65,
     },
     program: {
-      "BE": programBE,
-      "FE": programFE,
+      BE: programBE,
+      FE: programFE,
     },
     salary: {
       "LoHi": salaryLoHi,
