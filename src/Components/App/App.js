@@ -87,7 +87,7 @@ const App = () => {
     Object.keys(filterState).map(function (key, index) {
       function getFilteredCodes(array, key, value) {
         return array.filter(function (e) {
-          return e[key] == value;
+          return value[0].includes(e[key]);
         });
       }
 

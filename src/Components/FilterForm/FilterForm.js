@@ -58,6 +58,7 @@ const FilterForm = ({ handleFilterChange, salaryPosts }) => {
                 search
                 clearable
                 selection
+                multiple
                 options={ageOptions}
                 onChange={(el, e) => handleFilterChange(e.placeholder, e.value)}
               />
@@ -67,6 +68,7 @@ const FilterForm = ({ handleFilterChange, salaryPosts }) => {
                 search
                 clearable
                 selection
+                multiple
                 options={genderOptions}
                 onChange={(el, e) => handleFilterChange(e.placeholder, e.value)}
               />
@@ -76,6 +78,7 @@ const FilterForm = ({ handleFilterChange, salaryPosts }) => {
                 search
                 clearable
                 selection
+                multiple
                 options={companyOptions}
                 onChange={(el, e) => handleFilterChange(e.placeholder, e.value)}
               />
