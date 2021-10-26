@@ -58,6 +58,7 @@ const Form = ({ showForm, toggle }) => {
   }
 
   const submitForm = (e) => {
+    console.log('form', form)
     e.preventDefault();
     if (form.age && form.gender && form.gradYear && form.program && form.degree
     && form.firstPosition && form.jobHuntDuration && form.yearsOfExperience && form.positionTitle
@@ -118,15 +119,16 @@ const clearForm = () => {
             required
           >
             <option value="" disabled selected>
-              Gender
+              Gender Identity
             </option>
-            <option value="Woman">Woman</option>
-            <option value="Man">Man</option>
-            <option value="Transgender">Transgender</option>
+            <option value="Female/Woman">Female/Woman</option>
+            <option value="Male/Man">Male/Man</option>
+            <option value="Transmale/Transman">Transmale/Transman</option>
+            <option value="Transfemale/Transwoman">Transfemale/Transwoman</option>
             <option value="Non-Binary/Non-Conforming">
               Non-Binary/Non-Conforming
             </option>
-            <option value="Prefer not to respond">Prefer not to respond</option>
+            <option value="Other">Other</option>
           </select>
         </label>
         <label>

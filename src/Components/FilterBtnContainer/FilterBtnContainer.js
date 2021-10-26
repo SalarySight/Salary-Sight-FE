@@ -7,7 +7,7 @@ const FilterBtnContainer = ( { options, resetFilters, onApply, onDismiss, clearF
           <section className="filter-modal-wrapper">
             <div className="filter-modal-content">{options}</div>
             <div className="filter-actions">
-              <button className="apply-clear-btn" onClick={onApply}>Apply Filters</button>
+              <button className="apply-clear-btn" onClick={(e) => onApply(e)}>Apply Filters</button>
               <button className="apply-clear-btn" onClick={() => {
                 resetFilters()
                 onDismiss()
