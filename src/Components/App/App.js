@@ -74,7 +74,7 @@ const App = () => {
             return (
               <>
                 <Header match={match} />
-                <Cover />
+                <Cover data={data}/>
                 <MainPage toggle={drawerToggleClickHandler} match={match} />
                 <SlideDrawer
                   toggle={drawerToggleClickHandler}
@@ -108,7 +108,7 @@ const App = () => {
             return (
               <>
                 <Header match={match} />
-                <Cover />
+                <Cover data={data}/>
                 <MainPage toggle={drawerToggleClickHandler} match={match} />
                 <SlideDrawer
                   toggle={drawerToggleClickHandler}
