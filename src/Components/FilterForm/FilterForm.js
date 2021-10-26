@@ -17,6 +17,10 @@ const FilterForm = ({ handleFilterChange, salaryPosts }) => {
     { key: "Man", text: "Man", value: "Man" },
     { key: "Transgender", text: "Transgender", value: "Transgender" },
   ];
+  const sortOptions = [
+    { key: "low to high", text: "low to high", value: "low to high" },
+    { key: "high to low", text: "high to low", value: "high to low" },
+  ];
 
   function getCompanyOptions() {
     if (salaryPosts.posts) {
@@ -80,6 +84,14 @@ const FilterForm = ({ handleFilterChange, salaryPosts }) => {
                 selection
                 multiple
                 options={companyOptions}
+                onChange={(el, e) => handleFilterChange(e.placeholder, e.value)}
+              />
+              <Dropdown
+                placeholder="sort"
+                fluid
+                clearable
+                selection
+                options={sortOptions}
                 onChange={(el, e) => handleFilterChange(e.placeholder, e.value)}
               />
             </Menu>

@@ -21,6 +21,7 @@ const App = () => {
   const [filterInput, setFilterInput] = useState("");
   const [filterError, setFilterError] = useState("");
   const [filterState, setFilterState] = useState({});
+  const [sortState, setSortState] = useState({ sort: "low" });
   const [toggle, setToggle] = useState(true);
   const [input, setInput] = useState([]);
   const { data, loading, error } = useQuery(GET_POST);
@@ -110,9 +111,12 @@ const App = () => {
 
     var a = filteredCodes.sort(compare);
     console.log(a);
-    console.log(filterState);
-    console.log(filteredCodes);
-    filteredCodes !== [] ? setFilterPosts(filteredCodes) : setFilterPosts([]);
+    if (sortState["sort"] === "high") {
+      a = a.reverse();
+    } else if (sortState["sort"] === "low") {
+      a = a;
+    }
+    filteredCodes !== [] ? setFilterPosts(a) : setFilterPosts([]);
   };
 
   return (
