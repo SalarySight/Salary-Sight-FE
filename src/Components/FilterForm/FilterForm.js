@@ -21,7 +21,6 @@ const FilterForm = ({ handleFilters, clearFilterButton, handleSort }) => {
   const [salaryHiLo, setSalaryHiLo] = useState(false);
   const [salaryLoHi, setSalaryLoHi] = useState(false);
 
-
   const options = (
     <section className="filter-options-container">
       <div className="gender-section">
@@ -168,9 +167,10 @@ const FilterForm = ({ handleFilters, clearFilterButton, handleSort }) => {
               salaryHiLo ? "active-filter filter-btn" : "default filter-btn"
             }
             onClick={() => {
-              setSalaryHiLo(true)
-              setSalaryLoHi(false)}}
-            onClick={() => setSalaryHiLo(!salaryHiLo)}
+              setSalaryHiLo(!salaryHiLo)
+              setSalaryLoHi(false)
+            }
+             }
           >
             High to Low
           </button>
@@ -179,9 +179,10 @@ const FilterForm = ({ handleFilters, clearFilterButton, handleSort }) => {
               salaryLoHi ? "active-filter filter-btn" : "default filter-btn"
             }
             onClick={() => {
-              setSalaryLoHi(true)
-              setSalaryHiLo(false)}}
-            onClick={() => setSalaryLoHi(!salaryLoHi)}
+              setSalaryLoHi(!salaryLoHi)
+              setSalaryHiLo(false)
+            }
+            }
           >
             Low to High
           </button>
@@ -212,16 +213,13 @@ const FilterForm = ({ handleFilters, clearFilterButton, handleSort }) => {
       FE: programFE,
     },
     salary: {
-      "LoHi": salaryLoHi,
-      "HiLo": salaryHiLo,
+      LoHi: salaryLoHi,
+      HiLo: salaryHiLo,
     },
   };
 
-  const handleApply = (e) => {
-    e.preventDefault()
-    console.log('here')
+  const handleApply = () => {
     handleFilters(filterObj);
-    handleSort(filterObj);
     setFilterActive(false);
   };
 

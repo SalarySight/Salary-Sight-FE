@@ -11,13 +11,11 @@ import NoMatchError from "../NoMatchError/NoMatchError";
 import NotFound from "../NotFound/NotFound";
 import Error from "../Error/Error";
 import FilterForm from "../FilterForm/FilterForm";
-import Results from "../Results/Results";
 import { useQuery } from "@apollo/client";
 import { GET_POST } from "../..";
 import {
   filterByCategories,
   cleanFilters,
-  handleSort,
 } from "../FilterForm/helperFunctions";
 import "./App.css";
 
@@ -38,42 +36,14 @@ const App = () => {
 
   const handleFilters = (filterObj) => {
     const cleanedFilters = cleanFilters(filterObj);
-    setFilterPosts(filterByCategories(cleanedFilters, salaryPosts));
+    const salaryObject = filterObj.salary;
+    setFilterPosts(filterByCategories(cleanedFilters, salaryPosts, salaryObject));
     if (filterPosts.length === 0) {
       setFilterError(true);
     } else if (filterPosts.length !== 0) {
       return filterPosts;
     } else {
       return salaryPosts;
-    }
-  };
-
-  const handleSort = (filterObj) => {
-    if (filterPosts.length === 0) {
-      const arrayToSort = [...salaryPosts];
-      if (filterObj.salary.HiLo === true && filterObj.salary.LoHi === false) {
-        const newArr = arrayToSort.sort((a, b) => b.salary - a.salary);
-        console.log(newArr)
-        return setSalaryPosts(newArr);
-      }
-      if (filterObj.salary.LoHi === true && filterObj.salary.HiLo === false) {
-        const newArr = arrayToSort.sort((a, b) => a.salary - b.salary);
-        console.log(newArr)
-
-        return setSalaryPosts(newArr);
-      }
-    } else if (salaryPosts.length === 0) {
-      const arrayToSort = [...filterPosts];
-      if (filterObj.salary.HiLo === true && filterObj.salary.LoHi === false) {
-        const newArr = arrayToSort.sort((a, b) => b.salary - a.salary);
-        console.log(newArr)
-        return setFilterPosts(newArr);
-      }
-      if (filterObj.salary.LoHi === true && filterObj.salary.HiLo === false) {
-        const newArr = arrayToSort.sort((a, b) => a.salary - b.salary);
-        console.log(newArr)
-        return setFilterPosts(newArr);
-      }
     }
   };
 
@@ -114,7 +84,6 @@ const App = () => {
                 <FilterForm
                   handleFilters={handleFilters}
                   clearFilterButton={clearFilterButton}
-                  handleSort={handleSort}
                 />
                 {loading && <Loader />}
                 {!loading && error && <Error err={error} />}
@@ -149,7 +118,6 @@ const App = () => {
                 <FilterForm
                   handleFilters={handleFilters}
                   clearFilterButton={clearFilterButton}
-                  handleSort={handleSort}
                 />
                 {loading && <Loader />}
                 {!loading && error && <Error err={error} />}
