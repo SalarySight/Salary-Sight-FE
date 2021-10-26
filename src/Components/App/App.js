@@ -51,6 +51,7 @@ const App = () => {
     if (newValue === "") {
       let update = filterState;
       delete update[key];
+      console.log(update);
       setFilterState(update);
     } else {
       setFilterState({ ...filterState, [key]: [...currentValues, newValue] });
@@ -87,13 +88,30 @@ const App = () => {
     Object.keys(filterState).map(function (key, index) {
       function getFilteredCodes(array, key, value) {
         return array.filter(function (e) {
-          return value[0].includes(e[key]);
+          if (value[0].length === 0) {
+            return true;
+          } else {
+            return value[0].includes(e[key]);
+          }
         });
       }
 
       filteredCodes = getFilteredCodes(filteredCodes, key, filterState[key]);
     });
+    function compare(a, b) {
+      if (a.salary < b.salary) {
+        return -1;
+      }
+      if (a.salary > b.salary) {
+        return 1;
+      }
+      return 0;
+    }
 
+    var a = filteredCodes.sort(compare);
+    console.log(a);
+    console.log(filterState);
+    console.log(filteredCodes);
     filteredCodes !== [] ? setFilterPosts(filteredCodes) : setFilterPosts([]);
   };
 
