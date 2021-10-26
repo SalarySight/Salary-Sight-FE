@@ -8,7 +8,7 @@ const Card = ({ name, age, gender, gradYear, company, yearsExp, degree, state,
       <p className="gender card-info"><b>Gender Identity:</b><br/>{gender}</p>
       <p className="program card-info"><b>Program:</b> {program}</p>
       <p className="age card-info"><b>Age:</b> {age}</p>
-      <p className="salary card-info"><b>Salary:</b> ${salary}</p>
+      <p className="salary-num card-info"><b>Salary:</b> ${salary}</p>
       {company ? <p className="company card-info"><b>Company:</b> {company}</p> : <p className="company card-info"><b>Company:</b> Not Specifed</p>}
       <p className="years-exp card-info"><b>Years of Experience:</b> {yearsExp}</p>
       <p className="position-title card-info"><b>Job Title:</b> {positionTitle}</p>
