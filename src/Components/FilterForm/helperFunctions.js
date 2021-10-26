@@ -7,14 +7,39 @@ export const cleanFilters = (filterObj) => {
   return cleanedFilters
 }
 
-export const filterByCategories = (filterObj, salaryPosts) => {
-   return salaryPosts.filter(post => {
-    return filterObj.gender.length ? filterObj.gender.includes(post.gender) : post;
-  })
-  .filter(post => {
-    return filterObj.age.length ? filterObj.age.includes(post.age) : post;
-  })
-  .filter(post => {
-    return filterObj.program.length ? filterObj.program.includes(post.program) : post;
-  })
+export const filterByCategories = (filterObj, salaryPosts, salaryObj) => {
+  const salaryPostsArr = [...salaryPosts]
+  if(salaryObj.HiLo === true){
+    return salaryPostsArr.sort((a, b) => b.salary - a.salary)
+    .filter(post => {
+     return filterObj.gender.length ? filterObj.gender.includes(post.gender) : post;
+   })
+   .filter(post => {
+     return filterObj.age.length ? filterObj.age.includes(post.age) : post;
+   })
+   .filter(post => {
+     return filterObj.program.length ? filterObj.program.includes(post.program) : post;
+   })
+  } else if (salaryObj.LoHi === true){
+    return salaryPostsArr.sort((a, b) => a.salary - b.salary)
+    .filter(post => {
+     return filterObj.gender.length ? filterObj.gender.includes(post.gender) : post;
+   })
+   .filter(post => {
+     return filterObj.age.length ? filterObj.age.includes(post.age) : post;
+   })
+   .filter(post => {
+     return filterObj.program.length ? filterObj.program.includes(post.program) : post;
+   })
+  } else {
+  return salaryPostsArr.filter(post => {
+     return filterObj.gender.length ? filterObj.gender.includes(post.gender) : post;
+   })
+   .filter(post => {
+     return filterObj.age.length ? filterObj.age.includes(post.age) : post;
+   })
+   .filter(post => {
+     return filterObj.program.length ? filterObj.program.includes(post.program) : post;
+   })
+  }
 }

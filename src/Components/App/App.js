@@ -17,7 +17,6 @@ import { GET_POST } from "../..";
 import {
   filterByCategories,
   cleanFilters,
-  handleSort,
 } from "../FilterForm/helperFunctions";
 import "./App.css";
 
@@ -38,7 +37,8 @@ const App = () => {
 
   const handleFilters = (filterObj) => {
     const cleanedFilters = cleanFilters(filterObj);
-    setFilterPosts(filterByCategories(cleanedFilters, salaryPosts));
+    const salaryObject = filterObj.salary;
+    setFilterPosts(filterByCategories(cleanedFilters, salaryPosts, salaryObject));
     if (filterPosts.length === 0) {
       setFilterError(true);
     } else if (filterPosts.length !== 0) {
@@ -47,32 +47,7 @@ const App = () => {
       return salaryPosts;
     }
   };
-
-  const handleSort = (filterObj) => {
-    console.log(filterObj.salary.HiLo);
-    if (filterPosts.length === 0) {
-      const arrayToSort = [...salaryPosts];
-      if (filterObj.salary.HiLo === true) {
-        const newArr = arrayToSort.sort((a, b) => b.salary - a.salary);
-        return setSalaryPosts(newArr);
-      }
-      if (filterObj.salary.LoHi === true) {
-        const newArr = arrayToSort.sort((a, b) => a.salary - b.salary);
-        return setSalaryPosts(newArr);
-      }
-    } else if (salaryPosts.length === 0) {
-      const arrayToSort = [...filterPosts];
-      if (filterObj.salary.HiLo === true) {
-        const newArr = arrayToSort.sort((a, b) => b.salary - a.salary);
-        return setFilterPosts(newArr);
-      }
-      if (filterObj.salary.LoHi === true) {
-        const newArr = arrayToSort.sort((a, b) => a.salary - b.salary);
-        return setFilterPosts(newArr);
-      }
-    }
-  };
-
+  
   const clearFilterButton = (e) => {
     if (filterPosts && !loading) {
       setFilterPosts([]);
@@ -110,7 +85,6 @@ const App = () => {
                 <FilterForm
                   handleFilters={handleFilters}
                   clearFilterButton={clearFilterButton}
-                  handleSort={handleSort}
                 />
                 {loading && <Loader />}
                 {!loading && error && <Error err={error} />}
@@ -145,7 +119,6 @@ const App = () => {
                 <FilterForm
                   handleFilters={handleFilters}
                   clearFilterButton={clearFilterButton}
-                  handleSort={handleSort}
                 />
                 {loading && <Loader />}
                 {!loading && error && <Error err={error} />}

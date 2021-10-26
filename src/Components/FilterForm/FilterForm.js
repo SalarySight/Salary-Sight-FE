@@ -2,7 +2,7 @@ import { useState } from "react";
 import FilterBtnContainer from "../FilterBtnContainer/FilterBtnContainer";
 import "./Filter.css";
 
-const FilterForm = ({ handleFilters, clearFilterButton, handleSort }) => {
+const FilterForm = ({ handleFilters, clearFilterButton }) => {
   const [filterActive, setFilterActive] = useState(false);
   const [genderWoman, setGenderWoman] = useState(false);
   const [genderMan, setGenderMan] = useState(false);
@@ -187,7 +187,6 @@ const FilterForm = ({ handleFilters, clearFilterButton, handleSort }) => {
 
   const handleApply = () => {
     handleFilters(filterObj);
-    handleSort(filterObj);
     setFilterActive(false);
   };
 
