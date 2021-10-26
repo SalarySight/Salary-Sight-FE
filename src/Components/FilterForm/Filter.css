@@ -30,7 +30,6 @@
 
 .filter-options-container {
   display: flex;
-  flex-wrap: wrap;
   border-bottom: .5px solid lightgrey;
 }
 
