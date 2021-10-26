@@ -58,7 +58,6 @@ const Form = ({ showForm, toggle }) => {
   }
 
   const submitForm = (e) => {
-    // showForm = false;
     e.preventDefault();
     if (form.age && form.gender && form.gradYear && form.program && form.degree
     && form.firstPosition && form.jobHuntDuration && form.yearsOfExperience && form.positionTitle
