@@ -1,12 +1,9 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import FilterBtnContainer from '../FilterBtnContainer/FilterBtnContainer';
 import './Filter.css';
 
 const FilterForm = ({ handleFilters, clearFilterButton }) => {
   const [filterActive, setFilterActive] = useState(false);
-  // const filterFormRef = useRef(undefined);
-  // const buttonRef = useRef(undefined);
-  // const modalRef = useRef(undefined);
   const [genderWoman, setGenderWoman] = useState(false);
   const [genderMan, setGenderMan] = useState(false);
   const [genderTransgender, setGenderTransgender] = useState(false);
@@ -19,21 +16,8 @@ const FilterForm = ({ handleFilters, clearFilterButton }) => {
   const [age65, setAge65] = useState(false);
   const [programBE, setProgramBE] = useState(false);
   const [programFE, setProgramFE] = useState(false);
-
-  // useEffect(() => {
-  //   const clickOutside = (e) => {
-  //   const filterFormClicked = filterFormRef.current && filterFormRef.current.contains(e.target);
-  //   const buttonClicked = buttonRef.current && buttonRef.current.contains(e.target);
-  //   const modalClicked = modalRef.current && modalRef.current.contains(e.target);
-  //
-  //     if (filterFormClicked || buttonClicked || modalClicked) {
-  //       return;
-  //     } else {
-  //       setFilterActive(false);
-  //     }
-  //   };
-  //
-  // }, [filterFormRef, buttonRef, modalRef]);
+  const [salaryHiLo, setSalaryHiLo] = useState(false);
+  const [salaryLoHi, setSalaryLoHi] = useState(false);
 
   const options =
     <section className="filter-options-container">
@@ -46,22 +30,29 @@ const FilterForm = ({ handleFilters, clearFilterButton }) => {
         <button className={genderNonBinary ? "active-filter filter-btn" : "default filter-btn"} onClick={() => setGenderNonBinary(!genderNonBinary)}>Non-Binary/Non-Conforming</button>
       </div>
       </div>
-      <div className="age-section">
-      <p className="age-heading">Age</p>
-      <div className="age-filters">
-        <button className={age18 ? "active-filter filter-btn" : "default filter-btn"} onClick={() => setAge18(!age18)}>18-24</button>
-        <button className={age25 ? "active-filter filter-btn" : "default filter-btn"} onClick={() => setAge25(!age25)}>25-34</button>
-        <button className={age35 ? "active-filter filter-btn" : "default filter-btn"} onClick={() => setAge35(!age35)}>35-44</button>
-        <button className={age45 ? "active-filter filter-btn" : "default filter-btn"} onClick={() => setAge45(!age45)}>45-54</button>
-        <button className={age55 ? "active-filter filter-btn" : "default filter-btn"} onClick={() => setAge55(!age55)}>55-64</button>
-        <button className={age65 ? "active-filter filter-btn" : "default filter-btn"} onClick={() => setAge65(!age65)}>65+</button>
-      </div>
-      </div>
       <div className="progam-section">
       <p className="program-heading">Program</p>
       <div className="program-filters">
         <button className={programFE ? "active-filter filter-btn" : "default filter-btn"} onClick={() => setProgramFE(!programFE)}>Front-End</button>
         <button className={programBE ? "active-filter filter-btn" : "default filter-btn"} onClick={() => setProgramBE(!programBE)}>Back-End</button>
+      </div>
+      </div>
+      <div className="age-section">
+      <p className="age-heading">Age</p>
+      <div className="age-filters">
+      <button className={age18 ? "active-filter filter-btn" : "default filter-btn"} onClick={() => setAge18(!age18)}>18-24</button>
+      <button className={age25 ? "active-filter filter-btn" : "default filter-btn"} onClick={() => setAge25(!age25)}>25-34</button>
+      <button className={age35 ? "active-filter filter-btn" : "default filter-btn"} onClick={() => setAge35(!age35)}>35-44</button>
+      <button className={age45 ? "active-filter filter-btn" : "default filter-btn"} onClick={() => setAge45(!age45)}>45-54</button>
+      <button className={age55 ? "active-filter filter-btn" : "default filter-btn"} onClick={() => setAge55(!age55)}>55-64</button>
+      <button className={age65 ? "active-filter filter-btn" : "default filter-btn"} onClick={() => setAge65(!age65)}>65+</button>
+      </div>
+      </div>
+      <div className="salary-section">
+      <p className="salary-heading">Salary</p>
+      <div className="salary-filters">
+        <button className={salaryHiLo ? "active-filter filter-btn" : "default filter-btn"}>High to Low</button>
+        <button className={salaryLoHi ? "active-filter filter-btn" : "default filter-btn"}>Low to High</button>
       </div>
       </div>
     </section>
@@ -84,6 +75,10 @@ const FilterForm = ({ handleFilters, clearFilterButton }) => {
     program: {
       "BE": programBE,
       "FE": programFE,
+    },
+    salary: {
+      "Low to High": salaryLoHi,
+      "High to Low": salaryHiLo
     }
   }
 
@@ -105,12 +100,13 @@ const FilterForm = ({ handleFilters, clearFilterButton }) => {
     setAge65(false);
     setProgramBE(false);
     setProgramFE(false);
+    setSalaryHiLo(false);
+    setSalaryLoHi(false);
   }
 
   return (
     <>
       <div className="filter">
-      </div>
         <FilterBtnContainer
         options={options}
         resetFilters={resetFilters}
@@ -118,14 +114,9 @@ const FilterForm = ({ handleFilters, clearFilterButton }) => {
         onDismiss={() => setFilterActive(false)}
         clearFilter={clearFilterButton}
         />
+      </div>
     </>
   );
 }
 
 export default FilterForm;
-
-// <button className="clear-filter" onClick={(e) => {
-//   resetFilters()
-//   clearFilterButton(e)
-// }}>Clear Filters</button>
-// <button className="filter-button" onClick={() => setFilterActive(!filterActive)}>Filter</button>

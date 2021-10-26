@@ -67,7 +67,7 @@ useEffect(() => {
       <Route exact path="/" render={({ match }) => {
           return (
           <>
-          <Header />
+          <Header match={match}/>
           <Cover />
           <MainPage toggle={drawerToggleClickHandler} match={match}/>
           <SlideDrawer toggle={drawerToggleClickHandler} show={drawerOpen} />

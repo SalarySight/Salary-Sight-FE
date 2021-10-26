@@ -1,5 +1,5 @@
 .active-filter {
-  background: turquoise;
+  background: #17F1FB;
 }
 
 .active-filter,
@@ -7,34 +7,52 @@
   padding: 1%;
 }
 
+.default {
+  background: white;
+}
+
+.default:hover {
+  background: #f2efef;
+}
+
+.active-filter:hover,
+.default:hover {
+  cursor: pointer;
+}
+
 .filter-btn {
-  border: .5px solid black;
-  margin: 1%;
+  border: solid transparent;
+  font-size: 1em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .filter-options-container {
-  border: 1px solid black;
   display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  padding: 2%;
+  flex-wrap: wrap;
+  border-bottom: .5px solid lightgrey;
 }
 
 .gender-heading,
 .age-heading,
-.program-heading {
-  margin: 0%;
-  padding: 0%;
+.program-heading,
+.salary-heading {
+  margin: 0;
+  padding: 2%;
+  background: lightgrey;
   display: flex;
   justify-content: center;
   font-weight: bolder;
-
+  font-size: 1.3em;
+  width: 25vw;
 }
 
 .gender-filters,
 .age-filters,
-.program-filters {
+.program-filters,
+.salary-filters {
   display: flex;
-  justify-content: space-evenly;
-  padding: 0;
+  flex-direction: column;
+  margin: 0;
 }

@@ -17,8 +17,3 @@ const FilterBtnContainer = ( { options, resetFilters, onApply, onDismiss, clearF
     );
   }
 export default FilterBtnContainer;
-
-
-// <button onClick={onDismiss}>✕</button>
-// <DialogOverlay className="filter-modal">
-// </DialogOverlay>
