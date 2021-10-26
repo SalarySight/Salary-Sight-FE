@@ -49,7 +49,7 @@ const FilterForm = ({ handleFilterChange, salaryPosts }) => {
   return (
     <>
       <Grid>
-        <Grid.Row>
+        <Grid.Row centered>
           <Grid.Column width={6}>
             <Menu secondary>
               <Dropdown

@@ -7,8 +7,8 @@
   background-color: #005470;
   color: white;
   padding: 5%;
-  height: 55vh;
-  width: 20vw;
+  height: 600px;
+  width: fit-content;
 }
 
 /* hover styling if we want/need it for salary cards */
