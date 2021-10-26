@@ -143,7 +143,11 @@ const FilterForm = ({ handleFilters, clearFilterButton }) => {
             className={
               salaryHiLo ? "active-filter filter-btn" : "default filter-btn"
             }
-            onClick={() => setSalaryHiLo(!salaryHiLo)}
+            onClick={() => {
+              setSalaryHiLo(!salaryHiLo)
+              setSalaryLoHi(false)
+            }
+             }
           >
             High to Low
           </button>
@@ -151,7 +155,11 @@ const FilterForm = ({ handleFilters, clearFilterButton }) => {
             className={
               salaryLoHi ? "active-filter filter-btn" : "default filter-btn"
             }
-            onClick={() => setSalaryLoHi(!salaryLoHi)}
+            onClick={() => {
+              setSalaryLoHi(!salaryLoHi)
+              setSalaryHiLo(false)
+            }
+            }
           >
             Low to High
           </button>
