@@ -14,7 +14,7 @@ import FilterForm from '../FilterForm/FilterForm';
 import Results from '../Results/Results';
 import { useQuery } from '@apollo/client';
 import { GET_POST } from '../..';
-import { filterByCatagories, cleanFilters } from '../FilterForm/helperFunctions';
+import { filterByCategories, cleanFilters } from '../FilterForm/helperFunctions';
 import "./App.css";
 
 const App = () => {
@@ -32,11 +32,17 @@ const backdropClickHandler = () => {
   setDrawerOpen(false)
 };
 
-  const handleTrailFilters = (filterObj) => {
-    const cleanedFilters = cleanFilters(filterObj)
-    setFilterPosts(filterByCatagories(cleanedFilters, salaryPosts))
+const handleFilters = (filterObj) => {
+  const cleanedFilters = cleanFilters(filterObj)
+  setFilterPosts(filterByCategories(cleanedFilters, salaryPosts))
+  if (filterPosts.length === 0) {
+    setFilterError(true)
+  } else if (filterPosts.length !== 0) {
+    return filterPosts;
+  } else {
+    return salaryPosts
   }
-
+}
 
 useEffect(() => {
   if (loading) {
@@ -59,11 +65,15 @@ useEffect(() => {
           <MainPage toggle={drawerToggleClickHandler} match={match}/>
           <SlideDrawer toggle={drawerToggleClickHandler} show={drawerOpen} />
           {drawerOpen && <Backdrop close={backdropClickHandler} />}
-          <FilterForm handleFilters={handleTrailFilters}/>
+          <FilterForm
+          handleFilters={handleFilters}
+          filterError={filterError}
+          filterPosts={filterPosts}
+          />
           {loading && <Loader />}
           {!loading && error && <Error err={error} />}
           {!loading && !error && filterPosts.length === 0 && !filterError && <SalaryCards data={data.posts}/>}
-          {!loading && !error && filterPosts.length !== 0 && <Results filterPosts={filterPosts}/>}
+
           {!loading && !error && filterPosts.length !== 0 && <SalaryCards data={filterPosts}/>}
           {!loading && filterError && filterPosts.length === 0 && <NoMatchError />}
           </>
@@ -77,11 +87,14 @@ useEffect(() => {
         <MainPage toggle={drawerToggleClickHandler} />
         <SlideDrawer toggle={drawerToggleClickHandler} show={drawerOpen} />
         {drawerOpen && <Backdrop close={backdropClickHandler} />}
-        <FilterForm handleFilters={handleTrailFilters}/>
+        <FilterForm
+        handleFilters={handleFilters}
+        filterError={filterError}
+        filterPosts={filterPosts}/>
         {loading && <Loader />}
         {!loading && error && <Error err={error} />}
         {!loading && !error && filterPosts.length === 0 && !filterError && <SalaryCards data={data.posts}/>}
-        {!loading && !error && filterPosts.length !== 0 && <Results filterPosts={filterPosts}/>}
+
         {!loading && !error && filterPosts.length !== 0 && <SalaryCards data={filterPosts}/>}
         {!loading && filterError && filterPosts.length === 0 && <NoMatchError />}
         </>
@@ -94,3 +107,6 @@ useEffect(() => {
 }
 
 export default App;
+
+// {!loading && !error && filterPosts.length !== 0 && <Results filterPosts={filterPosts}/>}
+// {!loading && !error && filterPosts.length !== 0 && <Results filterPosts={filterPosts}/>}

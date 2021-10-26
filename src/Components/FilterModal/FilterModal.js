@@ -1,5 +1,6 @@
 import React from 'react';
 import { DialogContent, DialogOverlay } from '@reach/dialog';
+import "@reach/dialog/styles.css";
 
 const FilterModal = React.forwardRef(({ options, resetFilters, onApply, onDismiss}, ref) => {
     return (
@@ -12,9 +13,9 @@ const FilterModal = React.forwardRef(({ options, resetFilters, onApply, onDismis
           >
             <div className="filter-modal-header">
               <button onClick={resetFilters}>Reset Filters</button>
-              <button onClick={onDismiss}>✕</button>  
+              <button onClick={onDismiss}>✕</button>
             </div>
-            <div className="filter-modal-content">{options}</div>         
+            <div className="filter-modal-content">{options}</div>
             <div className="filter-modal-actions">
               <button onClick={onApply}>Apply Filters</button>
             </div>

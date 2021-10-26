@@ -2,9 +2,9 @@ import React, { useState, useEffect, useRef } from 'react';
 import FilterModal from '../FilterModal/FilterModal';
 import './Filter.css';
 
-const FilterForm = ({ handleFilters }) => {
+const FilterForm = ({ handleFilters, filterError, filterPosts }) => {
   const [filterActive, setFilterActive] = useState(false);
-  const dropdownRef = useRef(undefined);
+  const filterFormRef = useRef(undefined);
   const buttonRef = useRef(undefined);
   const modalRef = useRef(undefined);
   const [genderWoman, setGenderWoman] = useState(false);
@@ -20,22 +20,20 @@ const FilterForm = ({ handleFilters }) => {
   const [programBE, setProgramBE] = useState(false);
   const [programFE, setProgramFE] = useState(false);
 
-  // This useEffect is used to close the dropdown/modal if a user clicks anywhere outside
-  // of the dropdown/modal
   useEffect(() => {
-    const handleClickOutside = (event) => {
-    const isDropdownClick = dropdownRef.current && dropdownRef.current.contains(event.target);
-    const isButtonClick = buttonRef.current && buttonRef.current.contains(event.target);
-    const isModalClick = modalRef.current && modalRef.current.contains(event.target);
+    const clickOutside = (e) => {
+    const filterFormClicked = filterFormRef.current && filterFormRef.current.contains(e.target);
+    const buttonClicked = buttonRef.current && buttonRef.current.contains(e.target);
+    const modalClicked = modalRef.current && modalRef.current.contains(e.target);
 
-      if (isDropdownClick || isButtonClick || isModalClick) {
+      if (filterFormClicked || buttonClicked || modalClicked) {
         return;
       } else {
         setFilterActive(false);
       }
     };
 
-  }, [dropdownRef, buttonRef, modalRef]);
+  }, [filterFormRef, buttonRef, modalRef]);
 
   const options =
     <section className="filter-options-container">
@@ -109,25 +107,12 @@ const FilterForm = ({ handleFilters }) => {
         <button className="filter-button" onClick={() => setFilterActive(!filterActive)} ref={buttonRef}>Filter</button>
       </div>
       { filterActive && (
-        <>
-          <section className="filter-dropdown" ref={dropdownRef}>Filter Salaries
-            <div className="filter-dropdown-content">
-              {options}
-            </div>
-            <div className="filter-dropdown-actions">
-              <button className="filter-apply-button" onClick={() => handleApply()}>Apply Filters</button>
-              <button className="filter-reset-button" onClick={() => resetFilters()}>Reset Filters</button>
-            </div>
-          </section>
-        </>
-      )}
-      { filterActive && (
         <FilterModal
-          ref={modalRef}
           options={options}
           resetFilters={resetFilters}
           onApply={handleApply}
           onDismiss={() => setFilterActive(false)}
+          ref={modalRef}
         />
       )}
     </>
