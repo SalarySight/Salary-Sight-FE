@@ -90,7 +90,7 @@ describe("Salary Sight User Flows", () => {
       cy.get('*[class^="default filter-btn"]').contains("18-24").click();
       cy.get('*[class^="apply-clear-btn"]').contains("Apply Filters").click();
     });
-    
+
 
   });
 });
