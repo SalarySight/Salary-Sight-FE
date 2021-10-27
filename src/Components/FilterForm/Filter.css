@@ -55,3 +55,9 @@
   flex-direction: column;
   margin: 0;
 }
+
+@media screen and (max-width: 875px) {
+  .filter-btn {
+    font-size: .9em;
+  }
+}

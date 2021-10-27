@@ -30,3 +30,29 @@
   color: #4c4d4f;
   width: 16vw;
 }
+
+@media screen and (max-width: 1050px) {
+  .logo {
+    height: 5.8em;
+    width: 5.8em;
+  }
+
+  .username {
+    font-size: 1.8em;
+  }
+}
+
+@media screen and (max-width: 875px) {
+  .logo {
+    height: 5.2em;
+    width: 5.2em;
+  }
+
+  .username {
+    font-size: 1.6em;
+  }
+
+  .title {
+      font-size: 2.2em;
+  }
+}

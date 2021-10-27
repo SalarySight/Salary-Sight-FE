@@ -1,19 +1,17 @@
 .card {
-  font-size: .8em;
+  font-size: 1em;
   border-radius: 2%;
   border: 1px solid black;
   background-color: #005470;
   color: white;
-  height: 40vh;
-  width: 20vw;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
+  height: 43vh;
+  width: 22vw;
+  text-align: center;
+  overflow-y: scroll;
 }
 
 .card-info {
-  margin: 1.5%;
+  margin: 5%;
   padding: 0;
 }
 
@@ -22,15 +20,17 @@
   font-size: 1.1em;
 }
 
-.gender {
-  text-align: center;
+@media screen and (max-width: 1050px) {
+  .card {
+    width: 30vw;
+  }
 }
 
-@media screen and (max-width: 850px) {
+@media screen and (max-width: 875px) {
   .card {
-    height: 40vh;
+    height: 38vh;
     width: 100%;
-    font-size: .8em;
+    font-size: 1em;
   }
 }
 
