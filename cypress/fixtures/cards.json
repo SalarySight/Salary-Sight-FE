@@ -1,0 +1,44 @@
+{ 
+"data": {
+     "posts": [
+           {
+              "id": "42",
+              "username": "Example Username",
+              "company": "Example Company",
+              "salary": 100000,
+              "degree": "Four Year Degree",
+              "positionTitle": "Software Engineer",
+              "state": "CO",
+              "jobHuntDuration": 45,
+              "gender": "Female/Woman",
+              "age": "18-24",
+              "yearsOfExperience": 1,
+              "program": "Back-End",
+              "gradYear": "2019",
+              "typeOfEmployment": "Full Time",
+              "locationOfEmployment": "remote",
+              "negotiation": "true",
+              "firstPosition": "yes"
+            },
+            {
+              "id": "43",
+              "username": "Another Example Username",
+              "company": "Another Example Company",
+              "salary": 90000,
+              "degree": "No Degree",
+              "positionTitle": "Associate Software Engineer",
+              "state": "CA",
+              "jobHuntDuration": 90,
+              "gender": "Male/Man",
+              "age": "25-34",
+              "yearsOfExperience": 1,
+              "program": "Front-End",
+              "gradYear": "2020",
+              "typeOfEmployment": "Full Time",
+              "locationOfEmployment": "hybrid",
+              "negotiation": "true",
+              "firstPosition": "yes"
+             }
+         ]
+     }
+ }
