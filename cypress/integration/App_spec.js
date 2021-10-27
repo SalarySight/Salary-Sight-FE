@@ -75,7 +75,7 @@ describe("Salary Sight User Flows", () => {
       cy.get("input.full-time").click().should("have.value", "Full-Time");
       cy.get("input.remote").click().should("have.value", "Remote");
       cy.get("input.negotiation-yes").click().should("have.value", "Yes");
-      cy.get('*[class^="submit-salary-btn"]').contains("Submit").click();
+      cy.get('*[class^="submit-salary-btn"]').contains("Submit").scrollIntoView()
       cy.interceptGraphQlCalls();
     });
   });
