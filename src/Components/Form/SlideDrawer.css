@@ -14,3 +14,21 @@
 .side-drawer.open {
    transform: translateX(0);
 }
+
+@media screen and (max-width: 900px) {
+  .side-drawer {
+    width: 60vw;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .side-drawer {
+    width: 80vw;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .side-drawer {
+    width: 80vw;
+  }
+}
