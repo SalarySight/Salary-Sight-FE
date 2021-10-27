@@ -5,16 +5,14 @@ describe("Salary Sight User Flows", () => {
   });
 
   it("Should display all salary data on the home page", () => {
-    cy.url("http://localhost:3000/")
-      .get('*[class^="card"]')
+      cy.get('*[class^="card"]')
       .contains("Example Username")
       .get('*[class^="card"]')
       .contains("Another Example Username");
   });
 
   it("Should display filter options", () => {
-    cy.url("http://localhost:3000/")
-      .get('*[class^="default filter-btn"]')
+      cy.get('*[class^="default filter-btn"]')
       .contains("Female/Woman")
       .get('*[class^="default filter-btn"]')
       .contains("Front-End")
@@ -25,8 +23,7 @@ describe("Salary Sight User Flows", () => {
   });
 
   it("Should display a login button", () => {
-    cy.url("http://localhost:3000/")
-      .get('*[class^="login-btn"]')
+      cy.get('*[class^="login-btn"]')
       .contains("Login");
   });
 
