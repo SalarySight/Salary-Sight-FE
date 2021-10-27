@@ -2,9 +2,9 @@ import "./NoMatchError.css";
 
 const NoMatchError = () => {
   return (
-    <div className="no-match-error">
-      <h3>No results</h3>
-    </div>
+    <section className="no-match-error">
+      <h3>No Results</h3>
+    </section>
   );
 };
 

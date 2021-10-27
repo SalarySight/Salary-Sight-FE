@@ -1,4 +1,6 @@
 .no-match-error {
   text-align: center;
-  font-size: 1.2em;
+  font-size: 1.1em;
+  height: 90vh;
+  margin-top: -2%;
 }
