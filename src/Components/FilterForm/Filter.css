@@ -42,6 +42,7 @@
   background: lightgrey;
   display: flex;
   justify-content: center;
+  /* align-items: center; */
   font-weight: bolder;
   font-size: 1.3em;
   width: 25vw;
@@ -60,4 +61,24 @@
   .filter-btn {
     font-size: .9em;
   }
+}
+
+@media screen and (max-width: 760px) {
+  .gender-heading,
+  .age-heading,
+  .program-heading,
+  .salary-heading {
+    font-size: .9em;
+    width: 100vw;
+    justify-content: center;
+  }
+
+  .filter-btn {
+    font-size: .8em;
+  }
+
+  .filter-options-container {
+    display: inline-block;
+  }
+
 }

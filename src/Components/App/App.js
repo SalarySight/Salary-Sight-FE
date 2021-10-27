@@ -62,7 +62,7 @@ const App = () => {
     } else {
       setSalaryPosts(data.posts);
     }
-  }, [data]);
+  }, [data, loading, error]);
 
   return (
     <div>

@@ -50,5 +50,11 @@
 @media screen and (max-width: 450px) {
   .card {
     grid-gap: .25em;
+    padding-top: 8%;
   }
+
+  .card-info {
+    margin: 1%;
+  }
+
 }
