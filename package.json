@@ -5,6 +5,7 @@
   "private": true,
   "homepage": "https://salary-sight.herokuapp.com/",
     "engines": {
+    "npm": "7.21.1",
     "node": "16.9.1"
   },
   "dependencies": {
