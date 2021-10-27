@@ -1,8 +1,13 @@
 {
-  "homepage": "https://salary-sight.herokuapp.com/",
   "name": "salary-sight",
   "version": "0.1.0",
+  "heroku-postbuild": "npm run build",
   "private": true,
+  "homepage": "https://salary-sight.herokuapp.com/",
+    "engines": {
+    "npm": "7.21.1",
+    "node": "16.9.1"
+  },
   "dependencies": {
     "@apollo/client": "^3.4.16",
     "@reach/dialog": "^0.16.2",

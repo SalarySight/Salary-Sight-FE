@@ -18,7 +18,6 @@ import {
   filterByCategories,
   cleanFilters,
 } from "../FilterForm/helperFunctions";
-import "./App.css";
 
 const App = () => {
   const [drawerOpen, setDrawerOpen] = useState(false);
@@ -38,7 +37,9 @@ const App = () => {
   const handleFilters = (filterObj) => {
     const cleanedFilters = cleanFilters(filterObj);
     const salaryObject = filterObj.salary;
-    setFilterPosts(filterByCategories(cleanedFilters, salaryPosts, salaryObject));
+    setFilterPosts(
+      filterByCategories(cleanedFilters, salaryPosts, salaryObject)
+    );
     if (filterPosts.length === 0) {
       setFilterError(true);
     } else if (filterPosts.length !== 0) {
@@ -75,7 +76,7 @@ const App = () => {
             return (
               <>
                 <Header match={match} />
-                <Cover data={data}/>
+                <Cover data={data} />
                 <MainPage toggle={drawerToggleClickHandler} match={match} />
                 <SlideDrawer
                   toggle={drawerToggleClickHandler}
@@ -109,7 +110,7 @@ const App = () => {
             return (
               <>
                 <Header match={match} />
-                <Cover data={data}/>
+                <Cover data={data} />
                 <MainPage toggle={drawerToggleClickHandler} match={match} />
                 <SlideDrawer
                   toggle={drawerToggleClickHandler}

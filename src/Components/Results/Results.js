@@ -1,4 +1,4 @@
-import './Results.css';
+import "./Results.css";
 
 const Results = ({ data }) => {
   return (
@@ -6,6 +6,6 @@ const Results = ({ data }) => {
       {data && data.length > 1 ? <h3>{data.length} Results</h3> : <h3>{data.length} Result</h3>}
     </div>
   );
-}
+};
 
 export default Results;
