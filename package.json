@@ -1,8 +1,9 @@
 {
-  "homepage": "https://salary-sight.herokuapp.com/",
   "name": "salary-sight",
   "version": "0.1.0",
+  "heroku-postbuild": "npm run build",
   "private": true,
+  "homepage": "https://salary-sight.herokuapp.com/",
     "engines": {
     "node": "16.9.1"
   },
