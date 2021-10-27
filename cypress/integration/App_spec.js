@@ -1,7 +1,7 @@
 describe("Salary Sight User Flows", () => {
   beforeEach(() => {
-    cy.interceptGraphQlCalls();
-    cy.visit("http://localhost:3000/");
+    cy.interceptGraphQlCalls()
+    cy.visit("http://localhost:3000/")
   });
 
   it("Should display all salary data on the home page", () => {
