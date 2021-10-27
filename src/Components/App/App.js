@@ -11,6 +11,7 @@ import NoMatchError from "../NoMatchError/NoMatchError";
 import NotFound from "../NotFound/NotFound";
 import Error from "../Error/Error";
 import FilterForm from "../FilterForm/FilterForm";
+import Results from "../Results/Results";
 import { useQuery } from "@apollo/client";
 import { GET_POST } from "../..";
 import {

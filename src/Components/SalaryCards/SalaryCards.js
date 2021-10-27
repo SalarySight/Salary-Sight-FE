@@ -1,5 +1,6 @@
 import "./SalaryCards.css";
-import Card from '../Card/Card'
+import Card from '../Card/Card';
+import Results from "../Results/Results";
 
 const SalaryCards = ({ data }) => {
 
@@ -27,9 +28,12 @@ const SalaryCards = ({ data }) => {
       );
   });
   return (
+    <>
+    <Results data={data} />
     <section className="salary-cards-container">
      {salaryCards}
     </section>
+    </>
   );
 };
 
