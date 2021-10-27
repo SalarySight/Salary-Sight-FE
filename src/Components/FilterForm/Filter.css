@@ -1,5 +1,5 @@
 .active-filter {
-  background: #17F1FB;
+  background: #17f1fb;
 }
 
 .active-filter,
@@ -30,7 +30,7 @@
 
 .filter-options-container {
   display: flex;
-  border-bottom: .5px solid lightgrey;
+  border-bottom: 0.5px solid lightgrey;
 }
 
 .gender-heading,
@@ -59,7 +59,7 @@
 
 @media screen and (max-width: 875px) {
   .filter-btn {
-    font-size: .9em;
+    font-size: 0.9em;
   }
 }
 
@@ -68,17 +68,16 @@
   .age-heading,
   .program-heading,
   .salary-heading {
-    font-size: .9em;
+    font-size: 0.9em;
     width: 100vw;
     justify-content: center;
   }
 
   .filter-btn {
-    font-size: .8em;
+    font-size: 0.8em;
   }
 
   .filter-options-container {
     display: inline-block;
   }
-
 }

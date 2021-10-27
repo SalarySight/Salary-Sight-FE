@@ -42,9 +42,10 @@ input[type="radio"] {
   align-items: center;
 }
 
-.submit-btn, .login-btn {
+.submit-btn,
+.login-btn {
   font-size: 1.2em;
-  padding: .3em 2em;
+  padding: 0.3em 2em;
   border-radius: 50rem;
   border-style: none;
   margin: 2%;
@@ -59,7 +60,7 @@ input[type="radio"] {
 .submit-btn:hover,
 .login-btn:hover {
   cursor: pointer;
-  background-color: #17F1FB;
+  background-color: #17f1fb;
 }
 
 @media screen and (max-width: 900px) {

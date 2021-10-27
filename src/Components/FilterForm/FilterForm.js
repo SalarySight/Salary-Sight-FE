@@ -39,14 +39,11 @@ const FilterForm = ({ handleFilters, clearFilterButton, handleSort }) => {
             }
             onClick={() => setGenderMan(!genderMan)}
           >
-
             Male/Man
           </button>
           <button
             className={
-              genderTransMan
-                ? "active-filter filter-btn"
-                : "default filter-btn"
+              genderTransMan ? "active-filter filter-btn" : "default filter-btn"
             }
             onClick={() => setGenderTransMan(!genderTransMan)}
           >
@@ -74,9 +71,7 @@ const FilterForm = ({ handleFilters, clearFilterButton, handleSort }) => {
           </button>
           <button
             className={
-              other
-                ? "active-filter filter-btn"
-                : "default filter-btn"
+              other ? "active-filter filter-btn" : "default filter-btn"
             }
             onClick={() => setOther(!other)}
           >
@@ -166,10 +161,9 @@ const FilterForm = ({ handleFilters, clearFilterButton, handleSort }) => {
               salaryHiLo ? "active-filter filter-btn" : "default filter-btn"
             }
             onClick={() => {
-              setSalaryHiLo(!salaryHiLo)
-              setSalaryLoHi(false)
-            }
-             }
+              setSalaryHiLo(!salaryHiLo);
+              setSalaryLoHi(false);
+            }}
           >
             High to Low
           </button>
@@ -178,10 +172,9 @@ const FilterForm = ({ handleFilters, clearFilterButton, handleSort }) => {
               salaryLoHi ? "active-filter filter-btn" : "default filter-btn"
             }
             onClick={() => {
-              setSalaryLoHi(!salaryLoHi)
-              setSalaryHiLo(false)
-            }
-            }
+              setSalaryLoHi(!salaryLoHi);
+              setSalaryHiLo(false);
+            }}
           >
             Low to High
           </button>
@@ -197,7 +190,7 @@ const FilterForm = ({ handleFilters, clearFilterButton, handleSort }) => {
       "Transmale/Transman": genderTransMan,
       "Transfemale/Transwoman": genderTransWoman,
       "Non-Binary/Non-Conforming": genderNonBinary,
-      "Other": other
+      Other: other,
     },
     age: {
       "18-24": age18,

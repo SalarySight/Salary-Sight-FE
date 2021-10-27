@@ -16,7 +16,7 @@
 }
 
 .salary-num {
-  color: #F9AE06;
+  color: #f9ae06;
   font-size: 1.1em;
 }
 
@@ -49,12 +49,11 @@
 
 @media screen and (max-width: 450px) {
   .card {
-    grid-gap: .25em;
+    grid-gap: 0.25em;
     padding-top: 8%;
   }
 
   .card-info {
     margin: 1%;
   }
-
 }
