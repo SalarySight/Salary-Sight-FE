@@ -297,7 +297,7 @@ const clearForm = () => {
         <label>
           First Position out of Turing?:*
           <input
-            className="yes"
+            className="yes-position"
             name="firstPosition"
             type="radio"
             value="Yes"
@@ -306,7 +306,7 @@ const clearForm = () => {
           />
           Yes
           <input
-            className="no"
+            className="no-position"
             name="firstPosition"
             type="radio"
             value="No"
@@ -434,7 +434,7 @@ const clearForm = () => {
         <label>
           Did you negotiation the salary?:*
           <input
-            className="yes"
+            className="negotiation-yes"
             name="negotiation"
             type="radio"
             value="Yes"
@@ -443,7 +443,7 @@ const clearForm = () => {
           />
           Yes
           <input
-            className="no"
+            className="negotiation-no"
             name="negotiation"
             type="radio"
             value="No"
@@ -453,7 +453,7 @@ const clearForm = () => {
           No
         </label>
         {formError && <p>Please fill out all fields</p>}
-        <button className="submit-btn" onClick={closeForm}>Submit</button>
+        <button className="submit-salary-btn" onClick={closeForm}>Submit</button>
       </form>
       </div>
     );

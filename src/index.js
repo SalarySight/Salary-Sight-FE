@@ -16,7 +16,7 @@ const client = new ApolloClient({
 });
 
 export const GET_POST = gql `
-  query {
+  query posts {
       posts {
         id
         username
