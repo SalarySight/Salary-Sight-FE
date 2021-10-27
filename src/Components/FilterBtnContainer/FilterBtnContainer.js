@@ -1,7 +1,7 @@
 import React from 'react';
 import './FilterBtnContainer.css'
 
-const FilterBtnContainer = ( { options, resetFilters, onApply, onDismiss, clearFilter} ) => {
+const FilterBtnContainer = ( { options, resetFilters, onApply, clearFilter} ) => {
     return (
       <>
           <section className="filter-modal-wrapper">
@@ -10,7 +10,6 @@ const FilterBtnContainer = ( { options, resetFilters, onApply, onDismiss, clearF
               <button className="apply-clear-btn" onClick={(e) => onApply(e)}>Apply Filters</button>
               <button className="apply-clear-btn" onClick={() => {
                 resetFilters()
-                onDismiss()
                 clearFilter()}}>Reset Filters</button>
             </div>
           </section>

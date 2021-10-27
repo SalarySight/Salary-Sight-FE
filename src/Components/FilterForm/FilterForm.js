@@ -3,7 +3,6 @@ import FilterBtnContainer from "../FilterBtnContainer/FilterBtnContainer";
 import "./Filter.css";
 
 const FilterForm = ({ handleFilters, clearFilterButton, handleSort }) => {
-  const [filterActive, setFilterActive] = useState(false);
   const [genderWoman, setGenderWoman] = useState(false);
   const [genderMan, setGenderMan] = useState(false);
   const [genderTransMan, setGenderTransMan] = useState(false);
@@ -220,7 +219,6 @@ const FilterForm = ({ handleFilters, clearFilterButton, handleSort }) => {
 
   const handleApply = () => {
     handleFilters(filterObj);
-    setFilterActive(false);
   };
 
   const resetFilters = () => {
@@ -243,17 +241,14 @@ const FilterForm = ({ handleFilters, clearFilterButton, handleSort }) => {
   };
 
   return (
-    <>
-      <div className="filter">
-        <FilterBtnContainer
-          options={options}
-          resetFilters={resetFilters}
-          onApply={handleApply}
-          onDismiss={() => setFilterActive(false)}
-          clearFilter={clearFilterButton}
-        />
-      </div>
-    </>
+    <div className="filter">
+      <FilterBtnContainer
+        options={options}
+        resetFilters={resetFilters}
+        onApply={handleApply}
+        clearFilter={clearFilterButton}
+      />
+    </div>
   );
 };
 

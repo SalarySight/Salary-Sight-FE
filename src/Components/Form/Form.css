@@ -15,7 +15,7 @@ h2 {
 }
 
 input[type="text"] {
-  width: 8vw;
+  width: 16vw;
   height: 3vh;
   margin-left: 5px;
 }
@@ -62,10 +62,44 @@ input[type="radio"] {
   background-color: #17F1FB;
 }
 
-.submit-salary-btn {
-  height: 10vh;
+@media screen and (max-width: 900px) {
+  label {
+    padding: 5px;
+    font-size: 15px;
+  }
 }
 
-h2 {
-  font-size: 15px;
+@media screen and (max-width: 700px) {
+  label {
+    padding: 5px;
+    font-size: 16px;
+  }
+
+  .submit-btn {
+    font-size: 1.1em;
+  }
+
+  input[type="radio"] {
+    width: 3vw;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  label {
+    padding: 3px;
+    font-size: 12px;
+  }
+
+  .submit-btn {
+    font-size: 1em;
+  }
+
+  h2 {
+    text-align: center;
+    font-size: 1.5em;
+  }
+
+  input[type="radio"] {
+    width: 3vw;
+  }
 }
