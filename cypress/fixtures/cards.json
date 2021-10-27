@@ -1,5 +1,8 @@
 { 
 "data": {
+       "salary": {
+          "medianSalary": 90000
+         },
      "posts": [
            {
               "id": "42",

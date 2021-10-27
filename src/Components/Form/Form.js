@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { useMutation } from '@apollo/client';
+import { useMutation } from "@apollo/client";
 import "./Form.css";
-import { GET_POST, CREATE_POST } from '../..'
+import { GET_POST, CREATE_POST } from "../..";
 
 const initialState = {
   username: "",
@@ -19,51 +19,75 @@ const initialState = {
   typeOfEmployment: "",
   state: "",
   negotiation: "",
-  salary: ""
-}
+  salary: "",
+};
 
 const Form = ({ showForm, toggle }) => {
-  const [form, setForm] = useState(initialState)
-  const [formError, setFormError] = useState(false)
-  const [createPost, { loading , error, data }] = useMutation(CREATE_POST, {
-    refetchQueries: [GET_POST]
-  })
+  const [form, setForm] = useState(initialState);
+  const [formError, setFormError] = useState(false);
+  const [createPost, { loading, error, data }] = useMutation(CREATE_POST, {
+    refetchQueries: [GET_POST],
+  });
 
   if (error) {
-    console.log('error from form', error)
+    console.log("error from form", error);
   }
 
   if (loading) {
-    console.log('loading from form', loading)
+    console.log("loading from form", loading);
   }
 
   if (data) {
-    console.log('data from form', data)
+    console.log("data from form", data);
   }
 
   const closeForm = () => {
-    if (form.age && form.gender && form.gradYear && form.program && form.degree
-    && form.firstPosition && form.jobHuntDuration && form.yearsOfExperience && form.positionTitle
-     && form.locationOfEmployment && form.typeOfEmployment && form.state &&
-    form.salary && form.negotiation) {
+    if (
+      form.age &&
+      form.gender &&
+      form.gradYear &&
+      form.program &&
+      form.degree &&
+      form.firstPosition &&
+      form.jobHuntDuration &&
+      form.yearsOfExperience &&
+      form.positionTitle &&
+      form.locationOfEmployment &&
+      form.typeOfEmployment &&
+      form.state &&
+      form.salary &&
+      form.negotiation
+    ) {
       showForm = false;
       toggle();
     }
-  }
+  };
 
   const handleChange = (e) => {
     e.target.classList.add("active");
     const { name, value } = e.target;
     setForm((prevState) => ({ ...prevState, [name]: value }));
-  }
+  };
 
   const submitForm = (e) => {
-    console.log('form', form)
+    console.log("form", form);
     e.preventDefault();
-    if (form.age && form.gender && form.gradYear && form.program && form.degree
-    && form.firstPosition && form.jobHuntDuration && form.yearsOfExperience && form.positionTitle
-     && form.locationOfEmployment && form.typeOfEmployment && form.state &&
-    form.salary && form.negotiation) {
+    if (
+      form.age &&
+      form.gender &&
+      form.gradYear &&
+      form.program &&
+      form.degree &&
+      form.firstPosition &&
+      form.jobHuntDuration &&
+      form.yearsOfExperience &&
+      form.positionTitle &&
+      form.locationOfEmployment &&
+      form.typeOfEmployment &&
+      form.state &&
+      form.salary &&
+      form.negotiation
+    ) {
       createPost({
         variables: {
           username: form.username,
@@ -81,22 +105,22 @@ const Form = ({ showForm, toggle }) => {
           typeOfEmployment: form.typeOfEmployment,
           state: form.state,
           negotiation: form.negotiation,
-          salary: form.salary
-        }
-      })
+          salary: form.salary,
+        },
+      });
     } else {
-      setFormError(true)
+      setFormError(true);
     }
     clearForm();
-  }
+  };
 
-const clearForm = () => {
-   setForm({...initialState})
- }
+  const clearForm = () => {
+    setForm({ ...initialState });
+  };
 
-    return (
-      <div>
-        <form onSubmit={(e) => submitForm(e)}>
+  return (
+    <div>
+      <form onSubmit={(e) => submitForm(e)}>
         <h2>Enter your information and position information:</h2>
         <label>
           Name:
@@ -124,7 +148,9 @@ const clearForm = () => {
             <option value="Female/Woman">Female/Woman</option>
             <option value="Male/Man">Male/Man</option>
             <option value="Transmale/Transman">Transmale/Transman</option>
-            <option value="Transfemale/Transwoman">Transfemale/Transwoman</option>
+            <option value="Transfemale/Transwoman">
+              Transfemale/Transwoman
+            </option>
             <option value="Non-Binary/Non-Conforming">
               Non-Binary/Non-Conforming
             </option>
@@ -453,11 +479,12 @@ const clearForm = () => {
           No
         </label>
         {formError && <p>Please fill out all fields</p>}
-        <button className="submit-salary-btn" onClick={closeForm}>Submit</button>
+        <button className="submit-salary-btn" onClick={closeForm}>
+          Submit
+        </button>
       </form>
-      </div>
-    );
-  }
-
+    </div>
+  );
+};
 
 export default Form;

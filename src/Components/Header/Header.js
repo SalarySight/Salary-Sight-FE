@@ -1,4 +1,4 @@
-import logo from './logo.png';
+import logo from "./logo.png";
 import "./Header.css";
 
 const Header = ({ match }) => {
@@ -9,7 +9,9 @@ const Header = ({ match }) => {
         <h1 className="title">Salary Sight</h1>
       </div>
       <div className="greeting">
-      {match.params.githubName !== undefined && <h4 className="username">👋 {match.params.githubName}!</h4>}
+        {match.params.githubName !== undefined && (
+          <h4 className="username">👋 {match.params.githubName}!</h4>
+        )}
       </div>
     </header>
   );
