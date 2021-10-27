@@ -51,7 +51,7 @@ describe("Salary Sight User Flows", () => {
     });
 
     it("Should allow users to fill out form and submit form", () => {
-      cy.get('*[class^="submit-btn"]').contains("Submit Salary").click();
+      cy.get('*[class^="submit-salary-btn"]').contains("Submit").click();
       cy.get("form").contains(
         "Enter your information and position information:"
       );
