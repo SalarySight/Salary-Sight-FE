@@ -23,7 +23,7 @@ const FilterForm = ({ handleFilters, clearFilterButton, handleSort }) => {
   const options = (
     <section className="filter-options-container">
       <div className="gender-section">
-        <p className="gender-heading">Gender</p>
+        <p className="gender-heading">Gender Identity</p>
         <div className="gender-filters">
           <button
             className={

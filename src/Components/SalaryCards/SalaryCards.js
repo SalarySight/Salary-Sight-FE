@@ -1,5 +1,6 @@
 import "./SalaryCards.css";
-import Card from "../Card/Card";
+import Card from '../Card/Card';
+import Results from "../Results/Results";
 
 const SalaryCards = ({ data }) => {
   const salaryCards = data.map((post) => {
@@ -25,7 +26,14 @@ const SalaryCards = ({ data }) => {
       />
     );
   });
-  return <section className="salary-cards-container">{salaryCards}</section>;
+  return (
+    <>
+    <Results data={data} />
+    <section className="salary-cards-container">
+     {salaryCards}
+    </section>
+    </>
+  );
 };
 
 export default SalaryCards;
