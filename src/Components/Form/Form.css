@@ -43,7 +43,8 @@ input[type="radio"] {
 }
 
 .submit-btn,
-.login-btn {
+.login-btn,
+.submit-salary-btn {
   font-size: 1.2em;
   padding: 0.3em 2em;
   border-radius: 50rem;
@@ -58,7 +59,8 @@ input[type="radio"] {
 }
 
 .submit-btn:hover,
-.login-btn:hover {
+.login-btn:hover,
+.submit-salary-btn:hover {
   cursor: pointer;
   background-color: #17f1fb;
 }
