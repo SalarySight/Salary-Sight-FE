@@ -1,70 +1,95 @@
-# Getting Started with Create React App
+<h1 align="center">💰 Salary Sight 💰</h1>  
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+#### A Turing School of Software & Design Capstone Project
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## Table of Contents
+* [Introduction](#introduction)
+* [Deploy](#Deploy)
+* [Features](#features)
+* [Technologies](#technologies)
+* [Authors](#authors)
 
-### `npm start`
+## Introduction
+The primary goal of this project was to showcase all that we have learned Turing in the past seven months, which is a lot. We also worked in collaboration of the back-end/front-end teams for the first time. We had to teach ourselves a new technology during this project as well, so we chose GraphQL.  
+We decided to create an application where a user can add their salary information after graduating from Turing. A user can also filter the data on the site to display data from individuals who may have the same experince as them. The specifications for this project can be found [here.](https://mod4.turing.edu/projects/capstone/)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Goals
+* Self teach making requests with GraphQL
+* Use CircleCI for Continuous Integration and Delivery. 
+* Use TDD - Cypress 
+* Create filter options for users to filer salaries to someone with same experince, etc. 
+* Easy to navigate UI/UX  
 
-### `npm test`
+## Deploy
+[Use this deploy link!](https://salary-sight.herokuapp.com/)
+---
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Features
 
-### `npm run build`
+#### Application home page.
+<p align = "center">
+ <td><img src="https://media.giphy.com/media/6JAnS8UgMqRwEqp3Ii/giphy.gif" alt="Demonstation of home page and reading page"
+ width="700" height="auto" /></td>
+</p>
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+#### User logs in through GitHub Oauth before they can their submit salary data.
+<p align = "center">
+ <td><img src="https://media.giphy.com/media/zYNaYGRH5RoUzQDAG1/giphy.gif" alt="Demonstation of home page and reading page"
+ width="700" height="auto" /></td>
+</p>
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+#### User can fill out form with their salary info. Form wont allow user to submit unless needed values are filled out.
+<p align = "center">
+ <td><img src="https://media.giphy.com/media/DxLBJ4k5PE69cSvBYQ/giphy.gif" alt="Demonstation of home page and reading page"
+ width="700" height="auto" /></td>
+</p>
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+#### User can filter the data with multiple filters attached
+<p align = "center">
+ <td><img src="https://media.giphy.com/media/CZO3mIgBgJSchXyfcq/giphy.gif" alt="Demonstation of home page and reading page"
+ width="700" height="auto" /></td>
+</p>
 
-### `npm run eject`
+---
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+#### Future Additions
+- Add an option for users to have no gender identity. 
+- Add race or ethnicity onto form submission since there is a huge wage gap in STEM Careers. 
+- Add more filtering options.
+- Add more responsive styling. 
+- Add back and forth page arrows so users can only view 15 cards at a time. 
+- More error handling for login.
+- Allow users to view their data posts on their profile page and delete/edit their posts. 
+---
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Technologies
+<p>
+  <img src="https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB"/>
+  <img src="https://img.shields.io/badge/-GraphQL-E10098?style=for-the-badge&logo=graphql&logoColor=white" />
+  <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white"/>
+  <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white"/>
+  <img src="https://img.shields.io/badge/Heroku-430098?style=for-the-badge&logo=heroku&logoColor=white" />
+  <img src="https://img.shields.io/badge/CIRCLECI-%23161616.svg?style=for-the-badge&logo=circleci&logoColor=white" />
+  <img src="https://img.shields.io/badge/-cypress-%23E5E5E5?style=for-the-badge&logo=cypress&logoColor=058a5e" />
+ 
+</p>
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## Authors
+### Frontend Engineers
+* Darla Evans - [LinkedIn](https://www.linkedin.com/in/darla-evans/) - [Email](mailto:darlaevans2000@gmail.com) - [GitHub](https://github.com/darlaevans2000)  
+* Erica Spitz - [LinkedIn](https://www.linkedin.com/in/e-spitz/) - [Email](mailto:ericaspitz522@gmail.com) - [GitHub](https://github.com/e-spitz)  
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### Backend Engineers
+* Matt Toensing - [LinkedIn](https://linkedin.com/in/matt-toensing/) - [Email](mailto:matthew.toensing@gmail.com) - [GitHub](https://github.com/matttoensing)
+* Alex Klick - [LinkedIn](https://linkedin.com/in/matt-toensing/) - [Email](mailto:matthew.toensing@gmail.com) - [GitHub](https://github.com/matttoensing)
 
-## Learn More
+Front-End Project Repo: [SalarySight FE](https://github.com/SalarySight/SalarySight-FE)  
+Back-End Project Repo: [SalarySight BE](https://github.com/SalarySight/SalarySight-BE)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+**************************************************************************
+###### This project was created for [Turing School of Software and Design](https://turing.edu/)
+###### October 27th, 2021
+**[Back to top](#table-of-contents)**
