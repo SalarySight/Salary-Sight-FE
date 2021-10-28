@@ -4,13 +4,11 @@ import { Dropdown, Menu, Grid } from "semantic-ui-react";
 const FilterForm = ({ handleFilterChange, salaryPosts }) => {
   const [companyOptions, setCompanyOptions] = useState([]);
   const companyRef = useRef(0);
-
   const ageOptions = [
     { key: "18-24", text: "18-24", value: "18-24" },
     { key: "25-34", text: "25-34", value: "25-34" },
     { key: "35-44", text: "35-44", value: "35-44" },
   ];
-
   const genderOptions = [
     { key: "Female/Woman", text: "Female/Woman", value: "Female/Woman" },
     { key: "Male/Man", text: "Male/Man", value: "Male/Man" },

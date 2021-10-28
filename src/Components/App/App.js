@@ -1,5 +1,4 @@
 import { useState, useEffect, useRef } from "react";
-import { Route, Switch } from "react-router-dom";
 import Header from "../Header/Header";
 import Cover from "../Cover/Cover";
 import SlideDrawer from "../Form/SlideDrawer";
@@ -20,10 +19,7 @@ const App = () => {
   const [filterPosts, setFilterPosts] = useState([]);
   const [filterError, setFilterError] = useState("");
   const [filterState, setFilterState] = useState({});
-  const [filterUpdateState, setFilterUpdateState] = useState({});
-  const [sortState, setSortState] = useState({ sort: "low" });
   const [toggle, setToggle] = useState(true);
-  const [input, setInput] = useState([]);
   const { data, loading, error } = useQuery(GET_POST);
 
   const handleToggle = () => {
@@ -37,10 +33,6 @@ const App = () => {
     setDrawerOpen(false);
   };
 
-  const handleInput = (e) => {
-    setInput(e.target.value);
-    console.log(input);
-  };
   const handleFilterChange = (key, newValue) => {
     const currentValues = [];
     handleToggle();
@@ -121,8 +113,6 @@ const App = () => {
       <MainPage toggle={drawerToggleClickHandler} />
 
       <FilterForm
-        input={input}
-        handleInput={handleInput}
         filterData={filterData}
         handleFilterChange={handleFilterChange}
         salaryPosts={salaryPosts}
