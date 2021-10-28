@@ -12,52 +12,66 @@
 * [Authors](#authors)
 
 ## Introduction
-The primary goal of this project was to showcase all that we have learned Turing in the past seven months, which is a lot. We also worked in collaboration of the back-end/front-end teams for the first time. We had to teach ourselves a new technology during this project as well, so we chose GraphQL.  
-We decided to create an application where a user can add their salary information after graduating from Turing. A user can also filter the data on the site to display data from individuals who may have the same experince as them. The specifications for this project can be found [here.](https://mod4.turing.edu/projects/capstone/)
+The primary goal of this project was to showcase all that we have learned Turing in the past seven months, which is a lot. We also worked in collaboration of the back-end/front-end teams for the first time. We had to teach ourselves a new technology during this project as well. We chose GraphQL due to it's popularity in the field.  We decided to create an application where a user can add their salary information after graduating from Turing. A user can also filter the data on the site to display data from individuals who may have the same experience as them. The specifications for this project can be found [here.](https://mod4.turing.edu/projects/capstone/)
 
 
 ## Goals
-* Self teach making requests with GraphQL
+* Learn and implement making requests using GraphQL
 * Use CircleCI for Continuous Integration and Delivery. 
 * Use TDD - Cypress 
-* Create filter options for users to filer salaries to someone with same experince, etc. 
-* Easy to navigate UI/UX  
+* Create multiple layered filtering functionality
+* Easy to navigate UX/UI 
 
 ## Deploy
-[Use this deploy link!](https://salary-sight.herokuapp.com/)
+[Use this deploy link.](https://salary-sight.herokuapp.com/)
 ---
 
 ## Features
 
-#### Application home page.
+#### Demo of application home page.
 <p align = "center">
- <td><img src="https://media.giphy.com/media/6JAnS8UgMqRwEqp3Ii/giphy.gif" alt="Demonstation of home page and reading page"
+ <td><img src="https://media.giphy.com/media/6JAnS8UgMqRwEqp3Ii/giphy.gif" alt="Demonstration of home page and reading page"
  width="700" height="auto" /></td>
 </p>
 
-#### User logs in through GitHub Oauth before they can their submit salary data.
+#### User logs in through GitHub Oauth before they can submit salary data.
 <p align = "center">
- <td><img src="https://media.giphy.com/media/zYNaYGRH5RoUzQDAG1/giphy.gif" alt="Demonstation of home page and reading page"
+ <td><img src="https://media.giphy.com/media/zYNaYGRH5RoUzQDAG1/giphy.gif" alt="Demonstration of logging in through GitHub"
  width="700" height="auto" /></td>
 </p>
 
-#### User can fill out form with their salary info. Form wont allow user to submit unless needed values are filled out.
+#### User can fill out form with their salary info. Form will not allow user to submit unless needed values are filled out.
 <p align = "center">
- <td><img src="https://media.giphy.com/media/DxLBJ4k5PE69cSvBYQ/giphy.gif" alt="Demonstation of home page and reading page"
+ <td><img src="https://media.giphy.com/media/DxLBJ4k5PE69cSvBYQ/giphy.gif" alt="Demonstration of mandatory form fields"
  width="700" height="auto" /></td>
 </p>
 
 #### User can filter the data with multiple filters attached
 <p align = "center">
- <td><img src="https://media.giphy.com/media/CZO3mIgBgJSchXyfcq/giphy.gif" alt="Demonstation of home page and reading page"
+ <td><img src="https://media.giphy.com/media/CZO3mIgBgJSchXyfcq/giphy.gif" alt="Demonstration of filtering salary data"
  width="700" height="auto" /></td>
 </p>
+
+#### Responsive across mobile, tablet, laptop, and desktop platforms.
+<p align="center">
+ <td><img src="https://media.giphy.com/media/68tt8NFEzFlRsE8vl5/giphy.gif" alt="Demonstration of iPhone mobile design"
+ width="300" height="auto" /></td><br/>iPhone
+</p>
+<p align="center">
+ <td><img src="https://media.giphy.com/media/wRDKZhEabMyaAo9sl8/giphy.gif" alt="Demonstration of iPad tablet design"
+ width="300" height="auto" /></td><br/>iPad
+</p>
+<p align = "center">
+ <td><img src="https://media.giphy.com/media/4Wbe56wU1EC8nW8JOF/giphy.gif" alt="Demonstration of Nest tablet design"
+ width="700" height="auto" /></td><br/>Nest
+</p>
+
 
 ---
 
 #### Future Additions
-- Add an option for users to have no gender identity. 
-- Add race or ethnicity onto form submission since there is a huge wage gap in STEM Careers. 
+- Make gender identity an optional field.
+- Add race or ethnicity onto form submission due to there wage gap in STEM careers. 
 - Add more filtering options.
 - Add more responsive styling. 
 - Add back and forth page arrows so users can only view 15 cards at a time. 
@@ -74,7 +88,6 @@ We decided to create an application where a user can add their salary informatio
   <img src="https://img.shields.io/badge/Heroku-430098?style=for-the-badge&logo=heroku&logoColor=white" />
   <img src="https://img.shields.io/badge/CIRCLECI-%23161616.svg?style=for-the-badge&logo=circleci&logoColor=white" />
   <img src="https://img.shields.io/badge/-cypress-%23E5E5E5?style=for-the-badge&logo=cypress&logoColor=058a5e" />
- 
 </p>
 
 ## Authors
