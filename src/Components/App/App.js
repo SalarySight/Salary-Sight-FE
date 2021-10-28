@@ -19,7 +19,6 @@ const App = () => {
   const [filterPosts, setFilterPosts] = useState([]);
   const [filterError, setFilterError] = useState("");
   const [filterState, setFilterState] = useState({});
-  const [filterUpdateState, setFilterUpdateState] = useState({});
   const [toggle, setToggle] = useState(true);
   const { data, loading, error } = useQuery(GET_POST);
 
@@ -44,7 +43,6 @@ const App = () => {
       console.log(update);
       setFilterState(update);
     } else {
-      setFilterUpdateState({ [key]: newValue });
       setFilterState({ ...filterState, [key]: [...currentValues, newValue] });
     }
   };
@@ -66,7 +64,7 @@ const App = () => {
     } else {
       filterData();
     }
-  }, [filterUpdateState]);
+  }, [filterState]);
 
   const filterData = () => {
     let filteredPosts = salaryPosts.posts;
