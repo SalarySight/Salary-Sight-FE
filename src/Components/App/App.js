@@ -21,6 +21,7 @@ const App = () => {
   const [filterInput, setFilterInput] = useState("");
   const [filterError, setFilterError] = useState("");
   const [filterState, setFilterState] = useState({});
+  const [filterUpdateState, setFilterUpdateState] = useState({});
   const [sortState, setSortState] = useState({ sort: "low" });
   const [toggle, setToggle] = useState(true);
   const [input, setInput] = useState([]);
@@ -55,6 +56,7 @@ const App = () => {
       console.log(update);
       setFilterState(update);
     } else {
+      setFilterUpdateState({ [key]: newValue });
       setFilterState({ ...filterState, [key]: [...currentValues, newValue] });
     }
   };
@@ -80,9 +82,10 @@ const App = () => {
     if (didMount.current) {
       didMount.current = false;
     } else {
+      console.log(Object.values(filterUpdateState));
       filterData();
     }
-  }, [filterState, toggle]);
+  }, [filterUpdateState, toggle]);
 
   const filterData = () => {
     var filteredCodes = salaryPosts.posts;
@@ -97,8 +100,17 @@ const App = () => {
         });
       }
 
-      filteredCodes = getFilteredCodes(filteredCodes, key, filterState[key]);
+      filteredCodes = getFilteredCodes(
+        salaryPosts.posts,
+        key,
+        filterState[key]
+      );
     });
+    console.log(salaryPosts.posts);
+    //Object.keys(filterUpdateState)[0]
+    filteredCodes !== [] ? setFilterPosts(filteredCodes) : setFilterPosts([]);
+  };
+  const sortFilter = () => {
     function compare(a, b) {
       if (a.salary < b.salary) {
         return -1;
@@ -110,15 +122,12 @@ const App = () => {
     }
 
     var a = filteredCodes.sort(compare);
-    console.log(a);
     if (sortState["sort"] === "high") {
       a = a.reverse();
     } else if (sortState["sort"] === "low") {
       a = a;
     }
-    filteredCodes !== [] ? setFilterPosts(a) : setFilterPosts([]);
   };
-
   return (
     <div>
       <Header />

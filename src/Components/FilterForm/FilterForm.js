@@ -1,21 +1,8 @@
 import "./FilterForm.css";
 import { useState, useEffect, useRef } from "react";
-import {
-  Dropdown,
-  Menu,
-  Grid,
-  Checkbox,
-  Header,
-  Icon,
-  Image,
-  Segment,
-  Sidebar,
-  Button,
-} from "semantic-ui-react";
+import { Dropdown, Menu, Grid } from "semantic-ui-react";
 const FilterForm = ({ handleFilterChange, salaryPosts }) => {
-  const [addFilterOpt, setAddFilterOpt] = useState(false);
   const [companyOptions, setCompanyOptions] = useState([]);
-  const [visible, setVisible] = useState(false);
   const companyRef = useRef(0);
 
   const ageOptions = [
@@ -25,9 +12,18 @@ const FilterForm = ({ handleFilterChange, salaryPosts }) => {
   ];
 
   const genderOptions = [
-    { key: "Woman", text: "Woman", value: "Woman" },
-    { key: "Man", text: "Man", value: "Man" },
-    { key: "Transgender", text: "Transgender", value: "Transgender" },
+    { key: "Female/Woman", text: "Female/Woman", value: "Female/Woman" },
+    { key: "Male/Man", text: "Male/Man", value: "Male/Man" },
+    {
+      key: "Transmale/Transman",
+      text: "Transmale/Transman",
+      value: "Transmale/Transman",
+    },
+    {
+      key: "Transfemale/Transwoman",
+      text: "Transfemale/Transwoman",
+      value: "Transfemale/Transwoman",
+    },
   ];
   const sortOptions = [
     { key: "low to high", text: "low to high", value: "low to high" },
@@ -64,71 +60,56 @@ const FilterForm = ({ handleFilterChange, salaryPosts }) => {
 
   return (
     <>
-      <Grid columns={1}>
-        <Grid.Column>
+      <Grid>
+        {/* <Grid.Column>
           <Button
             checked={visible}
             label={{ children: <code>visible</code> }}
             onClick={(e, data) => setVisible(true)}
           />
-        </Grid.Column>
+        </Grid.Column> */}
 
         <Grid.Column>
-          <Sidebar.Pushable as={Segment}>
-            <Sidebar
-              animation="overlay"
-              icon="labeled"
-              onHide={() => setVisible(false)}
-              visible={visible}
-              width="thin"
-            >
-              <Dropdown
-                placeholder="Age"
-                fluid
-                search
-                clearable
-                selection
-                multiple
-                options={ageOptions}
-                onChange={(el, e) => handleFilterChange(e.placeholder, e.value)}
-              />
-              <Dropdown
-                placeholder="Gender"
-                fluid
-                search
-                clearable
-                selection
-                multiple
-                options={genderOptions}
-                onChange={(el, e) => handleFilterChange(e.placeholder, e.value)}
-              />
-              <Dropdown
-                placeholder="Company"
-                fluid
-                search
-                clearable
-                selection
-                multiple
-                options={companyOptions}
-                onChange={(el, e) => handleFilterChange(e.placeholder, e.value)}
-              />
-              <Dropdown
-                placeholder="sort"
-                fluid
-                clearable
-                selection
-                options={sortOptions}
-                onChange={(el, e) => handleFilterChange(e.placeholder, e.value)}
-              />
-            </Sidebar>
-
-            <Sidebar.Pusher>
-              <Segment basic>
-                <Header as="h3">Application Content</Header>
-                <Image src="https://react.semantic-ui.com/images/wireframe/paragraph.png" />
-              </Segment>
-            </Sidebar.Pusher>
-          </Sidebar.Pushable>
+          <Menu fluid>
+            <Dropdown
+              placeholder="Age"
+              fluid
+              search
+              clearable
+              selection
+              multiple
+              options={ageOptions}
+              onChange={(el, e) => handleFilterChange(e.placeholder, e.value)}
+            />
+            <Dropdown
+              placeholder="Gender"
+              fluid
+              search
+              clearable
+              selection
+              multiple
+              options={genderOptions}
+              onChange={(el, e) => handleFilterChange(e.placeholder, e.value)}
+            />
+            <Dropdown
+              placeholder="Company"
+              fluid
+              search
+              clearable
+              selection
+              multiple
+              options={companyOptions}
+              onChange={(el, e) => handleFilterChange(e.placeholder, e.value)}
+            />
+            <Dropdown
+              placeholder="sort"
+              fluid
+              clearable
+              selection
+              options={sortOptions}
+              onChange={(el, e) => handleFilterChange(e.placeholder, e.value)}
+            />
+          </Menu>
         </Grid.Column>
       </Grid>
     </>
