@@ -19,6 +19,7 @@ const App = () => {
   const [filterPosts, setFilterPosts] = useState([]);
   const [filterError, setFilterError] = useState("");
   const [filterState, setFilterState] = useState({});
+  const [filterUpdateState, setFilterUpdateState] = useState({});
   const [toggle, setToggle] = useState(true);
   const { data, loading, error } = useQuery(GET_POST);
 
@@ -68,7 +69,7 @@ const App = () => {
   }, [filterUpdateState]);
 
   const filterData = () => {
-    var filteredCodes = salaryPosts.posts;
+    let filteredPosts = salaryPosts.posts;
     Object.keys(filterState).map(function (key, index) {
       function getFilteredCodes(array, key, value) {
         return array.filter(function (e) {
@@ -79,13 +80,13 @@ const App = () => {
           }
         });
       }
-      filteredCodes = getFilteredCodes(
+      filteredPosts = getFilteredCodes(
         salaryPosts.posts,
         key,
         filterState[key]
       );
     });
-    filteredCodes !== [] ? setFilterPosts(filteredCodes) : setFilterPosts([]);
+    filteredPosts !== [] ? setFilterPosts(filteredPosts) : setFilterPosts([]);
   };
   // const sortFilter = () => {
   //   function compare(a, b) {
