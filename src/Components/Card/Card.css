@@ -4,8 +4,10 @@
   border: 1px solid black;
   background-color: #005470;
   color: white;
-  height: 43vh;
+  height: 350px;
   width: 22vw;
+  padding-top: 20px;
+  padding-bottom: 20px;
   text-align: center;
   overflow-y: scroll;
 }
@@ -22,7 +24,7 @@
 
 @media screen and (max-width: 1050px) {
   .card {
-    width: 30vw;
+    width: 22vw;
   }
 }
 
